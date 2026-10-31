@@ -2,7 +2,7 @@
 city plus the board, builds a menu of proposals (replace, reline), and negotiates shared digs in round 2."""
 from agents.board import bundle_id
 from agents.pipe_agent import adapter
-from sim.config import infl
+from sim import costs
 
 
 class PipeAgent:
@@ -25,20 +25,24 @@ class PipeAgent:
         p, L = rec["pipe"], rec["length_ft"]
         before = [adapter.pof(rec, year, t, None, cfg) for t in range(H)]
         after = [adapter.pof(rec, year, t, treat, cfg) for t in range(H)]
-        full = cfg["pipe_per_ft"] * L * infl(cfg, year)
-        work = "replace_pipe" if treat == "replace" else "reline_pipe"
+        work = {"replace": "replace_pipe", "reline": "reline_pipe", "wait": costs.WAIT}[treat]
+        deferred = "replace_pipe" if treat == "wait" else None   # waiting defers the replacement one year
+        wc = 0.0 if treat == "wait" else costs.work_cost(cfg, work, L, year)
         rt = self.ratings[rec["segment_id"]]
         why = (f"{rt['risk_class']} risk (index {rt['risk_index']:.0f}): {p['material'].replace('_', ' ')} main from "
                f"{p['install_year']}, {len(p['breaks'])} prior breaks, PoF {before[0]:.0f}"
                + (", serves a critical facility" if rec["critical"] else ""))
         return dict(
             contract_version="0.2",
-            proposal_id=f"pipe-{year}-{rec['segment_id']}" + ("" if treat == "replace" else "-reline"),
+            proposal_id=f"pipe-{year}-{rec['segment_id']}" + {"replace": "", "reline": "-reline", "wait": "-wait"}[treat],
             agent="pipe", segment_id=rec["segment_id"], year=year, work=work,
-            work_cost=full if treat == "replace" else full * cfg["reline_frac"],
+            work_cost=wc,
+            defer=dict(work=deferred, work_cost=costs.work_cost(cfg, deferred, L, year)) if deferred else None,
             exclusive_group=f"pipe-{rec['segment_id']}", bundle_id=None,
-            pipe=dict(pof_before=before, pof_after=after, pof_lo=[b * 0.85 for b in before],
-                      pof_hi=[min(100.0, b * 1.15 + 5) for b in before],  # ASSUMPTION: the rubric has no model error bar
+            pipe=dict(pof_before=before, pof_after=after if treat != "wait" else
+                      [adapter.pof(rec, year, t, "replace", cfg) for t in range(H)],
+                      pof_lo=[b * cfg["pof_band"][0] for b in before],
+                      pof_hi=[min(100.0, b * cfg["pof_band"][1] + cfg["pof_band"][2]) for b in before],  # ASSUMPTION band, sim/config.py
                       cof_prime=adapter.cof_prime(rec, year, cfg), length_ft=L),
             road=None, rating=dict(risk_class=rt["risk_class"], risk_index=rt["risk_index"],
                                    recommended_action=rt["recommended_action"]),
@@ -49,8 +53,20 @@ class PipeAgent:
         self.rate_all(year, view)
         ranked = sorted(view, key=lambda r: -(self.ratings[r["segment_id"]]["risk_index"] or 0))
         self.props = []
-        for rec in ranked[: max(1, max_n // 2)]:
-            self.props += [self._proposal(year, rec, "replace"), self._proposal(year, rec, "reline")]
+        for rec in ranked[: max(1, max_n // 3)]:
+            self.props += self._menu(year, rec)
+        return self.props
+
+    def _menu(self, year, rec):
+        """Replace, the cheaper reline, and wait a year, all on the same asset (one exclusive group)."""
+        return [self._proposal(year, rec, t) for t in ("replace", "reline", "wait")]
+
+    def complete(self, year):
+        """Add the 'wait' alternative for every segment that has a replace or reline proposal but no wait yet."""
+        have = {p["segment_id"] for p in self.props if p["work"] == costs.WAIT}
+        for seg in dict.fromkeys(p["segment_id"] for p in self.props):
+            if seg not in have:
+                self.props.append(self._proposal(year, self.view[seg], "wait"))
         return self.props
 
     def post_plans(self, year, board):
@@ -73,8 +89,7 @@ class PipeAgent:
                 p["bundle_id"] = bundle_id(year, seg)
 
     def _add(self, year, seg):
-        rec = self.view[seg]
-        self.props += [self._proposal(year, rec, "replace"), self._proposal(year, rec, "reline")]
+        self.props += self._menu(year, self.view[seg])
 
     def _pof(self, year, seg):
         return adapter.pof(self.view[seg], year, 0, None, self.cfg)

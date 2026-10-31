@@ -11,6 +11,7 @@ from agents.pipe_agent.llm_agent import LLMPipeAgent
 from agents.pipe_agent.tools import PipeTools
 from agents.road_agent.agent import RoadAgent
 from agents.road_agent.tools import RoadTools
+from sim import reserve
 from sim.city import City
 from sim.config import CFG
 from sim.runner import simulate
@@ -129,7 +130,7 @@ class TestLLM(unittest.TestCase):
             self.assertEqual(r["llm"]["fallbacks"], [], r["llm"]["violations"])
             self.assertGreater(r["total_cost"], 0)
             self.assertGreater(r["llm"]["tool_calls"], 0)
-            spendable = r["cfg"]["annual_capital_budget"] * (1 - CFG3["reserve_fraction"])
+            spendable = reserve.spendable(r["cfg"])
             for fr in r["years"]:
                 self.assertLessEqual(sum(x["amount"] for x in fr["decisions"]), spendable + 1)
                 for x in fr["decisions"]:
@@ -204,7 +205,7 @@ class TestLLM(unittest.TestCase):
         props = LLMPipeAgent(cfg, llm).propose(2026, city.view_for("pipe"), Board(), 6)
         self.assertEqual(llm.fallbacks, [])
         self.assertEqual(len(llm.violations), 1)
-        self.assertTrue(all(p["rationale_source"] == "llm" for p in props))
+        self.assertTrue(all(p["rationale_source"] == "llm" for p in props if p["work"] in ("replace_pipe", "reline_pipe")))
 
     def test_tool_call_cap(self):
         cfg, city = setup()

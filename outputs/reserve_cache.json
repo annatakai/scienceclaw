@@ -1,0 +1,20 @@
+{
+ "9934d3a3af103a36": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "f9798e87210e0439": {
+  "p95_yearly_emergency": 2928601,
+  "annual_budget": 767437,
+  "uncapped_share": 3.8161,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 10
+ }
+}

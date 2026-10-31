@@ -8,6 +8,7 @@ Fields the simulator does not have are derived and documented here:
 from functools import lru_cache
 
 from agents.pipe_agent import scoring
+from sim import costs
 
 MATERIAL_MAP = {"cast_iron": "cast iron", "ductile_iron": "ductile iron", "pvc": "pvc", "steel": "steel",
                 "protected_ductile_iron": "protected ductile iron"}
@@ -40,7 +41,7 @@ def _args(rec, year, t, treat, cfg):
     return (inst, MATERIAL_MAP[mat], nb, round(rec["length_ft"] / 3.28084, 3), soil_label(p["soil"]),
             condition_grade(assess - inst, nb), int(rec["customers"]), "hospital" if rec["critical"] else "none",
             int(round(p["diameter_in"] * 25.4)), rec["exposure"], int(rec["aadt"]),
-            int(cfg["emergency_multiplier"] * cfg["pipe_per_ft"] * rec["length_ft"]), assess)
+            int(costs.emergency_cost(cfg, rec["length_ft"])), assess)
 
 
 @lru_cache(maxsize=None)

@@ -11,6 +11,7 @@ from agents.pipe_agent.agent import PipeAgent
 from agents.road_agent.agent import RoadAgent
 from agents.road_agent.scoring import pcr
 from sim.city import City
+from sim import reserve
 from sim.config import CFG
 
 STRATEGIES = ["isolated", "pooled", "coordinated", "central"]
@@ -38,9 +39,11 @@ def snapshot(city, year):
                 brk=[len(s["pipe"]["breaks"]) for s in city.segs], paved=[s["road"]["last_paved"] for s in city.segs])
 
 
-def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None):
-    """llm: an agents.llm.LLM (for coordinated_llm; built from the environment if omitted)."""
-    cfg = dict(cfg or CFG, seed=seed)
+def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None, cip=False):
+    """llm: an agents.llm.LLM (for coordinated_llm; built from the environment if omitted).
+    cip: also return out["cip"] = all priced proposals, all decisions (year, funding_source, bundle_id), a city dict,
+    the reserve balance by year and the config used (input of cip/adapter.py)."""
+    cfg = reserve.ensure(dict(cfg or CFG, seed=seed))   # reserve share from the pilot (cached); fixed fraction if reserve_mode == "fixed"
     city = City(cfg)
     cfg = city.cfg  # with the network-size totals (budget, break target, menu size) filled in
     board = Board()
@@ -59,8 +62,9 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
     else:
         pipe, road, budget = PipeAgent(cfg), RoadAgent(cfg), BudgetAgent(cfg)
     cum = dict(exp_fail=0.0, fail=0, weighted_fail=0.0, openings=0, spend=0.0, emerg=0.0, dig_savings=0.0,
-               double_digs=0, user_cost=0.0)
-    years = []
+               double_digs=0, user_cost=0.0, interest=0.0, net_spend=0.0, shortfall=0.0)
+    years, cip_props, cip_decs, reserve_rows = [], [], [], []
+    balance = 0.0
     state0 = snapshot(city, cfg["start_year"]) if record else None
     n_years = cfg.get("sim_years") or cfg["horizon_years"]  # sim_years < horizon_years: short run, same pricing
     for year in range(cfg["start_year"], cfg["start_year"] + n_years):
@@ -107,6 +111,9 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
                           f"Fund {d['work'].replace('_', ' ')} on {d['segment_id']} for ${d['amount']:,.0f} "
                           f"({d['funding_source'].replace('_', ' ')}). Rated {d['return_rating']} return "
                           f"{d['return_per_dollar']:.2f}, tier {d['urgency_tier']} ({d['urgency_name']}). {d['reason']}")
+        if cip:
+            cip_props += [dict(p, pipe=None, road=None, priced=p["priced"]) for p in props]
+            cip_decs += decisions
         res = city.apply(decisions, year)
         exp = city.expected_failures(year)
         fails = city.simulate_failures(year)
@@ -115,7 +122,18 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
         cum["weighted_fail"] += sum(f["weight"] for f in fails)
         cum["openings"] += res["openings"] + len(fails)
         cum["spend"] += res["spend"]
-        cum["emerg"] += sum(f["cost"] for f in fails)
+        emerg_year = sum(f["cost"] for f in fails)
+        cum["emerg"] += emerg_year
+        cum["interest"] += sum(d["loan_interest"] for d in decisions)
+        cum["net_spend"] += sum(d["net_cost"] for d in decisions)
+        # reserve: the set-aside covers emergency repairs; any excess is a shortfall (paid from the operating budget)
+        setaside = cfg["annual_capital_budget"] * reserve.share(cfg)
+        opening = balance
+        balance = max(0.0, balance + setaside - emerg_year)
+        short = max(0.0, emerg_year - (opening + setaside))
+        cum["shortfall"] += short
+        reserve_rows.append(dict(year=year, opening=round(opening), set_aside=round(setaside), emergency=round(emerg_year),
+                                 shortfall=round(short), closing=round(balance)))
         cum["dig_savings"] += res["saving"]
         cum["double_digs"] += res["double_digs"]
         cum["user_cost"] += city.user_cost(year)
@@ -127,6 +145,7 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
                                     bundle=bool(d["bundle_id"]), amount=round(d["amount"]),
                                     ret=round(d["return_per_dollar"], 2), reason=d["reason"])
                                for d in decisions if d["funded"]]
+            fr["emerg_year"] = emerg_year
             fr["n_proposals"] = len(props)
             fr["n_rejected"] = sum(1 for d in decisions if not d["funded"])
             fr["failures"] = [dict(seg=idx[f["segment_id"]], cost=round(f["cost"])) for f in fails]
@@ -140,16 +159,24 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
             years.append(fr)
     out = dict(strategy=strategy, seed=seed, **{k: (round(v, 2) if isinstance(v, float) else v) for k, v in cum.items()})
     out["total_cost"] = round(cum["spend"] + cum["emerg"] + cum["user_cost"])
+    out["cost_of_ownership"] = round(out["total_cost"] + cum["interest"])   # total cost plus nominal loan interest
+    out["reserve"] = reserve_rows
     out["avg_pcr_end"] = round(city.avg_pcr(cfg["start_year"] + n_years - 1), 1)
     if use_llm:
         out["llm"] = dict(llm.usage, fallbacks=list(llm.fallbacks), violations=list(llm.violations))
+    if cip:
+        out["cip"] = dict(proposals=cip_props, decisions=cip_decs, reserve=reserve_rows, miles=round(city.total_miles, 1),
+                          city={s_["segment_id"]: dict(street=s_["street"], neighborhood=s_["neighborhood"]) for s_ in city.segs},
+                          reserve_sizing=cfg.get("reserve_sizing"),
+                          config={k: v for k, v in cfg.items() if not k.startswith("llm")})
     if record:
         out["years"] = years
         out["state0"] = state0
         out["segs"] = [dict(id=s["segment_id"], street=s["street"], coords=s["coords"], length_ft=round(s["length_ft"]),
                             critical=s["critical"], road_class=s["road"]["road_class"], customers=s["customers"],
                             neighborhood=s["neighborhood"], adt=s["road"]["adt"]) for s in city.segs]
-        out["cfg"] = {k: cfg[k] for k in ("annual_capital_budget", "n_target", "max_proposals", "start_year", "horizon_years")}
+        out["cfg"] = {k: cfg[k] for k in ("annual_capital_budget", "n_target", "max_proposals", "start_year", "horizon_years", "reserve_mode", "reserve_fraction")}
+        out["cfg"]["reserve_share"] = reserve.share(cfg)
         out["miles"] = round(city.total_miles, 1)
     return out
 

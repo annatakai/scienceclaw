@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from agents.pipe_agent import scoring
 from agents.road_agent import scoring as road_scoring
 from agents.budget_agent import scoring as budget_scoring
+from sim import reserve
 from sim.city import City
 from sim.config import CFG
 
@@ -52,7 +53,7 @@ class T(unittest.TestCase):
 
     def test_budget_respected(self):
         r = simulate("coordinated", seed=5, cfg=SMALL, record=True)
-        cap = r["cfg"]["annual_capital_budget"] * (1 - CFG["reserve_fraction"]) * CFG["horizon_years"]
+        cap = reserve.spendable(r["cfg"]) * CFG["horizon_years"]
         self.assertLessEqual(r["spend"], cap + 1)
 
     def test_real_street_loader(self):

@@ -35,6 +35,7 @@ class LLMPipeAgent(PipeAgent):
 
         self.props = attempt_then_fallback(self.llm, "pipe", year, "propose", attempt,
                                            lambda: PipeAgent.propose(self, year, view, board, max_n))
+        self.complete(year)   # add the wait-a-year (and, for roads, preserve or reconstruct) alternatives
         return self.props
 
     def respond(self, year, board):

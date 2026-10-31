@@ -2,7 +2,9 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
-outputs/
+outputs/*
+!outputs/cip/
+!outputs/reserve_cache.json
 demo/demo.html
 traces/
 data/raw/

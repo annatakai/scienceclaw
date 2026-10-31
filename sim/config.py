@@ -16,7 +16,10 @@ CFG = dict(
                        "South End", "Back Bay", "Charlestown", "Fenway", "Mission Hill", "Roxbury", "South Boston",
                        "South Boston Waterfront"),
     neighborhoods_new=("West Roxbury", "Hyde Park", "Roslindale", "Mattapan", "Harbor Islands", "Longwood"),
-    reserve_fraction=0.15,            # ASSUMPTION
+    reserve_mode="simulated",         # "simulated": sized from the 95th percentile of yearly emergency cost (sim/reserve.py); "fixed": reserve_fraction
+    reserve_fraction=0.15,            # ASSUMPTION: used only when reserve_mode == "fixed"
+    reserve_max_fraction=0.25,        # ASSUMPTION: cap on the simulated reserve as a share of the budget (upper end of the 0.10 to 0.25 range tested in interfaces.md)
+    reserve_pilot_seeds=5, reserve_percentile=95,  # pilot seeds are 1000+i, separate from the reported seeds
     urgency_full_prob=0.30,           # ASSUMPTION
     critical_facility_multiplier=1.25,  # ASSUMPTION
     urgent_cap_fraction=0.5,          # ASSUMPTION
@@ -35,7 +38,20 @@ CFG = dict(
     u0=0.30,                          # ASSUMPTION: road user cost, $ per vehicle-mile at worst condition
     lam=0.3, L=15,                    # ASSUMPTION: pavement life lost per cut, resurfacing cycle (years)
     H_replace=10, H_reline=7, rho=0.6,  # ASSUMPTION
-    rate_revenue_share=0.5,           # ASSUMPTION (BWSC water program: about 30% rate revenue)
+    H_preserve=5, rho_preserve=0.4,   # ASSUMPTION: pavement preservation removes this share of pavement age, lasts H_preserve years
+    preserve_frac=0.25,               # ASSUMPTION: preservation costs this share of a repave
+    reconstruct_mult=2.0, reconstruct_bonus_years=5,  # ASSUMPTION: reconstruction costs this multiple of a repave and gives extra years of like-new condition
+    pof_band=(0.85, 1.15, 5.0),       # ASSUMPTION: the rubric has no error bar; PoF bounds are x0.85 and x1.15 + 5 (return_formula.md section 6.4)
+    road_benefit_band=0.15,           # ASSUMPTION: roads have no PoF bounds; road benefit is bounded by plus or minus this share
+    P_min=40,                         # ASSUMPTION: PCR at or below this is Failed (road_agent/scoring.py P_MIN); reconstruction is offered here
+    # Funding sources: BWSC 2024-2026 CIP water program, Table 11 (p.19). Shares are of the spendable amount each year.
+    funding_mix={"bonds": 0.293, "rate_revenue": 0.303, "interest_free_loan": 0.211, "srf_loan": 0.193},
+    loan_terms={"bonds": {"rate": 0.04, "years": 20},                # ASSUMPTION
+                "interest_free_loan": {"rate": 0.0, "years": 10},    # BWSC CIP p.18 (MWRA LWSAP)
+                "srf_loan": {"rate": 0.02, "years": 25}},            # term: BWSC CIP p.18; rate: ASSUMPTION
+    # DECISION: interfaces.md lists [replace_pipe, repave], but BWSC CIP p.17 and budget_agent_reference.md put main relining
+    # under renewal and replacement too, so reline_pipe is eligible. Preservation and reconstruction of roads are not (ASSUMPTION).
+    rate_revenue_eligible_work=("replace_pipe", "reline_pipe", "repave"),
     # Claude-driven agents (strategy "coordinated_llm"). Prices are USD per million tokens (input, output).
     llm_model="claude-haiku-5-5", llm_effort="low", llm_max_tokens=1500,
     llm_max_tool_calls=8,             # per agent per year

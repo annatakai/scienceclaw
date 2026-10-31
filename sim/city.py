@@ -127,6 +127,10 @@ class City:
                 s["pipe"]["breaks"] = s["pipe"]["breaks"][: len(s["pipe"]["breaks"]) // 2]
             elif dcs["work"] == "repave":
                 s["road"]["last_paved"] = year
+            elif dcs["work"] == "preserve_road":
+                s["road"]["last_paved"] = int(round(year - (1 - self.cfg["rho_preserve"]) * (year - s["road"]["last_paved"])))
+            elif dcs["work"] == "reconstruct_road":
+                s["road"]["last_paved"] = year + self.cfg["reconstruct_bonus_years"]   # like-new condition for these extra years
         return dict(spend=spend, openings=openings, saving=saving,
                     double_digs=sum(max(0, len(v) - 1) for v in per_seg.values()))
 

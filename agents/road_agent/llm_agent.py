@@ -33,6 +33,7 @@ class LLMRoadAgent(RoadAgent):
 
         self.props = attempt_then_fallback(self.llm, "road", year, "propose", attempt,
                                            lambda: RoadAgent.propose(self, year, view, board, max_n))
+        self.complete(year)   # add the wait-a-year (and, for roads, preserve or reconstruct) alternatives
         return self.props
 
     def _respond(self, year, board, phase, prompt, rule_fn):
@@ -64,7 +65,7 @@ class LLMRoadAgent(RoadAgent):
                 board.add(year, 2, "road", "decline", seg, f"Decline on {seg}: {why}")
                 continue
             if seg not in self._mine():
-                self.props.append(self._proposal(year, self.view[seg]))
+                self.props += self._menu(year, self.view[seg])
             self._tag(year, seg)
             board.add(year, 2, "road", "join_request", seg, f"Join request on {seg}: {why}")
 

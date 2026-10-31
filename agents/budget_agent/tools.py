@@ -14,7 +14,7 @@ class BudgetTools:
     def __init__(self, agent, props, spendable):
         self.a, self.cfg, self.spendable = agent, agent.cfg, spendable
         self.cands = {}
-        for c in agent._cands(props, True):
+        for c in (c for c in agent._cands(props, True) if not c.get("wait")):
             c["id"] = c["members"][0]["proposal_id"] if not c["bundle"] else f"{c['bundle']}:{c['members'][0]['proposal_id']}"
             c["eligible"] = agent._passes(c)
             self.cands[c["id"]] = c

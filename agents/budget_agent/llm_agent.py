@@ -2,6 +2,7 @@
 writes the reasons; dollars, returns and urgency come from sim/costs.py via the tools, and the tool enforces the cap."""
 from agents.budget_agent.agent import BudgetAgent
 from agents.budget_agent.tools import BudgetTools
+from sim import reserve
 from agents.llm_support import StepFailed, attempt_then_fallback, retry_note
 
 SYSTEM = ("You are the budget agent of a city. Pipe and road agents submitted repair proposals; you decide which to fund. "
@@ -19,7 +20,7 @@ class LLMBudgetAgent(BudgetAgent):
         if mode != "pooled":
             return super().allocate(props, year, mode)
         cfg = self.cfg
-        spendable = cfg["annual_capital_budget"] * (1 - cfg["reserve_fraction"])
+        spendable = reserve.spendable(cfg)
 
         def attempt(err):
             t = BudgetTools(self, props, spendable)
