@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dig Once: multi-agent infrastructure coordination (SIMULATED)</title>
+<style>
+  :root { --bg:#0f1318; --panel:#171c23; --line:#2a323d; --text:#e6e9ee; --mute:#8a95a5;
+          --pipe:#4c9aff; --road:#ffb020; --budget:#34d399; --board:#9aa4b2; --bundle:#b36bff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         display:flex; height:100vh; }
+  #mapwrap { flex:1; position:relative; min-width:0; background:#0b0e12; }
+  #map { width:100%; height:100%; display:block; }
+  #banner { position:absolute; left:12px; top:12px; background:rgba(15,19,24,.88); border:1px solid var(--line);
+            border-radius:8px; padding:8px 12px; max-width:62%; }
+  #banner b { font-size:16px; }
+  #banner .sim { color:#ffb020; font-size:12px; }
+  #legend { position:absolute; left:12px; bottom:12px; background:rgba(15,19,24,.88); border:1px solid var(--line);
+            border-radius:8px; padding:8px 12px; font-size:12px; color:var(--mute); }
+  #legend .bar { width:160px; height:8px; border-radius:4px; margin:4px 0;
+                 background:linear-gradient(90deg,#2fa66a,#f2c230,#f07a2a,#d1202f,#6e0020); }
+  #legend .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin:0 4px 0 8px; vertical-align:middle; }
+  #attrib { position:absolute; right:6px; bottom:4px; font-size:10px; color:#778; background:rgba(0,0,0,.4); padding:1px 4px; }
+  #side { width:410px; max-width:46vw; background:var(--panel); border-left:1px solid var(--line); display:flex; flex-direction:column; }
+  #side > div { padding:10px 14px; border-bottom:1px solid var(--line); }
+  h1 { font-size:16px; margin:0 0 2px; }
+  .sub { color:var(--mute); font-size:12px; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  button, select { background:#222a35; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:6px 10px; font:inherit; cursor:pointer; }
+  button.primary { background:#2563eb; border-color:#2563eb; font-weight:600; }
+  #status { font-weight:600; }
+  #phase { color:var(--mute); font-size:12px; min-height:17px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { color:var(--mute); font-weight:500; text-align:right; padding:2px 4px; }
+  th:first-child, td:first-child { text-align:left; }
+  td { text-align:right; padding:3px 4px; font-variant-numeric:tabular-nums; }
+  tr.cur td { background:#1e2733; }
+  tr.best td:last-child { color:var(--budget); font-weight:600; }
+  canvas { width:100%; height:110px; display:block; }
+  #feedwrap { flex:1; min-height:0; display:flex; flex-direction:column; padding:0 !important; }
+  #feedhead { padding:8px 14px 4px; color:var(--mute); font-size:12px; }
+  #feed { flex:1; overflow-y:auto; padding:0 14px 10px; font-size:12.5px; }
+  .m { padding:3px 0 3px 8px; border-left:3px solid var(--board); margin:3px 0; }
+  .m.pipe { border-color:var(--pipe); } .m.road { border-color:var(--road); }
+  .m.budget { border-color:var(--budget); } .m.fail { border-color:#ff4d4f; color:#ffb3b3; }
+  .m b.pipe { color:var(--pipe); } .m b.road { color:var(--road); } .m b.budget { color:var(--budget); }
+  .m.sys { color:var(--mute); font-style:italic; }
+  line.seg { stroke-linecap:round; transition:stroke .9s; }
+  .pulse { animation:pulse 1.2s ease-in-out infinite alternate; }
+  @keyframes pulse { from { opacity:.35; } to { opacity:.85; } }
+  @media (max-width:800px) { body { flex-direction:column; } #side { width:100%; max-width:none; height:55vh; } }
+</style>
+</head>
+<body>
+<div id="mapwrap">
+  <svg id="map" preserveAspectRatio="xMidYMid meet"></svg>
+  <div id="banner"><b>Dig Once</b> <span class="sim">SIMULATED DATA</span><br>
+    <span class="sub">Pipe, road and budget agents coordinate repairs so a street is opened once. Synthetic assets on a generated street grid placed over Boston (the basemap is only for context and does not match the grid).</span></div>
+  <div id="legend">
+    <div id="legendTitle">Pipe risk index</div>
+    <div class="bar"></div>
+    <div style="display:flex;justify-content:space-between"><span>low</span><span>high</span></div>
+    <div style="margin-top:4px"><span class="dot" style="background:var(--pipe);margin-left:0"></span>pipe plan
+      <span class="dot" style="background:var(--road)"></span>road plan
+      <span class="dot" style="background:var(--bundle)"></span>shared dig
+      <span class="dot" style="background:#22c55e"></span>funded
+      <span class="dot" style="background:#ff4d4f"></span>pipe break</div>
+  </div>
+  <div id="attrib">Basemap &copy; OpenStreetMap contributors (loads online only)</div>
+</div>
+<div id="side">
+  <div>
+    <h1>Agent replay</h1>
+    <div class="sub">Replay of a recorded simulation run (seed __SEED__). Every number is simulated.</div>
+  </div>
+  <div>
+    <div class="row">
+      <button class="primary" id="play">&#9654; Play</button>
+      <button id="step">Step 1 year</button>
+      <button id="restart">Restart</button>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <label>Map shows <select id="strat"></select></label>
+      <label><input type="checkbox" id="base" checked> Basemap</label>
+      <label>Layer <select id="layer"><option value="pipe">Pipe risk</option><option value="road">Road condition</option></select></label>
+      <label>Speed <input id="speed" type="range" min="0.5" max="6" step="0.5" value="1.5" style="width:90px"></label>
+    </div>
+    <div style="margin-top:8px"><span id="status">Press Play</span></div>
+    <div id="phase"></div>
+  </div>
+  <div>
+    <table id="score"></table>
+    <div class="sub" style="margin-top:4px">Cumulative, single run. Total = capital + emergency repairs + road user cost.</div>
+  </div>
+  <div>
+    <div class="sub" id="charttitle">Cumulative cost saved vs isolated departments ($M)</div>
+    <canvas id="chart" width="760" height="220"></canvas>
+  </div>
+  <div id="feedwrap">
+    <div id="feedhead">Board and agent messages</div>
+    <div id="feed"></div>
+  </div>
+</div>
+<script>
+const DATA = __DATA__;
+const NS = 'http://www.w3.org/2000/svg';
+const LABEL = {isolated:'Isolated depts', pooled:'Pooled budget', coordinated:'Agents + board', central:'Central planner'};
+const ORDER = DATA.order;
+const svg = document.getElementById('map');
+const $ = id => document.getElementById(id);
+
+// ---------------------------------------------------------------- map projection (web mercator, zoom 17)
+const Z = 17, TS = 256, N = Math.pow(2, Z);
+const mx = lon => (lon + 180) / 360 * N * TS;
+const my = lat => { const s = Math.sin(lat * Math.PI / 180); return (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * N * TS; };
+const segs = DATA.segs.map(s => ({ ...s, p: s.coords.map(c => [mx(c[1]), my(c[0])]) }));
+let minX = 1e12, maxX = -1e12, minY = 1e12, maxY = -1e12;
+segs.forEach(s => s.p.forEach(([x, y]) => { minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y); }));
+const M = 140;
+svg.setAttribute('viewBox', `${minX - M} ${minY - M} ${maxX - minX + 2 * M} ${maxY - minY + 2 * M}`);
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; }
+const gTiles = el('g', { style: 'filter:grayscale(1) brightness(.55) contrast(1.1)' });
+for (let tx = Math.floor((minX - M) / TS); tx <= Math.floor((maxX + M) / TS); tx++)
+  for (let ty = Math.floor((minY - M) / TS); ty <= Math.floor((maxY + M) / TS); ty++)
+    { const im = el('image', { href: `https://tile.openstreetmap.org/${Z}/${tx}/${ty}.png`, x: tx * TS, y: ty * TS, width: TS, height: TS }, gTiles);
+      im.addEventListener('error', () => im.remove()); }
+const gHalo = el('g'), gFund = el('g'), gSegs = el('g'), gMarks = el('g');
+const lines = segs.map((s, i) => {
+  const l = el('line', { class: 'seg', x1: s.p[0][0], y1: s.p[0][1], x2: s.p[1][0], y2: s.p[1][1], 'stroke-width': 9, stroke: '#2fa66a' }, gSegs);
+  el('title', {}, l).textContent = `${s.street} (${s.id}), ${s.length_ft} ft, ${s.customers} customers${s.critical ? ', critical facility' : ''}`;
+  return l;
+});
+const mid = (i, t) => { const p = segs[i].p; return [p[0][0] + (p[1][0] - p[0][0]) * t, p[0][1] + (p[1][1] - p[0][1]) * t]; };
+
+// ---------------------------------------------------------------- colours
+const STOPS = [[0, [47, 166, 106]], [.3, [242, 194, 48]], [.55, [240, 122, 42]], [.78, [209, 32, 47]], [1, [110, 0, 32]]];
+function colour(v) {
+  v = Math.max(0, Math.min(1, v));
+  for (let i = 1; i < STOPS.length; i++) if (v <= STOPS[i][0]) {
+    const [a, ca] = STOPS[i - 1], [b, cb] = STOPS[i], t = (v - a) / (b - a);
+    return `rgb(${ca.map((c, k) => Math.round(c + (cb[k] - c) * t)).join(',')})`;
+  }
+  return 'rgb(110,0,32)';
+}
+function paint(frame, which) {
+  const layer = $('layer').value;
+  $('legendTitle').textContent = layer === 'pipe' ? 'Pipe risk index (likelihood x consequence)' : 'Road wear (100 - pavement condition)';
+  const arr = frame[(layer === 'pipe' ? 'risk_' : 'pcr_') + which];
+  lines.forEach((l, i) => l.setAttribute('stroke', colour(layer === 'pipe' ? arr[i] / 65 : (100 - arr[i]) / 60)));
+}
+
+// ---------------------------------------------------------------- state / helpers
+let strat = 'coordinated', yi = 0, playing = false, stepOnly = false, token = 0, showing = 'before';
+const run = () => DATA.runs[strat];
+const speed = () => parseFloat($('speed').value);
+async function delay(ms, tk) {
+  let left = ms / speed();
+  while (left > 0) { if (tk !== token) throw 'cancel'; await new Promise(r => setTimeout(r, 40)); if (playing || stepOnly) left -= 40; }
+  while (!playing && !stepOnly) { if (tk !== token) throw 'cancel'; await new Promise(r => setTimeout(r, 80)); }
+}
+function feed(frm, text, cls) {
+  const d = document.createElement('div');
+  d.className = 'm ' + (cls || frm);
+  const who = { pipe: 'Pipe agent', road: 'Road agent', budget: 'Budget agent', board: 'Board' }[frm];
+  d.innerHTML = (who && !cls ? `<b class="${frm}">${who}</b> ` : '') + text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const f = $('feed'); f.appendChild(d); f.scrollTop = f.scrollHeight;
+}
+function clearOverlays() { [gHalo, gFund, gMarks].forEach(g => { while (g.firstChild) g.removeChild(g.firstChild); }); }
+const halos = {};
+function halo(i, add) {
+  if (add && !halos[i]) {
+    const p = segs[i].p;
+    halos[i] = el('line', { x1: p[0][0], y1: p[0][1], x2: p[1][0], y2: p[1][1], stroke: '#b36bff', 'stroke-width': 24, 'stroke-linecap': 'round', opacity: .6, class: 'pulse' }, gHalo);
+  } else if (!add && halos[i]) { gHalo.removeChild(halos[i]); delete halos[i]; }
+}
+function mark(i, t, colourHex) {
+  const [x, y] = mid(i, t);
+  el('circle', { cx: x, cy: y, r: 8, fill: colourHex, stroke: '#fff', 'stroke-width': 2 }, gMarks);
+}
+function funded(i, isBundle) {
+  const p = segs[i].p;
+  el('line', { x1: p[0][0], y1: p[0][1], x2: p[1][0], y2: p[1][1], stroke: '#22c55e', 'stroke-width': 30, 'stroke-linecap': 'round', opacity: .6, class: 'pulse' }, gFund);
+}
+function breakMark(i) {
+  const [x, y] = mid(i, .5);
+  el('circle', { cx: x, cy: y, r: 17, fill: '#ff4d4f', stroke: '#fff', 'stroke-width': 3 }, gMarks);
+  const t = el('text', { x: x, y: y + 6, 'text-anchor': 'middle', fill: '#fff', 'font-size': 20, 'font-weight': 700 }, gMarks);
+  t.textContent = '!';
+}
+
+// ---------------------------------------------------------------- scoreboard + chart
+const total = m => m.spend + m.emerg + m.user_cost;
+function scoreboard(upto) {
+  const rows = ORDER.map(s => {
+    const fr = DATA.runs[s].years[Math.max(0, upto)];
+    return { s, m: upto < 0 ? { exp_fail: 0, spend: 0, emerg: 0, user_cost: 0, dig_savings: 0, openings: 0 } : fr.metrics };
+  });
+  const best = upto < 0 ? null : rows.filter(r => r.s !== 'central').reduce((a, b) => total(a.m) <= total(b.m) ? a : b).s;
+  $('score').innerHTML = '<tr><th>Strategy</th><th>Exp. failures</th><th>Capital</th><th>Dig savings</th><th>Total cost</th></tr>' +
+    rows.map(r => `<tr class="${r.s === strat ? 'cur' : ''} ${r.s === best ? 'best' : ''}"><td>${LABEL[r.s]}</td><td>${r.m.exp_fail.toFixed(1)}</td>` +
+      `<td>$${(r.m.spend / 1e6).toFixed(1)}M</td><td>$${(r.m.dig_savings / 1e6).toFixed(2)}M</td><td>$${(total(r.m) / 1e6).toFixed(1)}M</td></tr>`).join('');
+  drawChart(upto);
+}
+function drawChart(upto) {
+  const c = $('chart'), g = c.getContext('2d'), W = c.width, H = c.height;
+  g.clearRect(0, 0, W, H);
+  const cols = { pooled: '#9aa4b2', coordinated: '#34d399', central: '#b36bff' };
+  const n = DATA.runs.isolated.years.length;
+  const series = ['pooled', 'coordinated', 'central'].map(s => ({ s, v: DATA.runs[s].years.map((y, k) => (total(DATA.runs.isolated.years[k].metrics) - total(y.metrics)) / 1e6) }));
+  const all = series.flatMap(x => x.v).concat([0]);
+  const lo = Math.min(...all), hi = Math.max(...all), pad = (hi - lo) * .15 || 1;
+  const X = k => 38 + k * (W - 56) / (n - 1), Y = v => H - 22 - (v - (lo - pad)) / ((hi + pad) - (lo - pad)) * (H - 36);
+  g.strokeStyle = '#2a323d'; g.fillStyle = '#8a95a5'; g.font = '18px system-ui'; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(38, Y(0)); g.lineTo(W - 18, Y(0)); g.stroke();
+  g.fillText('0', 14, Y(0) + 6); g.fillText(hi.toFixed(1), 2, Y(hi) + 6); g.fillText(lo.toFixed(1), 2, Y(lo) + 6);
+  g.fillText(DATA.runs.isolated.years[0].year, 30, H - 4); g.fillText(DATA.runs.isolated.years[n - 1].year, W - 56, H - 4);
+  series.forEach(x => {
+    g.strokeStyle = cols[x.s]; g.lineWidth = 3; g.beginPath();
+    for (let k = 0; k <= Math.min(upto, n - 1); k++) { k ? g.lineTo(X(k), Y(x.v[k])) : g.moveTo(X(k), Y(x.v[k])); }
+    g.stroke();
+    if (upto >= 0) { g.fillStyle = cols[x.s]; g.beginPath(); g.arc(X(Math.min(upto, n - 1)), Y(x.v[Math.min(upto, n - 1)]), 5, 0, 7); g.fill(); }
+  });
+  let lx = 44; series.forEach(x => { g.fillStyle = cols[x.s]; g.fillRect(lx, 8, 14, 6); g.fillStyle = '#8a95a5'; g.fillText(LABEL[x.s], lx + 20, 16); lx += 215; });
+}
+
+// ---------------------------------------------------------------- one year of the replay
+async function playYear(k, tk) {
+  const fr = run().years[k];
+  $('status').textContent = `Year ${fr.year} of ${run().years[run().years.length - 1].year}  (${LABEL[strat]})`;
+  clearOverlays(); Object.keys(halos).forEach(h => delete halos[h]);
+  showing = 'before'; paint(fr, 'before');
+  feed('board', `--- ${fr.year} ---`, 'sys');
+  if (strat === 'isolated') feed('board', 'No shared board. The pipe department gets 60% of the budget and the road department 40%; each digs on its own schedule.', 'sys');
+  if (strat === 'pooled') feed('board', 'One shared budget, but the agents never talk, so no shared digs.', 'sys');
+  $('phase').textContent = 'Agents read their own asset data and score every street';
+  await delay(900, tk);
+  const msgs = fr.messages;
+  const r1 = msgs.filter(m => m.round === 1), r2 = msgs.filter(m => m.round === 2 && m.type !== 'funding_decision');
+  if (r1.length) $('phase').textContent = 'Round 1: agents post repair plans to the board';
+  for (const m of r1) {
+    feed(m.frm, m.text);
+    if (m.type === 'post_plan' && m.seg !== null && m.seg !== undefined) mark(m.seg, m.frm === 'pipe' ? .3 : .7, m.frm === 'pipe' ? '#4c9aff' : '#ffb020');
+    await delay(r1.length > 30 ? 70 : 110, tk);
+  }
+  if (r2.length) $('phase').textContent = 'Round 2: agents offer to share digs';
+  for (const m of r2) {
+    feed(m.frm, m.text);
+    if (m.type === 'join_request' || m.type === 'accept') halo(m.seg, true);
+    if (m.type === 'decline') halo(m.seg, false);
+    await delay(260, tk);
+  }
+  $('phase').textContent = 'Budget agent funds the best returns and explains each decision';
+  const dec = fr.decisions;
+  for (const d of dec) {
+    funded(d.seg, d.bundle);
+    feed('budget', `Fund ${d.work.replace('_', ' ')} on ${segs[d.seg].id} (${segs[d.seg].street}) for $${d.amount.toLocaleString()}. ${d.reason}`);
+    await delay(330, tk);
+  }
+  feed('budget', `Rejected ${fr.n_rejected} of ${fr.n_proposals} proposals (below the return hurdle, or no money left).`, 'budget');
+  await delay(900, tk);
+  $('phase').textContent = 'Work done. Time passes; pipes age and some break';
+  showing = 'after'; paint(fr, 'after');
+  await delay(900, tk);
+  for (const f of fr.failures) { breakMark(f.seg); feed('board', `Pipe break on ${segs[f.seg].id} (${segs[f.seg].street}): emergency cost $${f.cost.toLocaleString()}.`, 'fail'); await delay(350, tk); }
+  if (!fr.failures.length) feed('board', 'No pipe breaks this year.', 'sys');
+  scoreboard(k);
+  await delay(1200, tk);
+}
+async function loop() {
+  const tk = ++token; loopTk = tk;
+  try {
+    while (yi < run().years.length) {
+      await playYear(yi, tk);
+      yi++;
+      if (stepOnly) { stepOnly = false; playing = false; $('play').innerHTML = '&#9654; Play'; $('phase').textContent = 'Paused. Press Play or Step.'; if (yi >= run().years.length) break; return; }
+    }
+    playing = false; $('play').innerHTML = '&#9654; Play';
+    $('status').textContent = 'Done (' + LABEL[strat] + ')';
+    $('phase').textContent = 'Ten-year run finished. Compare the strategies in the scoreboard, or change the map strategy and replay.';
+  } catch (e) { if (e !== 'cancel') throw e; }
+}
+function reset() {
+  token++; playing = false; stepOnly = false; yi = 0; $('play').innerHTML = '&#9654; Play';
+  clearOverlays(); Object.keys(halos).forEach(h => delete halos[h]); $('feed').innerHTML = '';
+  $('status').textContent = 'Press Play'; $('phase').textContent = '';
+  paint(run().years[0], 'before'); scoreboard(-1);
+}
+$('play').onclick = () => {
+  if (yi >= run().years.length) reset();
+  playing = !playing; $('play').innerHTML = playing ? '&#10074;&#10074; Pause' : '&#9654; Play';
+  if (playing && !stepOnly) { if (!loopRunning()) loop(); }
+};
+let loopTk = 0;
+function loopRunning() { return loopTk === token; }
+$('step').onclick = () => { if (yi >= run().years.length) reset(); stepOnly = true; if (!loopRunning()) loop(); };
+$('restart').onclick = reset;
+$('base').onchange = () => { gTiles.style.display = $('base').checked ? '' : 'none'; };
+$('strat').innerHTML = ORDER.map(s => `<option value="${s}">${LABEL[s]}</option>`).join('');
+$('strat').value = strat;
+$('strat').onchange = () => { strat = $('strat').value; reset(); };
+$('layer').onchange = () => { const fr = run().years[Math.min(yi, run().years.length - 1)]; paint(fr, yi === 0 ? 'before' : showing); };
+reset();
+</script>
+</body>
+</html>
