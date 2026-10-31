@@ -5,7 +5,8 @@ Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file,
 
     pip install -r requirements.txt   # pandas; geopandas, pyproj, shapely, pyogrio only to rebuild the street data
     make demo                         # runs 4 strategies on all of Boston (about 30 s), writes demo/site/, serves http://localhost:8000
-    make compare                      # 8 seeds on the full network, parallel (about 16 min); 30 seeds: python3 -m experiments.compare 30 --neighborhood "South End"
+    make compare                      # 30 seeds, paired, on a compact 800-segment area (about 20 s); make compare-full: full network (about an hour)
+    make cip                          # capital plan report and PDF in outputs/cip/
     make score                        # team pipe rubric + road ratings on data/synthetic_*.csv
     make test
 
@@ -40,13 +41,23 @@ Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file,
 - coordinated: agents negotiate on the board, pooled budget (the proposal)
 - central: one planner with full data. A heuristic benchmark, NOT yet a proven upper bound.
 
-## Results so far (30 seeds, paired, simulated; budget $1.2M per year)
-Total cost = capital + emergency repairs + road user cost, over 10 years.
-- coordinated vs isolated: about $3.3M lower (+-0.9M)
-- pooled vs isolated: about $1.7M lower (+-0.7M); the board adds about $1.6M on top of pooling (+-0.8M)
-- Failure counts are about equal across strategies; the gain is road cost and spending efficiency.
-- Do NOT claim decentralized beats central: the central benchmark is currently worse than coordinated, which means the
-  benchmark is flawed, not that coordination beats an ideal planner.
+## Results (simulated; one config, see `outputs/results/*.config.json` for every value used)
+`make compare`: 30 seeds, paired by seed, 95% CI by Student t, compact 800-segment area (42 miles). Total cost = capital + emergency repairs + road user cost, ten years.
+- total $M: isolated 154.9, pooled 142.3, coordinated 141.5, central (heuristic) 135.6
+- coordinated minus isolated: -13.4 (+-0.6) in 30 of 30 seeds; coordinated minus pooled (the board alone): -0.76 (+-0.27), lower in 27 of 30
+- dig savings from shared digs: $0.22M (+-0.05) per run; the central heuristic beats coordinated by $5.9M (+-0.5), so we make no claim against a central planner
+- Emergency repairs are about 48% of total cost and road user cost about 47%; capital is about 6%. Failure counts are about equal across strategies,
+  so the gain is road user cost (more work clears the hurdle), not fewer failures. The capital budget does not bind (isolated spends under a fifth of it).
+- The zero-benefit control (`experiments/control_no_benefit.py`) removes the dig savings but NOT the coordinated-pooled gap: the board's join requests
+  roughly double the proposals each year, and with a slack budget more work clears the hurdle. Treat the board's value as menu size plus shared digs, not shared digs alone.
+- The old 30-seed figures in earlier versions of this file described a 260-segment demo and the pre-formula model; they are gone.
+
+## CIP report (`make cip`)
+`python3 -m cip.build` runs isolated and coordinated on one seed and writes `outputs/cip/`: `report.json`, `decision_list.csv`, `funding_table.csv`,
+`capital_plan.html` (self-contained, printable), `capital_plan.pdf` (Playwright), and a config snapshot. The demo has a Decision list tab beside the map
+(row click zooms and selects, year slider filters, tier colours, CSV and PDF download, comparison with isolated). Every config value has a source, status
+and date in `sim/config_meta.py`; `docs/claims_ledger.csv` lists every number shown (regenerate: `python3 -m cip.ledger`).
+Money: all dollars come from `sim/costs.py` (docs/return_formula.md). Funding: four sources, cheapest first within BWSC Table 11 shares; reserve sized by `sim/reserve.py`.
 
 ## Claude-driven agents (strategy `coordinated_llm`, optional)
 The rule-based agents stay the default. `agents/*/llm_agent.py` swap in Claude for the choices and the written rationale;
@@ -74,10 +85,8 @@ The osmnx fallback (`--osm`) exists but is untested because both downloads worke
 Scaling assumptions (sim/config.py, tagged ASSUMPTION): $48k per mile per year budget (about $40M for the city), 0.30 breaks per mile per
 year, proposals per agent at most 3% of segments (floor 15, cap 600), central planner scans 20% of segments (bounded for run time, so it
 is NOT like-for-like with the 3% menus). Older pipes are assumed in older neighborhoods. Options: `--neighborhood "South End"`, `--max-segments N`.
-Run time: one strategy, 10 years, full network is 9 to 28 s; `make demo` (4 strategies in parallel) about 25 s; `make compare` 8 seeds took 962 s on 8 cores.
-Full-network results (8 seeds, simulated): total cost isolated $3,032M, pooled $2,731M, coordinated $2,690M, central $2,561M. Paired:
-coordinated is $342M (+-5M) below isolated; the board adds $41M (+-4M) over pooling. Central beats coordinated here, but it scans a much
-larger menu and spends the whole budget; it remains a heuristic benchmark, not a proven upper bound.
+Run time: one strategy, 10 years, full network is 9 to 28 s; `make demo` (4 strategies in parallel) about 25 s, plus a one-time reserve pilot (cached in `outputs/reserve_cache.json`).
+Full-network results from before the return formula was completed (8 seeds) are no longer valid; rerun `make compare-full` for new ones.
 
 ## Merging into the team repo
 Everything except `agents/pipe_agent/adapter.py` and `agent.py` is new; `scoring.py` is identical to the team's, so
