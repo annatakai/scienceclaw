@@ -1,7 +1,7 @@
-"""Multi-seed comparison. Usage: python compare.py [n_seeds] [budget]. ALL DATA SIMULATED."""
+"""Multi-seed comparison. Usage: python -m experiments.compare [n_seeds] [budget]. ALL DATA SIMULATED."""
 import sys, statistics as st
-from run import simulate, STRATEGIES
-from sim import CFG
+from sim.config import CFG
+from sim.runner import STRATEGIES, simulate
 
 n = int(sys.argv[1]) if len(sys.argv) > 1 else 30
 budget = int(sys.argv[2]) if len(sys.argv) > 2 else CFG["annual_capital_budget"]

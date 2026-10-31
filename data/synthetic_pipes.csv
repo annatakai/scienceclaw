@@ -1,0 +1,145 @@
+pipe_id,installation_year,material,break_count,length_m,observation_years,soil_corrosivity,condition_grade,customers_affected,critical_facility,diameter_mm,property_exposure,aadt,emergency_cost_usd
+S000,1919,cast iron,1,134.791,20,high,4,124,hospital,152,low,1124,398004
+S001,1971,ductile iron,0,135.747,20,moderate,3,278,none,203,moderate,1282,400827
+S002,1966,ductile iron,1,129.946,20,very low,3,269,none,203,moderate,937,383698
+S003,1912,cast iron,0,133.159,20,high,4,257,none,152,moderate,917,393186
+S004,1908,cast iron,1,131.892,20,moderate,4,234,none,203,low,1005,389445
+S005,2003,ductile iron,0,125.322,20,high,1,206,none,152,high,492,370045
+S006,1958,ductile iron,0,136.958,20,high,3,251,none,152,high,429,404403
+S007,1948,cast iron,1,128.76,20,very low,4,514,none,305,low,480,380195
+S008,1998,ductile iron,0,134.937,20,low,2,161,none,203,low,720,398436
+S009,1947,cast iron,0,131.817,20,moderate,4,154,none,203,high,378,389224
+S010,1956,steel,1,131.053,20,very low,3,249,none,305,high,453,386968
+S011,1972,ductile iron,0,127.557,20,moderate,3,232,none,203,low,739,376643
+S012,1987,pvc,0,132.934,20,very low,2,263,none,152,high,520,392522
+S013,1990,pvc,0,136.6,20,very high,2,321,none,305,low,1373,403345
+S014,1978,cast iron,0,129.012,20,low,2,212,none,203,moderate,312,380941
+S015,1926,cast iron,0,137.323,20,very high,4,199,none,305,low,1493,405481
+S016,1916,cast iron,1,125.806,20,very low,4,456,none,305,high,6650,371475
+S017,1961,ductile iron,1,137.055,20,very high,3,216,hospital,305,moderate,4502,404690
+S018,1921,cast iron,0,125.485,20,very high,4,211,none,305,low,4841,370526
+S019,2007,pvc,0,128.349,20,very low,1,251,hospital,152,low,4098,378982
+S020,1898,cast iron,1,125.592,20,very low,4,388,none,305,high,7786,370842
+S021,1967,cast iron,0,128.507,20,very low,3,328,none,203,low,4589,379448
+S022,1962,steel,0,130.805,20,low,3,140,none,203,low,6394,386234
+S023,1964,ductile iron,0,127.066,20,high,3,226,none,305,high,4004,375194
+S024,1935,cast iron,2,137.043,20,high,5,140,none,152,high,1432,404655
+S025,1993,pvc,0,130.668,20,very high,2,156,none,152,high,1420,385832
+S026,1948,cast iron,0,127.826,20,low,4,450,none,305,moderate,938,377439
+S027,1998,ductile iron,0,133.814,20,low,2,164,none,152,moderate,844,395120
+S028,1970,cast iron,0,127.432,20,very high,3,123,none,152,low,1051,376275
+S029,2005,ductile iron,0,126.416,20,moderate,1,342,none,305,high,716,373274
+S030,1945,cast iron,1,128.94,20,very low,4,216,none,203,moderate,964,380729
+S031,2005,pvc,0,137.872,20,high,1,327,none,305,moderate,1285,407102
+S032,1954,ductile iron,0,137.51,20,very high,3,378,none,305,moderate,15214,406032
+S033,1966,cast iron,0,125.317,20,moderate,3,237,none,305,moderate,14544,370029
+S034,1959,ductile iron,0,134.478,20,high,3,442,none,305,high,11215,397081
+S035,1994,pvc,0,132.726,20,high,2,123,none,203,moderate,14316,391906
+S036,1972,steel,0,128.004,20,low,3,136,none,203,moderate,10706,377963
+S037,1939,cast iron,0,133.068,20,moderate,4,315,none,203,moderate,10495,392918
+S038,1895,cast iron,0,135.975,20,low,4,523,hospital,305,moderate,14130,401502
+S039,1992,pvc,0,130.402,20,very high,2,250,none,203,low,13457,385044
+S040,1971,ductile iron,0,129.977,20,high,3,412,none,305,low,468,383789
+S041,1905,cast iron,0,131.452,20,very low,4,206,none,203,moderate,1041,388145
+S042,1981,ductile iron,0,129.314,20,very low,2,396,hospital,305,moderate,589,381833
+S043,1896,cast iron,0,128.97,20,low,4,325,hospital,203,low,334,380817
+S044,1964,cast iron,1,137.822,20,very high,3,156,none,152,low,1144,406955
+S045,2000,ductile iron,0,138.05,20,high,2,131,none,203,low,400,407628
+S046,1991,pvc,0,127.526,20,moderate,2,163,none,152,low,370,376553
+S047,1944,cast iron,1,135.808,20,very low,4,284,none,203,moderate,310,401008
+S048,1997,pvc,0,131.681,20,very low,2,533,none,305,high,4566,388822
+S049,1982,ductile iron,0,131.439,20,moderate,2,201,none,305,high,5789,388105
+S050,1909,cast iron,1,129.385,20,very high,4,309,none,203,moderate,7467,382042
+S051,1962,ductile iron,0,135.736,20,low,3,537,none,305,moderate,7917,400794
+S052,1907,cast iron,2,135.464,20,moderate,5,337,none,203,high,7336,399991
+S053,1936,cast iron,2,126.075,20,moderate,5,432,none,305,high,7580,372268
+S054,1997,pvc,0,126.965,20,very high,2,506,none,406,moderate,5310,374897
+S055,1973,ductile iron,0,131.192,20,moderate,3,269,none,305,low,7290,387378
+S056,1900,cast iron,3,126.376,20,moderate,5,204,none,152,high,346,373158
+S057,1932,cast iron,0,129.968,20,very low,4,319,none,203,moderate,724,383764
+S058,1936,cast iron,0,129.645,20,very low,4,195,none,152,low,1238,382810
+S059,1929,cast iron,1,130.649,20,high,4,152,none,152,low,954,385774
+S060,1945,cast iron,1,129.377,20,low,4,252,none,152,moderate,1301,382018
+S061,1973,ductile iron,0,125.896,20,moderate,3,188,none,152,low,995,371738
+S062,1896,cast iron,1,134.468,20,moderate,4,250,none,152,high,1384,397050
+S063,1909,cast iron,0,133.031,20,very high,4,247,none,152,low,488,392807
+S064,1942,cast iron,0,127.376,20,low,4,274,none,203,high,1147,376111
+S065,2004,ductile iron,0,126.271,20,very high,1,233,none,152,moderate,570,372847
+S066,1986,ductile iron,0,135.686,20,moderate,2,140,none,152,low,1455,400646
+S067,1929,cast iron,0,135.878,20,very high,4,140,none,203,low,428,401215
+S068,1962,steel,0,132.57,20,moderate,3,267,none,305,high,1330,391448
+S069,1971,ductile iron,0,134.761,20,high,3,503,none,305,low,599,397917
+S070,1987,ductile iron,0,128.251,20,low,2,159,none,203,high,483,378695
+S071,1984,steel,0,126.305,20,high,2,143,none,152,high,385,372948
+S072,2003,pvc,0,131.211,20,high,1,259,none,152,low,582,387435
+S073,1982,cast iron,1,137.644,20,very high,2,243,hospital,203,low,472,406429
+S074,1939,cast iron,0,132.557,20,moderate,4,135,none,203,low,1276,391409
+S075,1928,cast iron,1,131.174,20,very low,4,98,none,152,low,1221,387325
+S076,1906,cast iron,3,136.017,20,low,5,292,none,305,moderate,1051,401624
+S077,1977,cast iron,1,135.24,20,low,2,240,none,203,low,684,399329
+S078,2008,ductile iron,0,138.303,20,low,1,142,none,152,low,1169,408374
+S079,2000,pvc,0,132.25,20,moderate,2,345,none,203,low,1051,390500
+S080,2001,pvc,0,133.404,20,very high,2,381,none,305,high,1227,393909
+S081,1954,ductile iron,0,127.532,20,very high,3,118,none,152,low,1282,376571
+S082,1954,cast iron,1,138.699,20,moderate,3,319,none,305,low,914,409545
+S083,1923,cast iron,2,128.477,20,moderate,5,226,none,203,low,944,379362
+S084,2005,pvc,0,130.182,20,low,1,499,none,305,moderate,713,384394
+S085,1992,ductile iron,0,139.801,20,moderate,2,318,none,305,low,894,412798
+S086,1922,cast iron,2,137.99,20,very high,5,287,hospital,203,low,515,407450
+S087,1955,cast iron,0,132.64,20,moderate,3,205,none,203,moderate,538,391652
+S088,1922,cast iron,1,136.444,20,high,4,346,none,203,moderate,6545,402884
+S089,1903,cast iron,1,127.564,20,moderate,4,276,none,203,high,7165,376666
+S090,1939,cast iron,0,133.422,20,very low,4,604,none,406,high,4673,393962
+S091,1936,cast iron,0,128.329,20,very high,4,159,none,152,moderate,6279,378924
+S092,1912,cast iron,1,132.668,20,very low,4,591,none,406,low,4185,391737
+S093,1958,ductile iron,0,135.45,20,low,3,91,hospital,152,low,4718,399949
+S094,1935,cast iron,0,131.898,20,very high,4,328,none,203,moderate,4006,389463
+S095,1980,ductile iron,0,128.763,20,high,2,324,none,305,moderate,5790,380205
+S096,1905,cast iron,3,129.376,20,very high,5,264,none,203,low,761,382016
+S097,1995,ductile iron,0,128.064,20,very low,2,162,hospital,203,low,582,378141
+S098,1970,ductile iron,1,131.192,20,moderate,3,218,none,203,low,523,387377
+S099,1973,steel,0,127.718,20,moderate,3,253,none,203,high,1014,377120
+S100,1983,ductile iron,1,134.718,20,moderate,2,306,none,203,low,1322,397790
+S101,1934,cast iron,0,132.005,20,very high,4,296,none,203,moderate,826,389777
+S102,1951,ductile iron,0,137.659,20,low,4,237,none,152,low,844,406472
+S103,1990,pvc,0,137.751,20,high,2,100,none,152,low,654,406745
+S104,1944,cast iron,2,127.834,20,very low,5,254,none,305,high,15610,377462
+S105,1991,pvc,0,139.817,20,moderate,2,402,none,305,low,12236,412845
+S106,1934,cast iron,1,136.801,20,very high,4,275,none,203,moderate,10319,403938
+S107,1895,cast iron,2,137.555,20,very high,5,180,none,305,moderate,13818,406167
+S108,1930,cast iron,0,139.193,20,low,4,540,none,406,low,13438,411002
+S109,2006,pvc,0,139.735,20,low,1,229,hospital,203,high,14352,412602
+S110,1958,ductile iron,0,131.706,20,very low,3,203,none,152,high,12449,388895
+S111,1906,cast iron,0,131.514,20,moderate,4,142,none,203,low,11195,388329
+S112,2001,ductile iron,0,127.872,20,low,2,212,none,152,high,1225,377576
+S113,1936,cast iron,2,134.387,20,high,5,440,none,305,high,1102,396813
+S114,1926,cast iron,3,128.642,20,moderate,5,235,none,203,low,1412,379848
+S115,2001,pvc,0,131.986,20,low,2,296,none,203,high,1436,389723
+S116,1897,cast iron,2,135.571,20,high,5,200,none,203,high,618,400309
+S117,1897,cast iron,1,135.868,20,low,4,390,none,305,moderate,528,401186
+S118,1964,steel,1,135.433,20,very low,3,341,none,203,high,863,399900
+S119,1987,pvc,0,134.654,20,low,2,149,none,152,low,1446,397599
+S120,1981,ductile iron,0,130.601,20,very high,2,185,none,305,moderate,4228,385633
+S121,2008,pvc,0,138.393,20,low,1,583,none,406,moderate,4106,408639
+S122,1991,pvc,0,133.789,20,very high,2,394,none,406,low,7440,395046
+S123,1941,cast iron,0,134.503,20,moderate,4,101,none,152,low,4624,397154
+S124,1992,pvc,0,129.7,20,moderate,2,227,none,203,low,4384,382973
+S125,1966,ductile iron,0,134.228,20,moderate,3,336,none,305,moderate,7714,396343
+S126,2000,ductile iron,0,133.069,20,very low,2,132,none,203,moderate,6981,392920
+S127,1979,ductile iron,0,127.308,20,very low,2,322,none,305,moderate,5781,375910
+S128,1931,cast iron,0,135.306,20,high,4,455,none,305,low,565,399526
+S129,2006,pvc,0,130.903,20,very high,1,228,none,203,high,763,386523
+S130,1912,cast iron,1,128.495,20,very high,4,175,none,203,moderate,681,379414
+S131,1996,ductile iron,0,135.706,20,high,2,265,none,203,low,698,400705
+S132,1933,cast iron,0,134.844,20,high,4,127,none,203,low,835,398162
+S133,1936,cast iron,0,131.928,20,moderate,4,442,none,305,moderate,1359,389551
+S134,1975,steel,1,139.18,20,low,3,492,none,305,low,506,410964
+S135,1922,cast iron,1,130.679,20,high,4,133,none,152,low,1099,385862
+S136,1943,cast iron,2,139.082,20,high,5,198,none,305,moderate,1252,410676
+S137,1966,steel,0,131.465,20,low,3,149,hospital,203,low,1118,388185
+S138,1987,ductile iron,0,133.303,20,moderate,2,267,none,203,high,1274,393610
+S139,1958,steel,0,135.421,20,very high,3,499,none,305,low,1051,399863
+S140,1971,ductile iron,0,130.282,20,moderate,3,283,none,203,low,1054,384689
+S141,1983,cast iron,0,130.248,20,very high,2,236,none,152,high,697,384590
+S142,1904,cast iron,0,133.122,20,low,4,325,none,203,moderate,426,393076
+S143,1981,ductile iron,0,131.936,20,high,2,275,none,203,low,505,389575

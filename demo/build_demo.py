@@ -1,8 +1,10 @@
 """Run all strategies once (seed 42), then write demo.html (self-contained replay). ALL DATA SIMULATED."""
 import json, sys, webbrowser, pathlib
-from run import simulate, STRATEGIES
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from sim.runner import STRATEGIES, simulate
 
-seed = int(sys.argv[1]) if len(sys.argv) > 1 else 42
+nums = [a for a in sys.argv[1:] if a.isdigit()]
+seed = int(nums[0]) if nums else 42
 runs = {s: simulate(s, seed=seed, record=True) for s in STRATEGIES}
 segs = runs["coordinated"]["segs"]
 data = dict(order=STRATEGIES, segs=segs, runs={s: dict(years=r["years"]) for s, r in runs.items()})

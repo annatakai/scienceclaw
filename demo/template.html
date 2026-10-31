@@ -145,9 +145,11 @@ function colour(v) {
 }
 function paint(frame, which) {
   const layer = $('layer').value;
-  $('legendTitle').textContent = layer === 'pipe' ? 'Pipe risk index (likelihood x consequence)' : 'Road wear (100 - pavement condition)';
+  $('legendTitle').textContent = layer === 'pipe' ? 'Pipe risk index (team rubric: likelihood x consequence)' : 'Road wear (100 - pavement condition)';
   const arr = frame[(layer === 'pipe' ? 'risk_' : 'pcr_') + which];
-  lines.forEach((l, i) => l.setAttribute('stroke', colour(layer === 'pipe' ? arr[i] / 65 : (100 - arr[i]) / 60)));
+  const cls = frame['class_' + which];
+  lines.forEach((l, i) => { const tt = l.querySelector('title'); if (tt) tt.textContent = `${segs[i].street} (${segs[i].id}), ${segs[i].length_ft} ft, ${segs[i].customers} customers${segs[i].critical ? ', critical facility' : ''}. Pipe rating: ${cls[i]}, road condition ${frame['pcr_' + which][i]}`; });
+  lines.forEach((l, i) => l.setAttribute('stroke', colour(layer === 'pipe' ? arr[i] / 45 : (100 - arr[i]) / 60)));
 }
 
 // ---------------------------------------------------------------- state / helpers
