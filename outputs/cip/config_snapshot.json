@@ -1,0 +1,581 @@
+{
+ "seed": 42,
+ "config": {
+  "seed": 42,
+  "start_year": 2026,
+  "horizon_years": 10,
+  "annual_budget_per_mile": 48000,
+  "breaks_per_mile_year": 0.3,
+  "proposal_fraction": 0.03,
+  "proposal_floor": 15,
+  "proposal_cap": 600,
+  "central_proposal_fraction": 0.2,
+  "neighborhood": null,
+  "max_segments": null,
+  "era_old": [
+   1850,
+   1975,
+   1905
+  ],
+  "era_mid": [
+   1880,
+   2000,
+   1935
+  ],
+  "era_new": [
+   1900,
+   2012,
+   1970
+  ],
+  "neighborhoods_old": [
+   "Beacon Hill",
+   "North End",
+   "West End",
+   "Downtown",
+   "Chinatown",
+   "Leather District",
+   "Bay Village",
+   "South End",
+   "Back Bay",
+   "Charlestown",
+   "Fenway",
+   "Mission Hill",
+   "Roxbury",
+   "South Boston",
+   "South Boston Waterfront"
+  ],
+  "neighborhoods_new": [
+   "West Roxbury",
+   "Hyde Park",
+   "Roslindale",
+   "Mattapan",
+   "Harbor Islands",
+   "Longwood"
+  ],
+  "reserve_mode": "simulated",
+  "reserve_fraction": 0.15,
+  "reserve_max_fraction": 0.25,
+  "reserve_pilot_seeds": 5,
+  "reserve_percentile": 95,
+  "urgency_full_prob": 0.3,
+  "critical_facility_multiplier": 1.25,
+  "urgent_cap_fraction": 0.5,
+  "urgent_override": 0.9,
+  "min_return": 1.0,
+  "dig_fixed": 50000,
+  "pipe_per_ft": 300,
+  "repave_per_ft": 120,
+  "reline_frac": 0.5,
+  "emergency_multiplier": 3.0,
+  "discount_rate": 0.04,
+  "cost_inflation": 0.07,
+  "department_split": {
+   "pipe": 0.6,
+   "road": 0.4
+  },
+  "select": "npv",
+  "c_social_max": 500000,
+  "u0": 0.3,
+  "lam": 0.3,
+  "L": 15,
+  "H_replace": 10,
+  "H_reline": 7,
+  "rho": 0.6,
+  "H_preserve": 5,
+  "rho_preserve": 0.4,
+  "preserve_frac": 0.25,
+  "reconstruct_mult": 2.0,
+  "reconstruct_bonus_years": 5,
+  "pof_band": [
+   0.85,
+   1.15,
+   5.0
+  ],
+  "road_benefit_band": 0.15,
+  "P_min": 40,
+  "funding_mix": {
+   "bonds": 0.293,
+   "rate_revenue": 0.303,
+   "interest_free_loan": 0.211,
+   "srf_loan": 0.193
+  },
+  "loan_terms": {
+   "bonds": {
+    "rate": 0.04,
+    "years": 20
+   },
+   "interest_free_loan": {
+    "rate": 0.0,
+    "years": 10
+   },
+   "srf_loan": {
+    "rate": 0.02,
+    "years": 25
+   }
+  },
+  "rate_revenue_eligible_work": [
+   "replace_pipe",
+   "reline_pipe",
+   "repave"
+  ],
+  "adt_range": {
+   "arterial": [
+    10000,
+    16000
+   ],
+   "collector": [
+    4000,
+    8000
+   ],
+   "local": [
+    300,
+    1500
+   ]
+  },
+  "reserve_share": 0.25,
+  "reserve_sizing": {
+   "p95_yearly_emergency": 177719292,
+   "annual_budget": 40280789,
+   "uncapped_share": 4.412,
+   "share": 0.25,
+   "capped": true,
+   "pilot_seeds": 5,
+   "yearly_values": 50
+  },
+  "annual_capital_budget": 40280789,
+  "n_target": 251.754931818182,
+  "max_proposals": 455,
+  "max_proposals_central": 3035
+ },
+ "methodology": [
+  {
+   "name": "annual_budget_per_mile",
+   "value": 48000,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Capital budget per mile of street per year."
+  },
+  {
+   "name": "breaks_per_mile_year",
+   "value": 0.3,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Expected water-main breaks per mile per year (N_target = this x miles). BWSC reports just over 35 failures a year (docs/budget_agent_reference.md); not yet divided by BWSC miles of main."
+  },
+  {
+   "name": "proposal_fraction",
+   "value": 0.03,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Share of segments each agent may propose on."
+  },
+  {
+   "name": "central_proposal_fraction",
+   "value": 0.2,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Share of segments the central planner scans."
+  },
+  {
+   "name": "reserve_max_fraction",
+   "value": 0.25,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "0.10 to 0.25 per docs/interfaces.md",
+   "note": "Cap on the simulated reserve as a share of the budget."
+  },
+  {
+   "name": "reserve_fraction",
+   "value": 0.15,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "0.10 to 0.25 per docs/interfaces.md",
+   "note": "Fixed reserve; used only when reserve_mode is fixed."
+  },
+  {
+   "name": "urgency_full_prob",
+   "value": 0.3,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Yearly failure probability that scores urgency 1.0."
+  },
+  {
+   "name": "critical_facility_multiplier",
+   "value": 1.25,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Urgency boost for a critical facility."
+  },
+  {
+   "name": "urgent_cap_fraction",
+   "value": 0.5,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Tier 1 work may use at most this share of the spendable amount."
+  },
+  {
+   "name": "urgent_override",
+   "value": 0.9,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Urgency at or above this is Tier 1 and can be funded below the hurdle."
+  },
+  {
+   "name": "min_return",
+   "value": 1.0,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Return hurdle per dollar."
+  },
+  {
+   "name": "dig_fixed",
+   "value": 50000,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Cost to open one street segment, paid once per opening (evidence_plan.md priority 1)."
+  },
+  {
+   "name": "pipe_per_ft",
+   "value": 300,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Pipe work cost per foot."
+  },
+  {
+   "name": "repave_per_ft",
+   "value": 120,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Repaving cost per foot."
+  },
+  {
+   "name": "reline_frac",
+   "value": 0.5,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Relining cost as a share of replacement."
+  },
+  {
+   "name": "emergency_multiplier",
+   "value": 3.0,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "A failure repair costs this multiple of planned replacement."
+  },
+  {
+   "name": "discount_rate",
+   "value": 0.04,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "0.03 to 0.07 per docs/evidence_plan.md",
+   "note": "Discount rate."
+  },
+  {
+   "name": "cost_inflation",
+   "value": 0.07,
+   "status": "Sourced",
+   "source": "MassDOT FY27-31 CIP p.58 (asphalt +40% over five years, about 7% a year)",
+   "checked": "2026-10-31 (as recorded in docs/assumptions_register.md; original not re-read here)",
+   "range": "not yet tested",
+   "note": "Cost inflation per year."
+  },
+  {
+   "name": "department_split",
+   "value": {
+    "pipe": 0.6,
+    "road": 0.4
+   },
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Fixed pipe/road shares, isolated baseline only."
+  },
+  {
+   "name": "c_social_max",
+   "value": 500000,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Dollar cost of a worst-case failure (social cost)."
+  },
+  {
+   "name": "u0",
+   "value": 0.3,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Road user cost, dollars per vehicle-mile at worst condition."
+  },
+  {
+   "name": "lam",
+   "value": 0.3,
+   "status": "Simulated assumption",
+   "source": "Range 0.06 to 0.6 stated by the team from the literature; value is ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "0.06 to 0.6",
+   "note": "Share of pavement life lost per cut."
+  },
+  {
+   "name": "L",
+   "value": 15,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Resurfacing cycle in years."
+  },
+  {
+   "name": "H_replace",
+   "value": 10,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Benefit horizon of a replacement, years."
+  },
+  {
+   "name": "H_reline",
+   "value": 7,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Benefit horizon of a reline, years."
+  },
+  {
+   "name": "rho",
+   "value": 0.6,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Share of pipe age removed by relining."
+  },
+  {
+   "name": "H_preserve",
+   "value": 5,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Benefit horizon of pavement preservation."
+  },
+  {
+   "name": "rho_preserve",
+   "value": 0.4,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Share of pavement age removed by preservation."
+  },
+  {
+   "name": "preserve_frac",
+   "value": 0.25,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Preservation cost as a share of a repave."
+  },
+  {
+   "name": "reconstruct_mult",
+   "value": 2.0,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Reconstruction cost as a multiple of a repave."
+  },
+  {
+   "name": "reconstruct_bonus_years",
+   "value": 5,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Extra years of like-new condition after reconstruction."
+  },
+  {
+   "name": "pof_band",
+   "value": [
+    0.85,
+    1.15,
+    5.0
+   ],
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "PoF bounds: x0.85 and x1.15 + 5 (the rubric has no error bar)."
+  },
+  {
+   "name": "road_benefit_band",
+   "value": 0.15,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Road benefit bounds, plus or minus this share."
+  },
+  {
+   "name": "P_min",
+   "value": 40,
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "PCR at or below which a road is Failed."
+  },
+  {
+   "name": "funding_mix",
+   "value": {
+    "bonds": 0.293,
+    "rate_revenue": 0.303,
+    "interest_free_loan": 0.211,
+    "srf_loan": 0.193
+   },
+   "status": "Sourced",
+   "source": "BWSC 2024-2026 CIP water program, Table 11 (p.19)",
+   "checked": "2026-10-31 (as recorded in docs/assumptions_register.md)",
+   "range": "fixed",
+   "note": "Share of each year's spendable amount by source."
+  },
+  {
+   "name": "loan_terms.interest_free_loan",
+   "value": {
+    "rate": 0.0,
+    "years": 10
+   },
+   "status": "Sourced",
+   "source": "BWSC CIP p.18 (MWRA LWSAP, interest-free, 10 years)",
+   "checked": "2026-10-31 (as recorded in docs/assumptions_register.md)",
+   "range": "fixed",
+   "note": "Interest-free loan terms."
+  },
+  {
+   "name": "loan_terms.srf_loan",
+   "value": {
+    "rate": 0.02,
+    "years": 25
+   },
+   "status": "Simulated assumption",
+   "source": "Term from BWSC CIP p.18 (20 to 30 years, below market); rate 2% and 25 years chosen by the team",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "State revolving loan terms."
+  },
+  {
+   "name": "loan_terms.bonds",
+   "value": {
+    "rate": 0.04,
+    "years": 20
+   },
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Bond rate and term."
+  },
+  {
+   "name": "rate_revenue_eligible_work",
+   "value": [
+    "replace_pipe",
+    "reline_pipe",
+    "repave"
+   ],
+   "status": "Sourced",
+   "source": "BWSC CIP p.17: renewal and replacement, including main relining (docs/budget_agent_reference.md). Relining added by decision; interfaces.md listed replace_pipe and repave only",
+   "checked": "2026-10-31 (as recorded in the docs)",
+   "range": "fixed",
+   "note": "Work that rate revenue may pay for."
+  },
+  {
+   "name": "era_old",
+   "value": [
+    1850,
+    1975,
+    1905
+   ],
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "When pipes were mostly laid, older neighborhoods."
+  },
+  {
+   "name": "adt_range",
+   "value": {
+    "arterial": [
+     10000,
+     16000
+    ],
+    "collector": [
+     4000,
+     8000
+    ],
+    "local": [
+     300,
+     1500
+    ]
+   },
+   "status": "Simulated assumption",
+   "source": "ASSUMPTION",
+   "checked": "2026-10-31",
+   "range": "not yet tested",
+   "note": "Traffic range by road class."
+  },
+  {
+   "name": "street_network",
+   "value": "real Boston street segments",
+   "status": "Sourced",
+   "source": "Analyze Boston Street Segments (SAM) + MassDOT Road Inventory (data/SOURCES.md)",
+   "checked": "2026-10-31 (download date in data/build_info.json)",
+   "range": "fixed",
+   "note": "Street geometry, names, lengths, classes (REAL). Everything on and under the streets is simulated."
+  },
+  {
+   "name": "reserve_share",
+   "value": "0.25 of budget (cap applied)",
+   "status": "Simulated assumption",
+   "source": "Derived: 95th percentile of simulated yearly emergency cost ($177,719,292) over 5 pilot seeds = 4.41 of the budget, capped by reserve_max_fraction",
+   "checked": "2026-10-31",
+   "range": "cap 0.10 to 0.25 per docs/interfaces.md",
+   "note": "Share of the annual capital budget set aside for emergency repairs."
+  }
+ ]
+}

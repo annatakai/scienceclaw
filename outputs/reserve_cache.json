@@ -16,5 +16,14 @@
   "capped": true,
   "pilot_seeds": 5,
   "yearly_values": 10
+ },
+ "deb5526385eee690": {
+  "p95_yearly_emergency": 177719292,
+  "annual_budget": 40280789,
+  "uncapped_share": 4.412,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
  }
 }

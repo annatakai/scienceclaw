@@ -1,4 +1,4 @@
-.PHONY: install data score demo compare test run
+.PHONY: install data score demo compare test run cip
 install:   ## pandas is the only dependency (the team's scoring.py needs it)
 	python3 -m pip install -r requirements.txt
 data:      ## export the synthetic city as CSVs in the team's schema
@@ -10,6 +10,8 @@ demo:      ## run the strategies, write demo/site/ and serve it at http://localh
 	python3 -m demo.build_demo
 compare:   ## 8-seed comparison on the full network (parallel); for 30 seeds use a subset: python3 -m experiments.compare 30 --neighborhood "South End"
 	python3 -m experiments.compare 8
+cip:       ## capital plan: report.json, decision_list.csv, funding_table.csv, capital_plan.html and .pdf in outputs/cip/
+	python3 -m cip.build
 test:
 	python3 -m unittest discover -s tests -v
 run:

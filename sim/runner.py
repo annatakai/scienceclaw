@@ -39,10 +39,12 @@ def snapshot(city, year):
                 brk=[len(s["pipe"]["breaks"]) for s in city.segs], paved=[s["road"]["last_paved"] for s in city.segs])
 
 
-def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None, cip=False):
+def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None, cip=False, cip_dir=None):
     """llm: an agents.llm.LLM (for coordinated_llm; built from the environment if omitted).
     cip: also return out["cip"] = all priced proposals, all decisions (year, funding_source, bundle_id), a city dict,
-    the reserve balance by year and the config used (input of cip/adapter.py)."""
+    the reserve balance by year and the config used (input of cip/adapter.py). cip_dir: also write it to
+    <cip_dir>/run_<strategy>_seed<seed>.json (implies cip)."""
+    cip = cip or bool(cip_dir)
     cfg = reserve.ensure(dict(cfg or CFG, seed=seed))   # reserve share from the pilot (cached); fixed fraction if reserve_mode == "fixed"
     city = City(cfg)
     cfg = city.cfg  # with the network-size totals (budget, break target, menu size) filled in
@@ -112,7 +114,7 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
                           f"({d['funding_source'].replace('_', ' ')}). Rated {d['return_rating']} return "
                           f"{d['return_per_dollar']:.2f}, tier {d['urgency_tier']} ({d['urgency_name']}). {d['reason']}")
         if cip:
-            cip_props += [dict(p, pipe=None, road=None, priced=p["priced"]) for p in props]
+            cip_props += [dict(p, length_ft=(p["pipe"] or p["road"])["length_ft"], pipe=None, road=None) for p in props]
             cip_decs += decisions
         res = city.apply(decisions, year)
         exp = city.expected_failures(year)
@@ -169,6 +171,13 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
                           city={s_["segment_id"]: dict(street=s_["street"], neighborhood=s_["neighborhood"]) for s_ in city.segs},
                           reserve_sizing=cfg.get("reserve_sizing"),
                           config={k: v for k, v in cfg.items() if not k.startswith("llm")})
+        if cip_dir:
+            import json
+            import pathlib
+            path = pathlib.Path(cip_dir)
+            path.mkdir(parents=True, exist_ok=True)
+            summary = {k: v for k, v in out.items() if k != "cip"}
+            (path / f"run_{strategy}_seed{seed}.json").write_text(json.dumps(dict(summary=summary, **out["cip"]), default=str))
     if record:
         out["years"] = years
         out["state0"] = state0
