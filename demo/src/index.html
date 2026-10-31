@@ -66,6 +66,7 @@
       <div id="kpis"></div>
       <nav id="tabs" role="tablist">
         <button role="tab" data-tab="activity" aria-selected="true">Activity</button>
+        <button role="tab" data-tab="cip" aria-selected="false">Decision list</button>
         <button role="tab" data-tab="compare" aria-selected="false">Compare</button>
         <button role="tab" data-tab="table" aria-selected="false">Table</button>
         <button role="tab" data-tab="about" aria-selected="false">About</button>
@@ -73,6 +74,16 @@
       <div id="tab-activity" class="tabpane">
         <div id="chips" class="chips"></div>
         <div id="feed" tabindex="0"></div>
+      </div>
+      <div id="tab-cip" class="tabpane" hidden>
+        <div id="cip-bar" class="row tbar">
+          <label class="muted"><input id="cip-year" type="checkbox"> This year only</label>
+          <label class="muted"><input id="cip-cmp" type="checkbox"> Compare with isolated</label>
+          <span class="grow"></span>
+          <button id="cip-csv" class="text" type="button" title="Download the decision list as CSV">Download CSV</button>
+          <button id="cip-pdf" class="text" type="button" title="Download the capital plan as PDF (agents + board, same seed)">Download PDF</button>
+        </div>
+        <div id="cip-body"></div>
       </div>
       <div id="tab-compare" class="tabpane" hidden></div>
       <div id="tab-table" class="tabpane" hidden>

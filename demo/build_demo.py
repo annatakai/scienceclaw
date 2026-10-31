@@ -17,6 +17,8 @@ import time
 import webbrowser
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from cip import adapter, report  # noqa: E402
+from sim import reserve  # noqa: E402
 from sim.config import CFG  # noqa: E402
 from sim.runner import STRATEGIES, simulate  # noqa: E402
 
@@ -29,7 +31,7 @@ PLAN_TYPES = ("post_plan",)
 
 def _run(job):
     s, seed, cfg = job
-    return s, simulate(s, seed=seed, cfg=cfg, record=True)
+    return s, simulate(s, seed=seed, cfg=cfg, record=True, cip=True)
 
 
 def plane(vals, name):
@@ -68,6 +70,36 @@ def pack_json(run):
     return dict(years=years, reasons=reasons)
 
 
+def write_cip(runs, order, idx):
+    """data/cip_<strategy>.json: the ranked decision list for each strategy (rows for the Decision list tab), and for the
+    agents + board run the printable plan (capital_plan.html, capital_plan.pdf when Playwright is available)."""
+    iso = runs.get("isolated")
+    for s in order:
+        r = runs[s]
+        if "cip" not in r:
+            continue
+        rep = report.build_report(**adapter.to_report_inputs(r, iso if s != "isolated" else None))
+        rows = [[x["rank"], x["year"], idx[x["segment_id"]], x["street"], x["work_label"], x["tier"], round(x["amount"]),
+                 report.SOURCE_LABEL.get(x["funding_source"], ""), round(x["return_per_dollar"] or 0, 2), int(bool(x["bundle_id"])),
+                 x["rationale"], int(x["needs_review"]), x["segment_id"]] for x in rep["funded"]]
+        (SITE / "data" / f"cip_{s}.json").write_text(json.dumps(dict(summary=rep["summary"], rows=rows), separators=(",", ":")))
+        if s == "coordinated":
+            (SITE / "data" / "capital_plan.html").write_text(report.to_page(rep))
+    ok = False
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            b = p.chromium.launch()
+            pg = b.new_page()
+            pg.goto((SITE / "data" / "capital_plan.html").resolve().as_uri())
+            pg.pdf(path=str(SITE / "data" / "capital_plan.pdf"), format="Letter", print_background=True)
+            b.close()
+        ok = True
+    except Exception as e:   # no Playwright or browser: the button opens the printable page instead
+        print("capital_plan.pdf not written:", e)
+    return ok
+
+
 def write_site(runs, order, args, miles):
     if SITE.exists():
         shutil.rmtree(SITE)
@@ -90,7 +122,8 @@ def write_site(runs, order, args, miles):
         (SITE / "data" / f"{s}.json").write_text(json.dumps(pack_json(r), separators=(",", ":")))
         totals[s] = dict(total_cost=r["total_cost"], spend=r["spend"], emerg=r["emerg"], user_cost=r["user_cost"],
                          fail=r["fail"], dig_savings=r["dig_savings"], openings=r["openings"], exp_fail=r["exp_fail"])
-    meta = dict(order=order, n=len(feats), fields=FIELDS, offset=OFFSET, frames=len(base["years"]) + 1, seed=args.seed,
+    cip_pdf = write_cip(runs, order, {s["id"]: i for i, s in enumerate(base["segs"])})
+    meta = dict(cip_pdf=cip_pdf, order=order, n=len(feats), fields=FIELDS, offset=OFFSET, frames=len(base["years"]) + 1, seed=args.seed,
                 start_year=base["years"][0]["year"], miles=miles, cfg=base["cfg"], totals=totals,
                 scope=args.neighborhood or ("compact %d-segment area" % args.max_segments if args.max_segments else "all of Boston"),
                 nbs=sorted({s["neighborhood"] for s in base["segs"] if s["neighborhood"]}),
@@ -111,7 +144,7 @@ def main():
     ap.add_argument("--no-serve", action="store_true")
     ap.add_argument("--port", type=int, default=8000)
     args = ap.parse_args()
-    cfg = dict(CFG, neighborhood=args.neighborhood, max_segments=args.max_segments)
+    cfg = reserve.ensure(dict(CFG, neighborhood=args.neighborhood, max_segments=args.max_segments))
     if args.years:
         cfg["sim_years"] = args.years
     order = list(STRATEGIES)

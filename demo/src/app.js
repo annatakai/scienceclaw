@@ -22,11 +22,14 @@ const STRAT = {
 // stops: zoom -> line width by road class (arterial, collector, local). Locals are hidden when zoomed far out.
 const WSTOPS = [[9, 0.8, 0.5, 0], [11.5, 1.4, 1, 0], [12, 1.8, 1.3, 0.8], [14, 4, 3, 2], [16, 9, 7, 5], [18, 16, 13, 10]];
 const Z = { a: 14, b: 14 };
+const TIERC = { 1: '#b3261e', 2: '#d97706', 3: '#0e7490', 4: '#6b7280' };   // priority tier colours (1 Urgent .. 4 Monitor)
+const TIERN = { 1: 'Urgent', 2: 'Soon', 3: 'Plan', 4: 'Monitor' };
 
 let meta, geo, N = 0, bbox = [], names = [], nbIdx;
-const bins = {}, jsons = {}, yidx = {};
+const bins = {}, jsons = {}, yidx = {}, cips = {};
 const S = { strategy: 'coordinated', frame: 0, phase: 4, playing: false, speed: 1, sel: -1, hover: -1, nb: '', basemap: 'light', theme: 'light',
   layers: { risk: true, cond: false, plan: false, shared: true, funded: true, breaks: true }, op: { risk: 100, cond: 70, plan: 100, shared: 70, funded: 70, breaks: 100, basemap: 100 },
+  cipYear: false, cipCmp: false,
   chips: { pipe: true, road: true, budget: true, board: true, fail: true }, sort: { col: 'risk', dir: -1 }, tq: '' };
 let map = null, timer = null, styleReady = false, toastT = null;
 const applied = {};
@@ -66,6 +69,7 @@ async function loadStrategy(s) {
   if (bins[s]) return;
   const [b, j] = await Promise.all([fetch(`data/${s}.bin`).then(r => r.arrayBuffer()), fetch(`data/${s}.json`).then(r => r.json())]);
   bins[s] = new Uint8Array(b); jsons[s] = j; yidx[s] = {};
+  try { cips[s] = await fetch(`data/cip_${s}.json`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }); } catch (e) { cips[s] = null; }   // decision list: absent for recorded runs
 }
 async function loadRest() { for (const s of meta.order.filter(s => !bins[s])) { try { await loadStrategy(s); if (curTab() === 'compare') renderCompare(); } catch (e) { /* retried when the strategy is chosen */ } } }
 
@@ -172,7 +176,7 @@ function onStyle() {
   const L = (id, paint, extra) => map.addLayer(Object.assign({ id, type: 'line', source: 'segs', layout: { 'line-cap': 'round', 'line-join': 'round' }, paint }, extra), before);
   L('dg-cond', { 'line-color': condColor, 'line-width': W(v => v ? v + 7 : 0), 'line-opacity': 0.8 });
   L('dg-shared', { 'line-color': '#7c3aed', 'line-width': W(v => v ? v + 9 : 0), 'line-opacity': ['case', ['==', st('sh', 0), 1], 0.6, 0] });
-  L('dg-funded', { 'line-color': '#0e7490', 'line-width': W(v => v ? v + 5 : 0), 'line-opacity': ['case', ['==', st('fu', 0), 1], 0.7, 0] });
+  L('dg-funded', { 'line-color': ['match', st('ft', 0), 1, TIERC[1], 2, TIERC[2], 3, TIERC[3], 4, TIERC[4], '#0e7490'], 'line-width': W(v => v ? v + 5 : 0), 'line-opacity': ['case', ['==', st('fu', 0), 1], 0.7, 0] });
   L('dg-casing', { 'line-color': '#ffffff', 'line-width': W(v => v ? v * 1.35 + 1.4 : 0), 'line-opacity': 1 });
   L('dg-risk', { 'line-color': riskColor, 'line-width': W(v => v) });
   L('dg-plan', { 'line-color': ['match', st('pl', 0), 1, '#1d4ed8', 2, '#92400e', 3, '#111827', '#1d4ed8'], 'line-width': W(v => v ? Math.max(1, v * 0.4) : 0), 'line-dasharray': [2, 1.5], 'line-opacity': ['case', ['>', st('pl', 0), 0], 1, 0] });
@@ -237,13 +241,15 @@ function pushState(key, arr) {
 }
 
 function overlayArrays() {
-  const pl = new Uint8Array(N), sh = new Uint8Array(N), fu = new Uint8Array(N);
+  const pl = new Uint8Array(N), sh = new Uint8Array(N), fu = new Uint8Array(N), ft = new Uint8Array(N);
   if (S.frame > 0) {
     const y = yearOf(S.frame), ph = S.playing ? S.phase : 4;
     if (ph >= 1) for (const [s, a] of y.plans) pl[s] = (a.includes('p') ? 1 : 0) + (a.includes('r') ? 2 : 0);
     if (ph >= 3) for (const d of y.funded) { fu[d[0]] = 1; if (d[3]) sh[d[0]] = 1; }
+    const c = cips[S.strategy];
+    if (c && ph >= 3) for (const r of c.rows) if (r[1] === meta.start_year + S.frame - 1) ft[r[2]] = ft[r[2]] ? Math.min(ft[r[2]], r[5]) : r[5];
   }
-  return { pl, sh, fu };
+  return { pl, sh, fu, ft };
 }
 
 function renderState() {
@@ -252,7 +258,7 @@ function renderState() {
   target.cls = plane(S.strategy, f, 'cls'); target.cond = plane(S.strategy, f, 'cond');
   Object.assign(target, overlayArrays());
   if (styleReady) {
-    pushState('rc', target.cls); pushState('cc', target.cond); pushState('pl', target.pl); pushState('sh', target.sh); pushState('fu', target.fu);
+    pushState('rc', target.cls); pushState('cc', target.cond); pushState('pl', target.pl); pushState('sh', target.sh); pushState('fu', target.fu); pushState('ft', target.ft);
     const ph = S.playing ? S.phase : 4;
     const feats = [];
     if (S.frame > 0 && ph >= 4) for (const [seg, cost] of yearOf(S.frame).failures) {
@@ -264,6 +270,7 @@ function renderState() {
   renderLegend(); renderKpis(); renderTimeline(); renderFeed(); renderInfo();
   if (curTab() === 'table') renderTable(); else tableDirty = true;
   if (curTab() === 'compare') renderCompare();
+  window.dispatchEvent(new CustomEvent('map:year', { detail: { year: S.frame === 0 ? null : meta.start_year + S.frame - 1 } }));
 }
 
 /* ---------- tooltips, selection ---------- */
@@ -346,7 +353,7 @@ function buildStaticUI() {
   const ch = $('#chips'); for (const [a, l] of [['pipe', 'Pipe'], ['road', 'Road'], ['budget', 'Budget'], ['board', 'Board'], ['fail', 'Breaks']]) ch.appendChild(el('button', { className: 'chip', type: 'button', textContent: l, ariaPressed: 'true', title: 'Show or hide ' + l.toLowerCase() + ' events' })).dataset.a = a;
   ch.addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; const a = b.dataset.a; S.chips[a] = !S.chips[a]; b.setAttribute('aria-pressed', S.chips[a]); renderFeed(); });
   $('#feed').addEventListener('click', e => { const r = e.target.closest('.ev'); if (r && r.dataset.seg !== '') { select(+r.dataset.seg, true); } });
-  buildSearch(); buildAbout(); buildTableHead();
+  buildSearch(); buildAbout(); buildTableHead(); buildCip();
   $('#tq').oninput = e => { S.tq = e.target.value.toLowerCase(); renderTable(); };
   $('#tscroll').addEventListener('scroll', () => drawRows());
   document.addEventListener('keydown', onKey);
@@ -364,7 +371,7 @@ let tableDirty = true;
 function showTab(t) {
   document.querySelectorAll('#tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
   document.querySelectorAll('.tabpane').forEach(p => { p.hidden = p.id !== 'tab-' + t; });
-  if (t === 'table') renderTable(); if (t === 'compare') renderCompare();
+  if (t === 'table') renderTable(); if (t === 'compare') renderCompare(); if (t === 'cip') renderCip();
 }
 
 /* ---------- legend, KPIs, timeline ---------- */
@@ -380,7 +387,10 @@ function renderLegend() {
   const ov = [];
   if (S.layers.plan && target.pl) { let a = 0; for (let i = 0; i < N; i++) if (target.pl[i] && (!S.nb || nbIdx[i] === meta.nbs.indexOf(S.nb) + 1)) a++; ov.push(row('background:transparent;border:0;width:12px;height:0;border-top:3px dashed #1d4ed8;border-radius:0', 'Planned dig', a)); }
   if (S.layers.shared && target.sh) { let a = 0; for (let i = 0; i < N; i++) if (target.sh[i]) a++; ov.push(row('background:#7c3aed', 'Shared dig', a)); }
-  if (S.layers.funded && target.fu) { let a = 0; for (let i = 0; i < N; i++) if (target.fu[i]) a++; ov.push(row('background:#0e7490', 'Funded work', a)); }
+  if (S.layers.funded && target.fu) {
+    const tc = [0, 0, 0, 0, 0]; for (let i = 0; i < N; i++) if (target.fu[i]) tc[target.ft[i] || 3]++;
+    for (const t of [1, 2, 3, 4]) if (tc[t]) ov.push(row('background:' + TIERC[t], `Funded: tier ${t} ${TIERN[t]}`, tc[t]));
+  }
   if (S.layers.breaks && S.frame > 0 && (!S.playing || S.phase >= 4)) ov.push(row('background:#111827;border-radius:50%', 'Pipe break', yearOf(S.frame).failures.length));
   if (ov.length) h += blk('Overlays (' + (S.frame > 0 ? 'this year' : 'none yet') + ')', ov);
   lg.innerHTML = h || '<div class="muted">No layers on.</div>';
@@ -588,6 +598,73 @@ function onKey(e) {
   else if (e.key === 'f' || e.key === 'F') fitAll();
   else if (e.key === 'l' || e.key === 'L') $('#btn-layers').click();
   else if (e.key === 'Escape') { if (S.sel >= 0) select(-1); e.target.blur && e.target.blur(); }
+}
+
+/* ---------- decision list (the capital plan beside the map) ---------- */
+// Rows come from cip_<strategy>.json (cip/report.py via demo/build_demo.py):
+// [rank, year, segment index, street, work, tier, amount, source, return per dollar, shared dig 0|1, rationale, needs review 0|1, segment id]
+let cipSel = '';
+function cipYear() { return S.frame === 0 ? null : meta.start_year + S.frame - 1 - ((S.playing && S.phase < 3) ? 1 : 0); }   // a year's decisions appear once the Fund phase is reached
+function cipVisible(c) {
+  const y = cipYear();
+  if (y == null) return [];
+  return c.rows.filter(r => S.cipYear ? r[1] === y : r[1] <= y);   // fills in as decisions are made; the last year shows the final plan
+}
+function renderCip() {
+  if (curTab() !== 'cip') return;
+  const body = $('#cip-body'), c = cips[S.strategy];
+  if (!c) { body.innerHTML = '<div class="empty-state">No decision list for this strategy (recorded run).</div>'; return; }
+  const rows = cipVisible(c), total = rows.reduce((a, r) => a + r[6], 0), shared = new Set(rows.filter(r => r[9]).map(r => r[2] + '-' + r[1])).size;
+  let h = '';
+  if (S.cipCmp) {
+    const a = cips[S.strategy], b = cips.isolated, ma = meta.totals[S.strategy], mb = meta.totals.isolated;
+    if (a && b) h += `<div id="cip-cmpbox"><b>${STRAT[S.strategy][0]} vs isolated departments</b> (same seed, whole ten years, simulated)<table>
+      <tr><th></th><th>${STRAT[S.strategy][0]}</th><th>Isolated</th></tr>
+      <tr><td>Projects funded</td><td>${a.summary.funded_projects}</td><td>${b.summary.funded_projects}</td></tr>
+      <tr><td>Street openings planned</td><td>${a.summary.street_openings}</td><td>${b.summary.street_openings}</td></tr>
+      <tr><td>Shared digs</td><td>${a.summary.shared_digs}</td><td>${b.summary.shared_digs}</td></tr>
+      <tr><td>Dig savings</td><td>${fmtD(a.summary.dig_savings)}</td><td>${fmtD(b.summary.dig_savings)}</td></tr>
+      <tr><td>Capital funded</td><td>${fmtM(a.summary.total_funded)}</td><td>${fmtM(b.summary.total_funded)}</td></tr>
+      <tr><td>Total cost (capital + emergency + road user)</td><td>${fmtM(ma.total_cost)}</td><td>${fmtM(mb.total_cost)}</td></tr></table>
+      <div class="muted">The strategies fund different amounts of work, so compare dig savings and total cost, not raw counts.</div></div>`;
+  }
+  const yr = cipYear() == null ? '(press Play, or show the final plan)' : (S.cipYear ? `in ${cipYear()}` : `through ${cipYear()}`);
+  h += `<div id="cip-sum"><b>${rows.length}</b> projects ${yr}, ${fmtD(total)} funded, ${shared} shared digs. Simulated. <a href="#" id="cip-final">Show the final plan</a></div>`;
+  if (!rows.length) h += '<div class="empty-state">The list fills in as the budget agent makes decisions.</div>';
+  for (const r of rows.slice(0, 600)) {
+    h += `<div class="cip-row ${r[12] === cipSel ? 'sel' : ''}" data-seg="${r[2]}" data-id="${esc(r[12])}" data-year="${r[1]}">
+      <span class="rk">${r[0]}</span><span><span class="st">${esc(r[3])}</span> <span class="muted">${r[1]}</span></span><span class="money">${fmtD(r[6])}</span>
+      <span class="meta"><span>${esc(r[4])}</span><span class="tier t${r[5]}">${r[5]} ${TIERN[r[5]] || ''}</span><span class="muted">${esc(r[7])}</span>
+      <span>return ${r[8].toFixed(2)}</span>${r[9] ? '<span class="cip-tag">shared dig</span>' : ''}${r[11] ? '<span class="cip-tag rev">engineering review</span>' : ''}</span>
+      <span class="why">${esc(r[10])}</span></div>`;
+  }
+  if (rows.length > 600) h += `<div class="empty-state">Showing the first 600 of ${rows.length}. Download the CSV for all of them.</div>`;
+  const keep = body.scrollTop; body.innerHTML = h; body.scrollTop = keep;
+}
+function cipCsv() {
+  const c = cips[S.strategy]; if (!c) return toast('No decision list for this strategy');
+  const q = v => '"' + String(v).replace(/"/g, '""') + '"';
+  const head = ['rank', 'year', 'segment_id', 'street', 'work', 'priority_tier', 'amount', 'funding_source', 'return_per_dollar', 'shared_dig', 'engineering_review', 'rationale'];
+  const lines = [head.join(',')].concat(c.rows.map(r => [r[0], r[1], r[12], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[11], r[10]].map(q).join(',')));
+  download(`dig-once-decision-list-${S.strategy}.csv`, new Blob(['\ufeff' + lines.join('\n') + '\n# SIMULATED DATA'], { type: 'text/csv' }));
+}
+function buildCip() {
+  $('#cip-year').onchange = e => { S.cipYear = e.target.checked; renderCip(); };
+  $('#cip-cmp').onchange = e => { S.cipCmp = e.target.checked; renderCip(); };
+  $('#cip-csv').onclick = cipCsv;
+  $('#cip-pdf').onclick = () => window.open(meta.cip_pdf ? 'data/capital_plan.pdf' : 'data/capital_plan.html', '_blank');
+  $('#cip-body').addEventListener('click', e => {
+    if (e.target.id === 'cip-final') { e.preventDefault(); stop(); S.frame = meta.frames - 1; renderState(); return; }
+    const r = e.target.closest('.cip-row'); if (!r) return;
+    window.dispatchEvent(new CustomEvent('cip:select', { detail: { segment_id: r.dataset.id, year: +r.dataset.year, seg: +r.dataset.seg } }));
+  });
+  // the report's browser events: a row click selects the segment on the map; the year slider filters the list
+  window.addEventListener('cip:select', ev => {
+    const d = ev.detail; cipSel = d.segment_id; stop();
+    const f = d.year - meta.start_year + 1; if (f >= 1 && f < meta.frames && S.frame !== f) { S.frame = f; renderState(); }
+    select(d.seg, true); renderCip();
+  });
+  window.addEventListener('map:year', () => renderCip());
 }
 
 window.__dig = { S, get map() { return map; }, select, zoomTo, setBasemap, renderState, get N() { return N; } };   // test hooks
