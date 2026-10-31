@@ -1,0 +1,27 @@
+from playwright.sync_api import sync_playwright
+errs=[]
+with sync_playwright() as p:
+    b=p.chromium.launch(args=["--use-gl=angle","--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"])
+    pg=b.new_page(viewport={"width":1440,"height":900})
+    pg.on("console", lambda m: errs.append(m.type+": "+m.text) if m.type=="error" else None)
+    pg.on("pageerror", lambda e: errs.append("pageerror: "+str(e)))
+    pg.goto("http://localhost:8765/"); pg.wait_for_function("window.__dig && window.__dig.map && window.__dig.map.loaded()", timeout=60000)
+    pg.wait_for_timeout(1500)
+    pg.click('#tabs button[data-tab="cip"]'); pg.wait_for_timeout(300)
+    print("start:", pg.inner_text('#cip-sum'))
+    pg.click('#cip-final'); pg.wait_for_timeout(1500)
+    print("final:", pg.inner_text('#cip-sum'))
+    n=pg.locator('.cip-row').count(); print("rows",n)
+    pg.locator('.cip-row').nth(5).click(); pg.wait_for_timeout(1500)
+    print("sel:", pg.evaluate("__dig.S.sel"), "frame", pg.evaluate("__dig.S.frame"), pg.inner_text('#info')[:80].replace("\n"," "))
+    pg.check('#cip-cmp'); pg.wait_for_timeout(300)
+    pg.screenshot(path="/tmp/ui_cip.png")
+    # year filter via slider
+    pg.evaluate("document.querySelector('#slider').value=3; document.querySelector('#slider').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(800)
+    print("slider3:", pg.inner_text('#cip-sum'))
+    pg.check('#cip-year'); pg.wait_for_timeout(300); print("year only:", pg.inner_text('#cip-sum'), pg.locator('.cip-row').count(), set(pg.eval_on_selector_all('.cip-row','e=>e.map(x=>x.dataset.year)')))
+    print("legend:", pg.inner_text('#legend')[-200:].replace("\n"," | "))
+    with pg.expect_download() as d: pg.click('#cip-csv')
+    print("csv", d.value.suggested_filename)
+    b.close()
+print("errors:", errs)
