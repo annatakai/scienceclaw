@@ -236,7 +236,9 @@ def score_pipe(row, assessment_year):
                 midpoint += weight * value
                 completeness += weight
 
-        exact = midpoint if abs(completeness - 1.0) < 1e-9 else None
+        exact = midpoint if math.isclose(
+    completeness, 1.0, rel_tol=1e-9, abs_tol=1e-9
+) else None
 
         return exact, midpoint, lower, upper, completeness
 

@@ -1,0 +1,4679 @@
+{
+  "type" : "FeatureCollection", 
+  "features" : [
+    {
+      "type" : "Feature", 
+      "id" : 65679, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5382263038009, 42.0687587380768
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 65679, 
+        "LOCATION" : "Dwight St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738731600000, 
+        "MAIN_ID" : 41266, 
+        "DIG_SAFE" : "2025-060-3190", 
+        "WORK_ORDER" : 1508792, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1928, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "ba0b8083-3a1e-4002-8174-e0307cd59748", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741119261000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 24, 
+        "ControlRmNotif" : "05:44:00", 
+        "EstRest" : 1738788240000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 65680, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5423783581019, 42.1193902086781
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 65680, 
+        "LOCATION" : "Woodcliff St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738818000000, 
+        "MAIN_ID" : 47711, 
+        "DIG_SAFE" : "20250604853", 
+        "WORK_ORDER" : 1509078, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "0b97f7d0-2059-4d3f-9f93-bb259a9b0699", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741119365000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 13, 
+        "ControlRmNotif" : "08:11:00", 
+        "EstRest" : 1738872660000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 65681, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5749675134767, 42.0724602083406
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 65681, 
+        "LOCATION" : "MAGAWISKI RD, 534' S of Hydrant Valve 14795", 
+        "DIAMETERMAIN" : 16, 
+        "DATE_" : 1748059200000, 
+        "MAIN_ID" : 42746, 
+        "DIG_SAFE" : null, 
+        "WORK_ORDER" : 1534227, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1959, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "fb1b5fbd-42d8-4664-85cd-336a062d00fe", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1748538252000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66175, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5798052376286, 42.1142400019183
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66175, 
+        "LOCATION" : "Hannon St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1735741200000, 
+        "MAIN_ID" : 48130, 
+        "DIG_SAFE" : "2025-010-3349", 
+        "WORK_ORDER" : 1502417, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1926, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a9ca80a9-317e-4b50-a384-80736f2b2792", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738090721000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "08:41:00", 
+        "EstRest" : 1735854060000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66176, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5407610563055, 42.1377811505926
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66176, 
+        "LOCATION" : "Industry Av", 
+        "DIAMETERMAIN" : 12, 
+        "DATE_" : 1735938900000, 
+        "MAIN_ID" : 42498, 
+        "DIG_SAFE" : "2025-010-6822", 
+        "WORK_ORDER" : 1502969, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1966, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "40565db5-5b9a-4541-bd70-3459061d0f50", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1736864058000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "18:10:00", 
+        "EstRest" : 1735966740000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66177, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5415780225339, 42.1312612904716
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66177, 
+        "LOCATION" : "Hood St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736424000000, 
+        "MAIN_ID" : 47809, 
+        "DIG_SAFE" : "2025-020-5752", 
+        "WORK_ORDER" : 1504061, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "c3d10375-fcac-4449-8185-0ce746fcd0e8", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1744305528000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "08:17:00", 
+        "EstRest" : 1736453820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66178, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5855162437482, 42.1252545293031
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66178, 
+        "LOCATION" : "Penacook St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736533800000, 
+        "MAIN_ID" : 44723, 
+        "DIG_SAFE" : "2025-020-8475", 
+        "WORK_ORDER" : 1504291, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "8fedf2ee-9dde-43b2-a6bb-7dcfdea8514e", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1737998492000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 2, 
+        "ControlRmNotif" : "13:13:00", 
+        "EstRest" : 1736565180000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66179, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5948034617718, 42.1159642194343
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66179, 
+        "LOCATION" : "Cass St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736541000000, 
+        "MAIN_ID" : 45004, 
+        "DIG_SAFE" : "2025-020-8810", 
+        "WORK_ORDER" : 1504324, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1948, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "816bf2de-626a-48a7-b98d-21d1aba248f0", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1737033188000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "16:34:00", 
+        "EstRest" : 1736569980000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66180, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5415845440638, 42.131272307719
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66180, 
+        "LOCATION" : "Hood St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736595000000, 
+        "MAIN_ID" : 47809, 
+        "DIG_SAFE" : "2025-020-8883", 
+        "WORK_ORDER" : 1504331, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "72f1b4c9-f37f-4840-9474-579b6bae27b2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1736957085000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "09:44:00", 
+        "EstRest" : 1736631780000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66181, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5700560403538, 42.1156413141758
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66181, 
+        "LOCATION" : "Clarendon St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1736769600000, 
+        "MAIN_ID" : 45236, 
+        "DIG_SAFE" : "2025-030-00034", 
+        "WORK_ORDER" : 1504471, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1937, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "85a2fd01-cc45-4e9d-b4a2-c07fa48ab093", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1736967278000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 20, 
+        "ControlRmNotif" : "08:09:00", 
+        "EstRest" : 1736798940000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66182, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5917146605863, 42.1121229017863
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66182, 
+        "LOCATION" : "Franklin St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736856000000, 
+        "MAIN_ID" : 42009, 
+        "DIG_SAFE" : "2025-030-2153", 
+        "WORK_ORDER" : 1504698, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1966, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "140ce4f3-f521-414e-a7ef-80bfcebff37c", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1744305857000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "08:23:00", 
+        "EstRest" : 1736886180000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66183, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5804747062959, 42.1176654392043
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66183, 
+        "LOCATION" : "Napier St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736856000000, 
+        "MAIN_ID" : 45075, 
+        "DIG_SAFE" : "2025-030-2199", 
+        "WORK_ORDER" : 1504703, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1915, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "30c45d19-0a9c-4145-b4c4-1d8c646eec20", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695730000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 1, 
+        "ControlRmNotif" : "08:41:00", 
+        "EstRest" : 1736890860000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66184, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5566692291847, 42.1171409694499
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66184, 
+        "LOCATION" : "Garden St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736942400000, 
+        "MAIN_ID" : 47008, 
+        "DIG_SAFE" : "2025-030-4092", 
+        "WORK_ORDER" : 1504873, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1939, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1e520666-e0c9-486f-9781-6ed286282f07", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1737120450000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 1, 
+        "ControlRmNotif" : "06:35:00", 
+        "EstRest" : 1736973300000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66185, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4967575685898, 42.1804111454044
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66185, 
+        "LOCATION" : "Kendall St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736956800000, 
+        "MAIN_ID" : 51182, 
+        "DIG_SAFE" : "2025-030-4870", 
+        "WORK_ORDER" : 1505010, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1960, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "98928457-77e6-498b-8be3-452a5b1cf2d2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741633563000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 30, 
+        "ControlRmNotif" : "11:53:00", 
+        "EstRest" : 1736985180000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66186, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5166992231479, 42.1177179828123
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66186, 
+        "LOCATION" : "Wilbraham Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1736942400000, 
+        "MAIN_ID" : 40759, 
+        "DIG_SAFE" : "2025-030-4024", 
+        "WORK_ORDER" : 1505013, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "9aa281d3-ca26-4433-8e09-54c8019e3468", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1744306960000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "12:01:00", 
+        "EstRest" : 1736982060000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66187, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5066407675473, 42.1785811676184
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66187, 
+        "LOCATION" : "Libby St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737052200000, 
+        "MAIN_ID" : 51108, 
+        "DIG_SAFE" : "2025-030-6938", 
+        "WORK_ORDER" : 1505270, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "c5cc30a6-02cc-4411-ad48-af3f8afacf57", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1737473740000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "13:41:00", 
+        "EstRest" : 1737074460000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66188, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5029830315325, 42.1504709489876
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66188, 
+        "LOCATION" : "Wing St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737210600000, 
+        "MAIN_ID" : 43814, 
+        "DIG_SAFE" : "2025-030-8819", 
+        "WORK_ORDER" : 1505470, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1925, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a999fec7-a6f3-4af2-8c23-a04c230bb350", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738694762000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 20, 
+        "ControlRmNotif" : "10:40:00", 
+        "EstRest" : 1737232800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66189, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.499967736777, 42.115952721039
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66189, 
+        "LOCATION" : "Wilbraham Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737370800000, 
+        "MAIN_ID" : 42111, 
+        "DIG_SAFE" : "2025-040-0014", 
+        "WORK_ORDER" : 1505610, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "60f3a6b5-65be-4362-99dd-3f3d68892285", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738694887000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "07:12:00", 
+        "EstRest" : 1737403920000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66190, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5740478220566, 42.1236783105822
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66190, 
+        "LOCATION" : "Vadnais St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737374400000, 
+        "MAIN_ID" : 44655, 
+        "DIG_SAFE" : "2025-040-0191", 
+        "WORK_ORDER" : 1505612, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1955, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "df0dbf3a-6655-4eec-a2d0-f97eca4ff845", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695012000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "10:54:00", 
+        "EstRest" : 1737413640000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66191, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5624894546853, 42.1413489070562
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66191, 
+        "LOCATION" : "Arthur St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737396000000, 
+        "MAIN_ID" : 42451, 
+        "DIG_SAFE" : "2025-040-0371", 
+        "WORK_ORDER" : 1505615, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1953, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "609a1f00-26d0-48e8-9343-ba7b2a0cf9f3", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695108000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 22, 
+        "ControlRmNotif" : "12:36:00", 
+        "EstRest" : 1737416160000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66192, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5543254550765, 42.1444409832822
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66192, 
+        "LOCATION" : "Roosevelt Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737558000000, 
+        "MAIN_ID" : 43081, 
+        "DIG_SAFE" : "2025-040-2601", 
+        "WORK_ORDER" : 1506028, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1925, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "UNK", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "99e05be8-352b-45f1-8cbf-e6eb5bf73a4c", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695207000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "10:03:00", 
+        "EstRest" : 1737583380000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66193, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5123370474173, 42.0857975784877
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66193, 
+        "LOCATION" : "Talmadge Dr", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737491700000, 
+        "MAIN_ID" : 49568, 
+        "DIG_SAFE" : "2025-040-3329", 
+        "WORK_ORDER" : 1506170, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1964, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "8499dbc4-21d2-484f-87a0-1113c66d39a8", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695357000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 11, 
+        "ControlRmNotif" : "06:01:00", 
+        "EstRest" : 1737662460000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66194, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4853750284272, 42.0950316877496
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66194, 
+        "LOCATION" : "Corey Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1737633600000, 
+        "MAIN_ID" : 48396, 
+        "DIG_SAFE" : "2025-040-3335", 
+        "WORK_ORDER" : 1506172, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1971, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "6fd532b1-1a66-4453-98d4-7389c453c610", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1738695409000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "06:05:00", 
+        "EstRest" : 1737662700000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66195, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5435378663111, 42.0920758302169
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66195, 
+        "LOCATION" : "Allen St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738328400000, 
+        "MAIN_ID" : 40282, 
+        "DIG_SAFE" : "2025-050-6620", 
+        "WORK_ORDER" : 1507975, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1932, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a9bc1a45-d953-42d9-a367-158678b8a4a6", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753449643000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "08:40:00", 
+        "EstRest" : 1738356000000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66196, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5065946555708, 42.0994824057474
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66196, 
+        "LOCATION" : "Lynebrook Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738670400000, 
+        "MAIN_ID" : 49635, 
+        "DIG_SAFE" : "2025-060-1630", 
+        "WORK_ORDER" : 1508473, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1955, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "99227eb1-48a1-40b6-8016-9404e5a62a95", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1742897894000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 1, 
+        "ControlRmNotif" : "06:03:00", 
+        "EstRest" : 1738699380000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66197, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5000505054982, 42.1803828321476
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66197, 
+        "LOCATION" : "Holyoke St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738584000000, 
+        "MAIN_ID" : 51734, 
+        "DIG_SAFE" : "2025-060-1636", 
+        "WORK_ORDER" : 1508474, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1960, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "e6a51514-7129-45b5-94b8-41c5838c3ef6", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1740765029000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 15, 
+        "ControlRmNotif" : "06:11:00", 
+        "EstRest" : 1738699860000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66198, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5655758726537, 42.1305019728503
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66198, 
+        "LOCATION" : "Cuff St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738749120000, 
+        "MAIN_ID" : 41627, 
+        "DIG_SAFE" : "2025-060-3213", 
+        "WORK_ORDER" : 1508794, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1927, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "acba049c-0c2c-4b26-9246-a9a643d76f6f", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741119212000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "06:27:00", 
+        "EstRest" : 1738787220000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66199, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.487955195396, 42.1368084429109
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66199, 
+        "LOCATION" : "Southern Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738776600000, 
+        "MAIN_ID" : 42188, 
+        "DIG_SAFE" : "2025-060-3906", 
+        "WORK_ORDER" : 1508943, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "534583fd-ce72-4ec8-b71c-1b9ed1808359", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741119168000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 12, 
+        "ControlRmNotif" : "11:26:00", 
+        "EstRest" : 1738805100000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66200, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5942197896802, 42.1193822422668
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66200, 
+        "LOCATION" : "Mayfair Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1738870200000, 
+        "MAIN_ID" : 44879, 
+        "DIG_SAFE" : "2025-060-5426", 
+        "WORK_ORDER" : 1509127, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1931, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1e6b933d-9dd8-46dd-ab4e-577ab38cb1e9", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1741119292000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 15, 
+        "ControlRmNotif" : "14:48:00", 
+        "EstRest" : 1738900080000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66201, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5072923493819, 42.12398263311
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66201, 
+        "LOCATION" : "North Brook Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1739128560000, 
+        "MAIN_ID" : 48703, 
+        "DIG_SAFE" : "2025-070-0048", 
+        "WORK_ORDER" : 1509451, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1964, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b546d405-2028-4c95-badc-1f723cb20177", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753450546000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 0, 
+        "ControlRmNotif" : "06:33:00", 
+        "EstRest" : 1739219580000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66202, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4904050841382, 42.1657154086211
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66202, 
+        "LOCATION" : "West Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1739358000000, 
+        "MAIN_ID" : 50438, 
+        "DIG_SAFE" : "2025-070-2934", 
+        "WORK_ORDER" : 1509814, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1958, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "8427b0b4-586f-49a2-ba5c-40ec4ef0ec3d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1746814907000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 3, 
+        "ControlRmNotif" : "06:40:00", 
+        "EstRest" : 1739392740000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66203, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5087166960361, 42.1142944617973
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66203, 
+        "LOCATION" : "Jeffrey Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1739880000000, 
+        "MAIN_ID" : 48057, 
+        "DIG_SAFE" : "2025-080-*0691", 
+        "WORK_ORDER" : 1510357, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1963, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a247ad1a-612d-4f74-87c8-402f90492b4c", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753451054000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "06:27:00", 
+        "EstRest" : 1739910420000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66204, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5544165517823, 42.1080043629844
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66204, 
+        "LOCATION" : "Braddock St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1740139200000, 
+        "MAIN_ID" : 47596, 
+        "DIG_SAFE" : "2025-080-4358", 
+        "WORK_ORDER" : 1510831, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "eb175ab0-6e62-4bd4-83a7-de1d0bcbf934", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753463970000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "06:56:00", 
+        "EstRest" : 1740160800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66205, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5142161326818, 42.1186235988509
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66205, 
+        "LOCATION" : "Denwall Dr", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1740263400000, 
+        "MAIN_ID" : 48824, 
+        "DIG_SAFE" : "2025-080-5488", 
+        "WORK_ORDER" : 1510908, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1954, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "281c0c60-0810-4f91-a724-e5dfac4b26a3", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753464445000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 7, 
+        "ControlRmNotif" : "18:10:00", 
+        "EstRest" : 1740202200000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66206, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5759034658683, 42.1254977407523
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66206, 
+        "LOCATION" : "Nottingham St  @ McBride St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1740398400000, 
+        "MAIN_ID" : 44443, 
+        "DIG_SAFE" : "20250-90-0124", 
+        "WORK_ORDER" : 1511044, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1206315c-448c-4a79-b136-c5b36ecbbc45", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753464540000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 7, 
+        "ControlRmNotif" : "07:00:00", 
+        "EstRest" : 1740423600000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66207, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5776087609015, 42.1327496272387
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66207, 
+        "LOCATION" : "Mellon St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1741089600000, 
+        "MAIN_ID" : 44483, 
+        "DIG_SAFE" : "2025-100-2134", 
+        "WORK_ORDER" : 1513401, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "f71f3b9d-1fc1-4cc5-8bf0-2a0f6bc6a473", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1753466168000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 3, 
+        "ControlRmNotif" : "06:34:00", 
+        "EstRest" : 1741120440000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66208, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5281368208439, 42.1170454173881
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66208, 
+        "LOCATION" : "Lawton St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1744525800000, 
+        "MAIN_ID" : 48886, 
+        "DIG_SAFE" : "2025-151-7065", 
+        "WORK_ORDER" : 1523087, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1961, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "3335bf6d-c123-42ef-99e7-2f3e8ff0d455", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1746807532000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 8, 
+        "ControlRmNotif" : "05:54:00", 
+        "EstRest" : 1744570440000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66209, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5832132898302, 42.1127803502669
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66209, 
+        "LOCATION" : "Taylor St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1746361800000, 
+        "MAIN_ID" : 45662, 
+        "DIG_SAFE" : "", 
+        "WORK_ORDER" : 1528581, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1894, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b30ee9ae-a862-4215-809e-98d273974232", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1748027178000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "09:29:00", 
+        "EstRest" : 1746386880000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66210, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5859262451208, 42.1030203566268
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66210, 
+        "LOCATION" : "Chestnut St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1753705800000, 
+        "MAIN_ID" : 45824, 
+        "DIG_SAFE" : "2025-310-0863", 
+        "WORK_ORDER" : 1550364, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1876, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "8b0ce284-a22e-46ff-b5eb-d097a9e6028e", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1761837279000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "08:25:00", 
+        "EstRest" : 1753730700000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66211, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4946126817174, 42.1554906887581
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66211, 
+        "LOCATION" : "Milton St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1755255600000, 
+        "MAIN_ID" : 44042, 
+        "DIG_SAFE" : "2025-331-3787", 
+        "WORK_ORDER" : 1555376, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1927, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "d20e90de-c2ec-4b1d-bdfb-86c07afb8c0d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1761834132000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 16, 
+        "ControlRmNotif" : "08:07:00", 
+        "EstRest" : 1755284820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66212, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6174962680123, 42.122513121
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66212, 
+        "LOCATION" : "Moore St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1757446200000, 
+        "MAIN_ID" : 42515, 
+        "DIG_SAFE" : "2025-370-7437", 
+        "WORK_ORDER" : 1561584, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1935, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a8c7badb-c96b-4233-b1c2-51a4dc062523", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1758117249000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "14:57:00", 
+        "EstRest" : 1757462400000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66213, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5577858807652, 42.0861554316529
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66213, 
+        "LOCATION" : "Belmont Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1759347000000, 
+        "MAIN_ID" : 42972, 
+        "DIG_SAFE" : "2025-401-0091", 
+        "WORK_ORDER" : 1567931, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1896, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "bdbb4cb2-7ef1-4fa2-947f-7fa89fbac16a", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1761319580000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 11, 
+        "ControlRmNotif" : "15:08:00", 
+        "EstRest" : 1759374480000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66214, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5843670402407, 42.1036508097636
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66214, 
+        "LOCATION" : "State St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1762171200000, 
+        "MAIN_ID" : 46404, 
+        "DIG_SAFE" : "2025-450-0152", 
+        "WORK_ORDER" : 1576104, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "979f8ffc-4eae-41f4-9720-508c27b681d0", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1766767720000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 3, 
+        "ControlRmNotif" : "06:56:00", 
+        "EstRest" : 1762200000000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66215, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5034621475979, 42.1299316387626
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66215, 
+        "LOCATION" : "Beacon Ci", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1763985600000, 
+        "MAIN_ID" : 48660, 
+        "DIG_SAFE" : "2025-480-0019", 
+        "WORK_ORDER" : 1579783, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1970, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "72dc5d21-34a6-4395-9daf-72fc9acb6dc1", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1764159036000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 20, 
+        "ControlRmNotif" : "06:02:00", 
+        "EstRest" : 1764014520000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66216, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.527730173785, 42.107943077426
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66216, 
+        "LOCATION" : "Leatherleaf Dr", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1765159140000, 
+        "MAIN_ID" : 39694, 
+        "DIG_SAFE" : "2025-500-0039", 
+        "WORK_ORDER" : 1582304, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1972, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "72467941-5856-43f8-a548-d717d55f0406", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1765398316000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "06:23:00", 
+        "EstRest" : 1765225380000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66217, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.512051932619, 42.0895317108586
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66217, 
+        "LOCATION" : "Louis Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1764967020000, 
+        "MAIN_ID" : 49551, 
+        "DIG_SAFE" : "2025-500-0044", 
+        "WORK_ORDER" : 1582307, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1965, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "049929f3-3944-42ae-9242-c2bd1303b021", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1765559167000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 10, 
+        "ControlRmNotif" : "06:28:00", 
+        "EstRest" : 1765225680000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66218, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4989195749461, 42.1126414763398
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66218, 
+        "LOCATION" : "Parker St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1766186100000, 
+        "MAIN_ID" : 49448, 
+        "DIG_SAFE" : "2025-510-07241", 
+        "WORK_ORDER" : 1584515, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1933, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "30bce893-92ff-4565-8b14-aa1edb90f504", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771005029000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "06:27:00", 
+        "EstRest" : 1766262420000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66219, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4585401447876, 42.166314153341
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66219, 
+        "LOCATION" : "Chapin St", 
+        "DIAMETERMAIN" : 10, 
+        "DATE_" : 1766491200000, 
+        "MAIN_ID" : 51852, 
+        "DIG_SAFE" : "2025-520-1766", 
+        "WORK_ORDER" : 1584824, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 2006, 
+        "MATERIAL_MAIN" : "DI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "07147e83-2e0b-4432-95c4-2aecf62c0f9a", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771005544000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "06:46:00", 
+        "EstRest" : 1766522760000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66220, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5910935997959, 42.1126004876154
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66220, 
+        "LOCATION" : "Franklin St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1766577600000, 
+        "MAIN_ID" : 42009, 
+        "DIG_SAFE" : "2025-520-3354", 
+        "WORK_ORDER" : 1584967, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1966, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "d3aee9e6-acc4-4278-9d6d-136ccbec8981", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1770384073000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "09:41:00", 
+        "EstRest" : 1766608860000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66221, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5913903470692, 42.1123722885825
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66221, 
+        "LOCATION" : "Franklin St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1766666940000, 
+        "MAIN_ID" : 42009, 
+        "DIG_SAFE" : "2025-520-3623", 
+        "WORK_ORDER" : 1585130, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1966, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "e5a72133-9ab4-4ff8-b627-665858c17b1d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1767631390000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "06:15:00", 
+        "EstRest" : 1766175300000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66222, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4822727397655, 42.1515956141559
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66222, 
+        "LOCATION" : "Dalton St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1767182400000, 
+        "MAIN_ID" : 39569, 
+        "DIG_SAFE" : "2026-010-2912", 
+        "WORK_ORDER" : 1586165, 
+        "MUNICIPALITY" : "Wilbraham", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1948, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "f92dbe5f-ee9f-47fa-af94-4fb921f7f6f4", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1767799757000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 18, 
+        "ControlRmNotif" : "06:47:00", 
+        "EstRest" : 1767214020000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66223, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5119464842593, 42.156370166563
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66223, 
+        "LOCATION" : "Denesley Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1767704400000, 
+        "MAIN_ID" : 40392, 
+        "DIG_SAFE" : "2026-020-1902", 
+        "WORK_ORDER" : 1586784, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "6dfd8087-fa5e-494c-a318-12484c0c247d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1767885114000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "06:44:00", 
+        "EstRest" : 1767732240000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66224, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.487605630672, 42.1391963837564
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66224, 
+        "LOCATION" : "Fernbank Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1767960000000, 
+        "MAIN_ID" : 49043, 
+        "DIG_SAFE" : "2026-020-6749", 
+        "WORK_ORDER" : 1587596, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1958, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "7ecb2e4e-431c-4526-889a-9fbfb6188d5c", 
+        "WoStatus" : "Open", 
+        "WoClosed" : null, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "06:17:00", 
+        "EstRest" : 1767989820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66225, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.465086290516, 42.160513574397
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66225, 
+        "LOCATION" : "Lawrence St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1767981600000, 
+        "MAIN_ID" : 51189, 
+        "DIG_SAFE" : "2026-020-0029", 
+        "WORK_ORDER" : 1587846, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1950, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "8058130a-18fb-46c2-ab7d-76e2f0caaf0d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772472925000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "06:16:00", 
+        "EstRest" : 1768248960000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66226, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5863770171029, 42.1014409393503
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66226, 
+        "LOCATION" : "State St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1768219200000, 
+        "MAIN_ID" : 46299, 
+        "DIG_SAFE" : "2026-030-1974", 
+        "WORK_ORDER" : 1588076, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1919, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "81672c97-3547-415d-aca1-da0016852c49", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1768501674000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 1, 
+        "ControlRmNotif" : "06:21:00", 
+        "EstRest" : 1768335660000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66227, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5781408973207, 42.0885260150096
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66227, 
+        "LOCATION" : "Main St", 
+        "DIAMETERMAIN" : 12, 
+        "DATE_" : 1768579200000, 
+        "MAIN_ID" : 9999, 
+        "DIG_SAFE" : "2026-030-7594", 
+        "WORK_ORDER" : 1588918, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1940, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "e2416675-7367-4b84-a0fa-6ee743929a81", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771005696000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 11, 
+        "ControlRmNotif" : "10:41:00", 
+        "EstRest" : 1768606860000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66228, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6060080903061, 42.1142209203049
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66228, 
+        "LOCATION" : "Arch St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1768910400000, 
+        "MAIN_ID" : 45163, 
+        "DIG_SAFE" : "2026-040-1182", 
+        "WORK_ORDER" : 1589234, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1968, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "0e1d35b0-d5b0-4468-a12d-870fd5866187", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773429195000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 7, 
+        "ControlRmNotif" : "09:11:00", 
+        "EstRest" : 1768943460000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66229, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4721933099055, 42.1775432337248
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66229, 
+        "LOCATION" : "Center St", 
+        "DIAMETERMAIN" : 16, 
+        "DATE_" : 1769023800000, 
+        "MAIN_ID" : 51573, 
+        "DIG_SAFE" : "2026-040-3573", 
+        "WORK_ORDER" : 1589645, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1970, 
+        "MATERIAL_MAIN" : "DI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b5f32b7d-618e-4c75-b5b5-ec6ef532c258", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772473351000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 22, 
+        "ControlRmNotif" : "06:55:00", 
+        "EstRest" : 1769118900000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66230, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5594550777071, 42.1002807451221
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66230, 
+        "LOCATION" : "Colchester St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769169600000, 
+        "MAIN_ID" : 45752, 
+        "DIG_SAFE" : "2026-040-4883", 
+        "WORK_ORDER" : 1589828, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1927, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "55bebd44-9ce9-4f0e-8bb8-0e892160afdb", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773327145000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 12, 
+        "ControlRmNotif" : "08:59:00", 
+        "EstRest" : 1769205540000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66231, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5467446009029, 42.07447156362
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66231, 
+        "LOCATION" : "Tiffany St", 
+        "DIAMETERMAIN" : 16, 
+        "DATE_" : 1769277600000, 
+        "MAIN_ID" : 39833, 
+        "DIG_SAFE" : "2026-040-5724", 
+        "WORK_ORDER" : 1589918, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1958, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "e4770b36-bc26-4ef9-b10b-667b27f189d8", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773327087000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "14:34:00", 
+        "EstRest" : 1769312040000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66232, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5998094453122, 42.1092178854267
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66232, 
+        "LOCATION" : "Patton St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769344200000, 
+        "MAIN_ID" : 43845, 
+        "DIG_SAFE" : "2026-040-5766", 
+        "WORK_ORDER" : 1589946, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1931, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "85eb7cd5-7610-49b7-99f6-0d2f66bb31a8", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1769718857000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 25, 
+        "ControlRmNotif" : "09:06:00", 
+        "EstRest" : 1769378700000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66233, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5195862435585, 42.0885279614327
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66233, 
+        "LOCATION" : "Patrick St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769259600000, 
+        "MAIN_ID" : 40203, 
+        "DIG_SAFE" : "2026-050-0249", 
+        "WORK_ORDER" : 1590020, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1953, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "9bbc1dbe-d7a7-4352-9c90-c093f9173402", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773327059000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 2, 
+        "ControlRmNotif" : "11:25:00", 
+        "EstRest" : 1769477100000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66234, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5964008928679, 42.1211889971397
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66234, 
+        "LOCATION" : "Mayfair Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769515200000, 
+        "MAIN_ID" : 41750, 
+        "DIG_SAFE" : "2026-050-0576", 
+        "WORK_ORDER" : 1590090, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1938, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "bf9a70f4-05d5-41c3-9ba6-6cb9e56c1d87", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773327022000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 11, 
+        "ControlRmNotif" : "06:29:00", 
+        "EstRest" : 1769545740000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66235, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5997439337398, 42.1092687528756
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66235, 
+        "LOCATION" : "Patton St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769515200000, 
+        "MAIN_ID" : 43845, 
+        "DIG_SAFE" : "2026-050-0581", 
+        "WORK_ORDER" : 1590092, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1931, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b7274627-7ecd-403c-8514-9df6d679c6ae", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773326995000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 25, 
+        "ControlRmNotif" : "06:41:00", 
+        "EstRest" : 1769546460000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66236, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5182831070828, 42.1185008812333
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66236, 
+        "LOCATION" : "Bellamy Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1766404800000, 
+        "MAIN_ID" : 40756, 
+        "DIG_SAFE" : "2026-050-1839", 
+        "WORK_ORDER" : 1590222, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "0ed0c9da-697b-46e5-a8f2-3750566e7edd", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773326950000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 12, 
+        "ControlRmNotif" : "06:26:00", 
+        "EstRest" : 1769631960000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66237, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5300298818756, 42.0984238868636
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66237, 
+        "LOCATION" : "Chalmers St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769662800000, 
+        "MAIN_ID" : 46730, 
+        "DIG_SAFE" : "2026-050-3480", 
+        "WORK_ORDER" : 1590677, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "5e49237c-50af-4027-b0e6-b21b4f947868", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771013045000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 11, 
+        "ControlRmNotif" : "06:08:00", 
+        "EstRest" : 1769803680000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66238, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4634407251762, 42.185534717403
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66238, 
+        "LOCATION" : "Richmond Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769788800000, 
+        "MAIN_ID" : 51432, 
+        "DIG_SAFE" : "2026-050-3976", 
+        "WORK_ORDER" : 1590728, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "afc3de92-c4d2-400e-bd0f-f68f61b6ae94", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772473300000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 15, 
+        "ControlRmNotif" : "11:16:00", 
+        "EstRest" : 1769806800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66239, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5330106202071, 42.1030966086925
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66239, 
+        "LOCATION" : "Abbott St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769794200000, 
+        "MAIN_ID" : 39712, 
+        "DIG_SAFE" : "2026-050- 4038", 
+        "WORK_ORDER" : 1590740, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1951, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "62975b6a-74f4-47e3-8303-72d1bfe93dfc", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771013148000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "12:44:00", 
+        "EstRest" : 1769823840000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66240, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4941680067254, 42.1006491163907
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66240, 
+        "LOCATION" : "Fair Oak Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769805000000, 
+        "MAIN_ID" : 48434, 
+        "DIG_SAFE" : "2026-050-4195", 
+        "WORK_ORDER" : 1590769, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "c52eb239-ac78-45fc-b193-325be951e2bf", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771013117000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 18, 
+        "ControlRmNotif" : "15:26:00", 
+        "EstRest" : 1769833560000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66241, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5226079428153, 42.0991788741613
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66241, 
+        "LOCATION" : "Newton Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769808600000, 
+        "MAIN_ID" : 46585, 
+        "DIG_SAFE" : "2026-050-4246", 
+        "WORK_ORDER" : 1590772, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1956, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b845d5a6-7bbc-4acb-a584-59ad72d22ad2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771013081000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "16:48:00", 
+        "EstRest" : 1769834820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66242, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6022339747859, 42.112533578764
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66242, 
+        "LOCATION" : "Morgan St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1769950800000, 
+        "MAIN_ID" : 129624, 
+        "DIG_SAFE" : "2026-060-0031", 
+        "WORK_ORDER" : 1591561, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 2014, 
+        "MATERIAL_MAIN" : "DI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "6085cddc-7af0-4ecf-8fc6-c5d930a6dca2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1771598529000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 20, 
+        "ControlRmNotif" : "06:22:00", 
+        "EstRest" : 1770063720000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66243, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5436645128409, 42.08780382655
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66243, 
+        "LOCATION" : "Dorset St", 
+        "DIAMETERMAIN" : 12, 
+        "DATE_" : 1769911200000, 
+        "MAIN_ID" : 40265, 
+        "DIG_SAFE" : "2026-060-0039", 
+        "WORK_ORDER" : 1591563, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1920, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "7bc35f2c-fb69-45f1-be60-19f33bdc2f09", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778785445000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 19, 
+        "ControlRmNotif" : "06:26:00", 
+        "EstRest" : 1770063960000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66244, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5407850247675, 42.0848262401779
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66244, 
+        "LOCATION" : "Blaine St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1769731200000, 
+        "MAIN_ID" : 47194, 
+        "DIG_SAFE" : "2026-060-0043", 
+        "WORK_ORDER" : 1591565, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1919, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1b1d8111-df07-44df-b8bc-607d0edf174a", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772041630000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 12, 
+        "ControlRmNotif" : "06:31:00", 
+        "EstRest" : 1770064260000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66245, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5800616413611, 42.1140631508933
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66245, 
+        "LOCATION" : "Hannon St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770120000000, 
+        "MAIN_ID" : 48131, 
+        "DIG_SAFE" : "2026-060-1721", 
+        "WORK_ORDER" : 1591765, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 2009, 
+        "MATERIAL_MAIN" : "DI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "3b875adb-3e8c-4603-92d1-a8d4b3a35f30", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773327859000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "08:56:00", 
+        "EstRest" : 1770155760000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66246, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5383596137296, 42.0718018098417
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66246, 
+        "LOCATION" : "Dwight Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770168600000, 
+        "MAIN_ID" : 41260, 
+        "DIG_SAFE" : "2026-062-618", 
+        "WORK_ORDER" : 1591854, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1925, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "21a13230-2108-468d-976d-5e0a1aac58be", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778862867000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 52, 
+        "ControlRmNotif" : "21:46:00", 
+        "EstRest" : 1770198300000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66247, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4929857319995, 42.1806758743446
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66247, 
+        "LOCATION" : "Kendall St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770206400000, 
+        "MAIN_ID" : 51177, 
+        "DIG_SAFE" : "2026-060-2658", 
+        "WORK_ORDER" : 1591917, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1959, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "a267d701-b0fe-4869-a717-4a551909d178", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778785590000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "06:23:00", 
+        "EstRest" : 1770236580000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66248, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4529745092193, 42.1625415413113
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66248, 
+        "LOCATION" : "Crest St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770206400000, 
+        "MAIN_ID" : 50533, 
+        "DIG_SAFE" : "2026-060-2662", 
+        "WORK_ORDER" : 1591918, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1949, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "dc9ae6d5-9698-47ed-8882-fdde767df26d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772473928000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "06:27:00", 
+        "EstRest" : 1770236820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66249, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4913293751276, 42.1811698596129
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66249, 
+        "LOCATION" : "Kendall St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770226200000, 
+        "MAIN_ID" : 51265, 
+        "DIG_SAFE" : "2026-060-3179", 
+        "WORK_ORDER" : 1591945, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1959, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "4bb9e810-2f15-43c9-a95f-022f409eeaf2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1772473508000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 13, 
+        "ControlRmNotif" : "09:59:00", 
+        "EstRest" : 1770256740000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66250, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4932085479516, 42.1094177098059
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66250, 
+        "LOCATION" : "Mary Coburn Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770638400000, 
+        "MAIN_ID" : 39988, 
+        "DIG_SAFE" : "2026-070-0432", 
+        "WORK_ORDER" : 1592463, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1955, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "3b56bbb4-7fa1-4931-b706-83d45dfb4c51", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774284292000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "09:43:00", 
+        "EstRest" : 1770669780000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66251, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5120208773725, 42.0893706307185
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66251, 
+        "LOCATION" : "Louis Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770645600000, 
+        "MAIN_ID" : 49551, 
+        "DIG_SAFE" : "2026-070-0440", 
+        "WORK_ORDER" : 1592467, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1965, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "d8b68d9a-9f17-41e6-bdd3-fac7af81c0f4", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774284184000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 10, 
+        "ControlRmNotif" : "09:52:00", 
+        "EstRest" : 1770673920000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66252, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5849163993972, 42.1039324331222
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66252, 
+        "LOCATION" : "State St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770805140000, 
+        "MAIN_ID" : 46409, 
+        "DIG_SAFE" : "2026-070-2588", 
+        "WORK_ORDER" : 1592697, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "fcf4c006-6966-4c44-8e00-1d213c050832", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774284369000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "07:10:00", 
+        "EstRest" : 1770840600000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66253, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4652418546733, 42.160481980696
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66253, 
+        "LOCATION" : "Lawrence St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1770897600000, 
+        "MAIN_ID" : 50532, 
+        "DIG_SAFE" : "20260703797", 
+        "WORK_ORDER" : 1592943, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1950, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "7570aa23-1692-4155-9835-8fc8c54e7a17", 
+        "WoStatus" : "Open", 
+        "WoClosed" : null, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 7, 
+        "ControlRmNotif" : "09:54:00", 
+        "EstRest" : 1770929640000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66254, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5304942918983, 42.0987036191675
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66254, 
+        "LOCATION" : "480 Plumtree Rd-Springfield", 
+        "DIAMETERMAIN" : 0, 
+        "DATE_" : 1771329600000, 
+        "MAIN_ID" : 9999, 
+        "DIG_SAFE" : "20260800687", 
+        "WORK_ORDER" : 1593411, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 0, 
+        "MATERIAL_MAIN" : "", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "3bf188ca-2030-4873-a9ea-7e409247c26b", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1775565948000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "06:18:00", 
+        "EstRest" : 1771355880000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66255, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.491956634023, 42.1655538572158
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66255, 
+        "LOCATION" : "West Av", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1771329600000, 
+        "MAIN_ID" : 50438, 
+        "DIG_SAFE" : "20260800739", 
+        "WORK_ORDER" : 1593416, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1958, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1ac2625a-54a1-4226-83c6-be869a0cfca3", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773162063000, 
+        "WoForemanLast" : "Ramos", 
+        "WoForemanFirst" : "Rudy", 
+        "WaterOutUnits" : 3, 
+        "ControlRmNotif" : "06:59:00", 
+        "EstRest" : 1771361940000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66256, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5754894390463, 42.1195463833419
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66256, 
+        "LOCATION" : "Albany St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1771333200000, 
+        "MAIN_ID" : 45470, 
+        "DIG_SAFE" : "20260800774", 
+        "WORK_ORDER" : 1593418, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1928, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "0ed8c1e3-626c-4619-be2e-c0e70f2350ac", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774360530000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "07:09:00", 
+        "EstRest" : 1771358940000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66257, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5764493712495, 42.1326199145612
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66257, 
+        "LOCATION" : "Piedmont St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1771575300000, 
+        "MAIN_ID" : 44465, 
+        "DIG_SAFE" : "2026-", 
+        "WORK_ORDER" : 1593851, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1951, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1f56c7eb-b74f-41f0-b61b-0e1cb6b37d1b", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774361770000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 18, 
+        "ControlRmNotif" : "03:18:00", 
+        "EstRest" : 1771618500000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66258, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.557229577049, 42.0856518451013
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66258, 
+        "LOCATION" : "X-Court", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1771938000000, 
+        "MAIN_ID" : 49546, 
+        "DIG_SAFE" : "20260901446", 
+        "WORK_ORDER" : 1594202, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1939, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "e786c055-06fc-4918-b241-acd7f2c9c533", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778697854000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 60, 
+        "ControlRmNotif" : "07:11:00", 
+        "EstRest" : 1772050260000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66259, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5453070101507, 42.0925088406565
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66259, 
+        "LOCATION" : "Plumtree Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772143380000, 
+        "MAIN_ID" : 46905, 
+        "DIG_SAFE" : "20260903101", 
+        "WORK_ORDER" : 1594671, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "1f0a9bf7-906d-4e4e-91b2-12718c0d1b60", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362064000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 8, 
+        "ControlRmNotif" : "06:11:00", 
+        "EstRest" : 1772215800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66260, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6046455297826, 42.1180341806468
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66260, 
+        "LOCATION" : "Alexander St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1772191800000, 
+        "MAIN_ID" : 41832, 
+        "DIG_SAFE" : "20260903162", 
+        "WORK_ORDER" : 1594673, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1894, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "4884565f-f464-4f3f-85b0-8c9ee3686241", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362088000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 9, 
+        "ControlRmNotif" : "06:50:00", 
+        "EstRest" : 1772218140000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66262, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5880432776626, 42.1135668818392
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66262, 
+        "LOCATION" : "Webster St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1772715600000, 
+        "MAIN_ID" : 42019, 
+        "DIG_SAFE" : "20261004074", 
+        "WORK_ORDER" : 1596305, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1897, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "4b4328d0-db83-4f25-8455-802cca9049db", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362553000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 19, 
+        "ControlRmNotif" : "06:38:00", 
+        "EstRest" : 1772732280000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66263, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4833169055483, 42.1204755285585
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66263, 
+        "LOCATION" : "Pine Acre Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772715600000, 
+        "MAIN_ID" : 49372, 
+        "DIG_SAFE" : "20261004052", 
+        "WORK_ORDER" : 1596302, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1970, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "fc04b5e6-cd58-43cb-a369-4e4937552d99", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362521000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 8, 
+        "ControlRmNotif" : "06:17:00", 
+        "EstRest" : 1772731800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66264, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5722551645152, 42.0942963820089
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66264, 
+        "LOCATION" : "Smith St", 
+        "DIAMETERMAIN" : 4, 
+        "DATE_" : 1772715600000, 
+        "MAIN_ID" : 46021, 
+        "DIG_SAFE" : "20261004916", 
+        "WORK_ORDER" : 1596353, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1893, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "dc201c87-bff7-42ca-a798-8ef7dc396bd6", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362583000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 5, 
+        "ControlRmNotif" : "12:37:00", 
+        "EstRest" : 1772750220000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66265, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4948855753911, 42.1439265295021
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66265, 
+        "LOCATION" : "Nantasket St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772163000000, 
+        "MAIN_ID" : 48785, 
+        "DIG_SAFE" : "2026-090-2261", 
+        "WORK_ORDER" : 1594129, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1925, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "930a689b-6c8e-44c9-9f3f-4b6c2bc327bb", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362033000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66665, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4668815036763, 42.1560304601076
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66665, 
+        "LOCATION" : "State Street", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772020800000, 
+        "MAIN_ID" : 51532, 
+        "DIG_SAFE" : "2026-090-1445", 
+        "WORK_ORDER" : 1594125, 
+        "MUNICIPALITY" : "LUDLOW", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1961, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "6f22fa62-2363-451a-bc88-09456f0c51b8", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1773163212000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66666, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5702954101763, 42.1222124586839
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66666, 
+        "LOCATION" : "Amber St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772280000000, 
+        "MAIN_ID" : 45463, 
+        "DIG_SAFE" : "2026-090-4126", 
+        "WORK_ORDER" : 1594676, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1927, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "edd0bbac-0fd5-460c-96cb-e48dd598b639", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362160000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 66667, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5833685458572, 42.1302958529561
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 66667, 
+        "LOCATION" : "Roy St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1772452800000, 
+        "MAIN_ID" : 44499, 
+        "DIG_SAFE" : "2026-100-0069", 
+        "WORK_ORDER" : 1593426, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1930, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "7181e481-bb83-41e2-ab45-1a3574ffa185", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774362218000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 67494, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.4642789433227, 42.1606298983351
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 67494, 
+        "LOCATION" : "Lawrence St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1774008000000, 
+        "MAIN_ID" : 51189, 
+        "DIG_SAFE" : "20261210076", 
+        "WORK_ORDER" : 1599280, 
+        "MUNICIPALITY" : "Ludlow", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1950, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "cfba6e96-e26f-4ba0-8528-20840535c2ec", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778698265000, 
+        "WoForemanLast" : "Skura", 
+        "WoForemanFirst" : "Tim", 
+        "WaterOutUnits" : 3, 
+        "ControlRmNotif" : "08:07:00", 
+        "EstRest" : 1774022820000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 67496, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.8366523522824, 42.1168780125993
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 67496, 
+        "LOCATION" : "WPF", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1768280400000, 
+        "MAIN_ID" : 252526, 
+        "DIG_SAFE" : "2026-020-1881", 
+        "WORK_ORDER" : 1587610, 
+        "MUNICIPALITY" : "WESTFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1909, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : null, 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "38ea8409-f6e4-45ee-b155-7f954a45e451", 
+        "WoStatus" : null, 
+        "WoClosed" : null, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 67895, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.560598872425, 42.0917448025398
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 67895, 
+        "LOCATION" : "Kensington Av", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1774612800000, 
+        "MAIN_ID" : 40326, 
+        "DIG_SAFE" : "2026-131- 2195", 
+        "WORK_ORDER" : 1600926, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1916, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "ab410e9b-3c82-428d-854e-3ff1e2fea58d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778783934000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 13, 
+        "ControlRmNotif" : "10:13:00", 
+        "EstRest" : 1774648800000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 67896, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5435840477815, 42.066293835948
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 67896, 
+        "LOCATION" : "Pecousic St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1777377600000, 
+        "MAIN_ID" : 43201, 
+        "DIG_SAFE" : "20261804376", 
+        "WORK_ORDER" : 1609424, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1965, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "81c2c9d6-dfe7-4c2f-b04b-883633cc3ae2", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778505983000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 67897, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5181253483061, 42.1175640075228
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 67897, 
+        "LOCATION" : "Wilbraham Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1773460800000, 
+        "MAIN_ID" : 40752, 
+        "DIG_SAFE" : "20261101009", 
+        "WORK_ORDER" : 1598180, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "b271f11b-30c7-4c9d-a5e7-1ed448effb83", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1774464902000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68297, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5379585583084, 42.0703471372923
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68297, 
+        "LOCATION" : "Dwight Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1774929600000, 
+        "MAIN_ID" : 41266, 
+        "DIG_SAFE" : "20261404355", 
+        "WORK_ORDER" : 1601183, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1928, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "92615b50-f24a-4a73-b3d1-570bd7738cf9", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778784627000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68298, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.535928877276, 42.0915232966652
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68298, 
+        "LOCATION" : "Allen St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1773892800000, 
+        "MAIN_ID" : 41143, 
+        "DIG_SAFE" : "2026-120-7461", 
+        "WORK_ORDER" : 1598679, 
+        "MUNICIPALITY" : "SPRINGFIELD", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "3bbe23ec-56e5-4881-8a38-2dd0697c812d", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778178890000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : null, 
+        "EstRest" : null
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68697, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6161515678519, 42.1213043159866
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68697, 
+        "LOCATION" : "Plainfield St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1778500800000, 
+        "MAIN_ID" : 45338, 
+        "DIG_SAFE" : "2026-200-0219", 
+        "WORK_ORDER" : 1613299, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1891, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1779910230634, 
+        "GlobalID" : "2387a2ab-1f53-463d-8d31-d6e235e19a7b", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1778860675000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 2, 
+        "ControlRmNotif" : "07:07:00", 
+        "EstRest" : 1778519220000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68698, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.6002044995338, 42.1175394291263
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68698, 
+        "LOCATION" : "Lexington St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1779883200000, 
+        "MAIN_ID" : 248594, 
+        "DIG_SAFE" : "20262206091", 
+        "WORK_ORDER" : 1617429, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1910, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1779910230634, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1780593339000, 
+        "GlobalID" : "ea2f4be9-9d20-45bf-a6bd-a975016ec8ab", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1780490785000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 21, 
+        "ControlRmNotif" : "07:33:00", 
+        "EstRest" : 1779910380000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68699, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5351640408851, 42.1253455442168
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68699, 
+        "LOCATION" : "Boston Rd", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1784548800000, 
+        "MAIN_ID" : 48239, 
+        "DIG_SAFE" : "2026-300-0004", 
+        "WORK_ORDER" : 1630404, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1925, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1784527031000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1786976159000, 
+        "GlobalID" : "c836e169-2b56-4384-881e-14496a865956", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1785327488000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 2, 
+        "ControlRmNotif" : "01:30:00", 
+        "EstRest" : 1784552400000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68700, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.535585194784, 42.1254236183957
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68700, 
+        "LOCATION" : "Preston St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1784548800000, 
+        "MAIN_ID" : 39860, 
+        "DIG_SAFE" : "2026-300-0003", 
+        "WORK_ORDER" : 1630405, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1929, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1784527031000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1786132497000, 
+        "GlobalID" : "f5511efe-7ad0-464b-94a8-49bf8bccdf22", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1785329501000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 4, 
+        "ControlRmNotif" : "01:40:00", 
+        "EstRest" : 1784556000000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68701, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5354607925608, 42.1229549986233
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68701, 
+        "LOCATION" : "Embury St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1784548800000, 
+        "MAIN_ID" : 39862, 
+        "DIG_SAFE" : "20263000098", 
+        "WORK_ORDER" : 1630407, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1921, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1784543231000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1786977499000, 
+        "GlobalID" : "725ec047-7253-4bab-ae11-454f04aaea8e", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1785328403000, 
+        "WoForemanLast" : "Vedovelli", 
+        "WoForemanFirst" : "Kenneth", 
+        "WaterOutUnits" : 6, 
+        "ControlRmNotif" : "06:21:00", 
+        "EstRest" : 1784575260000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68702, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5887978791486, 42.114230723486
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68702, 
+        "LOCATION" : "Webster St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1786026926000, 
+        "MAIN_ID" : 178459, 
+        "DIG_SAFE" : "2026-321-1664", 
+        "WORK_ORDER" : 1635217, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1897, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "NONE", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1786028232000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1793040125000, 
+        "GlobalID" : "664c1b0c-40d5-482c-8860-d289ffe88bd3", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1791992496000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 19, 
+        "ControlRmNotif" : "10:38:00", 
+        "EstRest" : 1786050000000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68703, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5896626955788, 42.1022236472872
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68703, 
+        "LOCATION" : "Main St", 
+        "DIAMETERMAIN" : 12, 
+        "DATE_" : 1786676593000, 
+        "MAIN_ID" : 45791, 
+        "DIG_SAFE" : "2026-331-3518", 
+        "WORK_ORDER" : 1636835, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 2000, 
+        "MATERIAL_MAIN" : "DI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1786678032000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1786678032000, 
+        "GlobalID" : "3f45dea5-8924-4579-bd69-58fd8cf40560", 
+        "WoStatus" : "Open", 
+        "WoClosed" : null, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 2, 
+        "ControlRmNotif" : "23:10:00", 
+        "EstRest" : 1786701600000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68704, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5863780923187, 42.101449514411
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68704, 
+        "LOCATION" : "State St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1788959663000, 
+        "MAIN_ID" : 46299, 
+        "DIG_SAFE" : "20261304252", 
+        "WORK_ORDER" : 1643191, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1919, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1788964032000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1788964032000, 
+        "GlobalID" : "23849d41-70a0-4df1-bf0e-f4de0724f3f6", 
+        "WoStatus" : "Open", 
+        "WoClosed" : null, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : 0, 
+        "ControlRmNotif" : "12:34:00", 
+        "EstRest" : 1789387200000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68705, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5938924268982, 42.103383218572
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68705, 
+        "LOCATION" : "Fort St", 
+        "DIAMETERMAIN" : 6, 
+        "DATE_" : 1790182069000, 
+        "MAIN_ID" : 42271, 
+        "DIG_SAFE" : "20263611930", 
+        "WORK_ORDER" : 1646581, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1885, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1790184432000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1790184432000, 
+        "GlobalID" : "bb54a059-bfb4-48bd-814a-e10dadae414b", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1790183345000, 
+        "WoForemanLast" : null, 
+        "WoForemanFirst" : null, 
+        "WaterOutUnits" : 1, 
+        "ControlRmNotif" : "12:45:00", 
+        "EstRest" : 1790179200000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68706, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5381648765363, 42.106630019298
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68706, 
+        "LOCATION" : "Pondview Dr", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1790251977000, 
+        "MAIN_ID" : 46864, 
+        "DIG_SAFE" : "20263911544", 
+        "WORK_ORDER" : 1646796, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1950, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1790252833000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1791290680000, 
+        "GlobalID" : "842c4568-4baf-473d-91a2-b6f8b46b7126", 
+        "WoStatus" : "Closed", 
+        "WoClosed" : 1791202317000, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : 14, 
+        "ControlRmNotif" : "08:15:00", 
+        "EstRest" : 1790280900000
+      }
+    }, 
+    {
+      "type" : "Feature", 
+      "id" : 68707, 
+      "geometry" : 
+      {
+        "type" : "Point", 
+        "coordinates" : [
+          -72.5863780923187, 42.101449514411
+        ]
+      }, 
+      "properties" : {
+        "OBJECTID" : 68707, 
+        "LOCATION" : "State St", 
+        "DIAMETERMAIN" : 8, 
+        "DATE_" : 1790793715000, 
+        "MAIN_ID" : 46299, 
+        "DIG_SAFE" : "", 
+        "WORK_ORDER" : 1648842, 
+        "MUNICIPALITY" : "Springfield", 
+        "ATLAS_PAGE" : null, 
+        "MAIN_INSTALL_YEAR" : 1919, 
+        "MATERIAL_MAIN" : "CI", 
+        "LINING_MAIN" : "CEMENT", 
+        "BREAK_TYPE" : null, 
+        "BREAK_CAUSE" : null, 
+        "SOIL_TYPE" : null, 
+        "MAIN_DEPTH" : null, 
+        "created_user" : "SwscGisDept", 
+        "created_date" : 1790794632000, 
+        "last_edited_user" : "SwscGisDept", 
+        "last_edited_date" : 1790794632000, 
+        "GlobalID" : "dc435e40-5b26-46d1-86ae-4fca4ae5c18d", 
+        "WoStatus" : "Open", 
+        "WoClosed" : null, 
+        "WoForemanLast" : "Stevens", 
+        "WoForemanFirst" : "Brett", 
+        "WaterOutUnits" : null, 
+        "ControlRmNotif" : "14:46:00", 
+        "EstRest" : 1790823600000
+      }
+    }
+  ]
+}
