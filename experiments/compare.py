@@ -35,8 +35,19 @@ def run_all(n_seeds, cfg, workers=None):
     return runs
 
 
+# two-sided 95% Student t critical values by degrees of freedom (standard table); between entries the lower df is used (conservative)
+T95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8: 2.306, 9: 2.262, 10: 2.228, 11: 2.201, 12: 2.179,
+       13: 2.160, 14: 2.145, 15: 2.131, 16: 2.120, 17: 2.110, 18: 2.101, 19: 2.093, 20: 2.086, 21: 2.080, 22: 2.074, 23: 2.069,
+       24: 2.064, 25: 2.060, 26: 2.056, 27: 2.052, 28: 2.048, 29: 2.045, 30: 2.042, 40: 2.021, 60: 2.000, 120: 1.980}
+
+
+def tcrit(df):
+    return T95[max(k for k in T95 if k <= df)] if df >= 1 else float("nan")
+
+
 def ci(v):
-    return 1.96 * st.stdev(v) / len(v) ** 0.5 if len(v) > 1 else float("nan")
+    """95% confidence half-width of the mean, Student t."""
+    return tcrit(len(v) - 1) * st.stdev(v) / len(v) ** 0.5 if len(v) > 1 else float("nan")
 
 
 def report(runs, n, cfg):
@@ -55,6 +66,17 @@ def report(runs, n, cfg):
         print(f"paired total-cost difference {s} - isolated: {st.mean(d) / 1e6:+.2f}M ± {ci(d) / 1e6:.2f}M")
     d = [a["total_cost"] - b["total_cost"] for a, b in zip(runs["coordinated"], runs["pooled"])]
     print(f"paired total-cost difference coordinated - pooled (value of the board alone): {st.mean(d) / 1e6:+.2f}M ± {ci(d) / 1e6:.2f}M")
+    # paired differences by component, coordinated minus each comparator (same seed = same city and failure luck)
+    print("\npaired differences, coordinated minus comparator, mean ± 95% CI (t), seeds where coordinated is lower:")
+    for other in ("isolated", "pooled", "central"):
+        for k, lab in (("spend", "capital $M"), ("emerg", "emergency $M"), ("user_cost", "road user $M"), ("total_cost", "total $M"),
+                       ("dig_savings", "dig savings $M"), ("fail", "failures")):
+            d = [a[k] - b[k] for a, b in zip(runs["coordinated"], runs[other])]
+            sc = 1e6 if k in MONEY else 1
+            print(f"  vs {other:<9} {lab:<16}{st.mean(d) / sc:>+10.2f} ± {ci(d) / sc:<8.2f} lower in {sum(x < 0 for x in d)}/{len(d)}")
+    tot = lambda s, k: st.mean(r[k] for r in runs[s]) / st.mean(r["total_cost"] for r in runs[s])
+    print("\nshare of total cost (coordinated): " + ", ".join(f"{lab} {100 * tot('coordinated', k):.1f}%" for k, lab in
+                                                            (("spend", "capital"), ("emerg", "emergency repairs"), ("user_cost", "road user"))))
 
 
 def main():

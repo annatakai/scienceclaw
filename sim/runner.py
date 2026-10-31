@@ -64,7 +64,7 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
     else:
         pipe, road, budget = PipeAgent(cfg), RoadAgent(cfg), BudgetAgent(cfg)
     cum = dict(exp_fail=0.0, fail=0, weighted_fail=0.0, openings=0, spend=0.0, emerg=0.0, dig_savings=0.0,
-               double_digs=0, user_cost=0.0, interest=0.0, net_spend=0.0, shortfall=0.0)
+               double_digs=0, user_cost=0.0, interest=0.0, net_spend=0.0, shortfall=0.0, proposals=0, funded=0)
     years, cip_props, cip_decs, reserve_rows = [], [], [], []
     balance = 0.0
     state0 = snapshot(city, cfg["start_year"]) if record else None
@@ -116,6 +116,8 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
         if cip:
             cip_props += [dict(p, length_ft=(p["pipe"] or p["road"])["length_ft"], pipe=None, road=None) for p in props]
             cip_decs += decisions
+        cum["proposals"] += len(props)
+        cum["funded"] += sum(1 for d in decisions if d["funded"])
         res = city.apply(decisions, year)
         exp = city.expected_failures(year)
         fails = city.simulate_failures(year)
