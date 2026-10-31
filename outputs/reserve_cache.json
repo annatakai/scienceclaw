@@ -133,5 +133,140 @@
   "capped": true,
   "pilot_seeds": 5,
   "yearly_values": 50
+ },
+ "760a43684debea4f": {
+  "p95_yearly_emergency": 833342,
+  "annual_budget": 767437,
+  "uncapped_share": 1.0859,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "85aaf2b89e5feb56": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "ee9ecf6f9acc60f3": {
+  "p95_yearly_emergency": 463320,
+  "annual_budget": 767437,
+  "uncapped_share": 0.6037,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 10
+ },
+ "80ad4623702e4896": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "4ae00ba3dac3b4e2": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "f4c674bc440cb763": {
+  "p95_yearly_emergency": 1280920,
+  "annual_budget": 2032155,
+  "uncapped_share": 0.6303,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "50c67fa567be839a": {
+  "p95_yearly_emergency": 3572709,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.7581,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "cf2351148b616f3f": {
+  "p95_yearly_emergency": 2042178,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.0049,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "400e958bc2ba671a": {
+  "p95_yearly_emergency": 2845794,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.4004,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "a4fc930c94d9e634": {
+  "p95_yearly_emergency": 1422897,
+  "annual_budget": 2032155,
+  "uncapped_share": 0.7002,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "653b822cebc23dab": {
+  "p95_yearly_emergency": 4296934,
+  "annual_budget": 2032155,
+  "uncapped_share": 2.1145,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "5761aace5c13c26d": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.1,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "6504cd0dad847213": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "7500eb5c639d13de": {
+  "p95_yearly_emergency": 2382367,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.1723,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "eb867183aadc9a19": {
+  "p95_yearly_emergency": 21986935,
+  "annual_budget": 40280789,
+  "uncapped_share": 0.5458,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
  }
 }

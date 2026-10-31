@@ -5,7 +5,7 @@ CFG = dict(
     # --- network scale (all-Boston): per-mile assumptions; sim/city.py turns them into totals for the loaded network ---
     # The original 260-segment demo (about 25 miles) used $1.2M/yr and 8 breaks/yr; these are the same rates per mile.
     annual_budget_per_mile=48_000,    # ASSUMPTION: capital budget per mile of street per year (about $40M/yr for 839 miles)
-    breaks_per_mile_year=0.30,        # ASSUMPTION: expected water-main breaks per mile per year at the start (n_target = this x miles)
+    breaks_per_mile_year=round(35 / 1018, 4),  # CALIBRATED: BWSC reports just over 35 water pipe failures a year (BWSC CIP, via docs/budget_agent_reference.md) over about 1,018 linear miles of pipe (bwsc.org water system page, read 2026-10-31); n_target = this x simulated street miles
     proposal_fraction=0.03,           # ASSUMPTION: each agent proposes work on at most this share of segments per year
     proposal_floor=15, proposal_cap=600,  # ASSUMPTION: bounds on the menu size (floor for small subsets, cap for run time)
     central_proposal_fraction=0.20,   # ASSUMPTION: the central planner scans this share of segments (full data, but bounded for run time)

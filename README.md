@@ -41,19 +41,14 @@ Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file,
 - coordinated: agents negotiate on the board, pooled budget (the proposal)
 - central: one planner with full data. A heuristic benchmark, NOT yet a proven upper bound.
 
-## Results (simulated; one config, see `outputs/results/*.config.json` for every value used)
-`make compare`: 30 seeds, paired by seed, 95% CI by Student t, compact 800-segment area (42 miles). Total cost = capital + emergency repairs + road user cost, ten years.
-- total $M: isolated 154.9, pooled 142.3, coordinated 141.5, central (heuristic) 135.6
-- coordinated minus isolated: -13.4 (+-0.6) in 30 of 30 seeds; coordinated minus pooled (the board alone): -0.76 (+-0.27), lower in 27 of 30
-- dig savings from shared digs: $0.22M (+-0.05) per run; the central heuristic beats coordinated by $5.9M (+-0.5), so we make no claim against a central planner
-- Emergency repairs are about 48% of total cost and road user cost about 47%; capital is about 6%. Failure counts are about equal across strategies,
-  so the gain is road user cost (more work clears the hurdle), not fewer failures. The capital budget does not bind (isolated spends under a fifth of it).
-- The zero-benefit control (`experiments/control_no_benefit.py`) removes the dig savings but NOT the coordinated-pooled gap: the board's join requests
-  roughly double the proposals each year, and with a slack budget more work clears the hurdle. Treat the board's value as menu size plus shared digs, not shared digs alone.
-- Baselines (`make baselines`, 30 seeds, same area), total $M: age-first 171.3, risk-first 152.2, isolated 154.9, single agent 142.3, coordinated 141.5, central 20%-scan heuristic 135.6, central full menu greedy 129.8, central full menu exact knapsack 121.7.
-  Coordinated beats age-first, risk-first and isolated in 30 of 30 seeds, and loses to every central variant: with all the data a planner does better, so the case for agents is private data and scale, not lower cost.
-- Sensitivity (`make sensitivity`, 10 seeds per setting, tornado in `outputs/results/tornado.png`): coordinated is cheaper than isolated in all 26 tested settings; the size depends mostly on road user cost (u0) and menu size. The board alone is not distinguishable from zero when u0 or the break rate is low.
-- The old 30-seed figures in earlier versions of this file described a 260-segment demo and the pre-formula model; they are gone.
+## Results (simulated; break rate calibrated to BWSC: 35 failures / 1,018 miles = 0.0344 per mile per year)
+`make compare`: 30 seeds, paired by seed, 95% CI by Student t, compact 800-segment area. Total cost $M: isolated 94.4, pooled 81.8, coordinated 81.4, central heuristic 75.4.
+- coordinated minus isolated: -12.95 (+-0.47), lower in 30 of 30; the board alone: -0.32 (+-0.17), lower in 21 of 30.
+- **No pipe work clears the hurdle at the calibrated break rate, so there are no shared digs: dig savings are $0 in every seed** (the full-network plan is all road work). The earlier uncalibrated rate (0.30) gave $0.22M.
+- Baselines (`make baselines`): age-first 112.7, risk-first 94.5, single agent 81.8, central full menu greedy 69.5, exact knapsack benchmark 61.1: a planner with all the data beats the agents.
+- Sensitivity (`make sensitivity`): coordinated cheaper than isolated in 25 of 26 settings; depends mainly on road user cost u0 (unsourced) and menu size.
+- Real break records (Springfield MA, no inventory) by age and material: `python3 -m experiments.break_cohorts`.
+See REPORT.md for the full account and what could not be verified.
 
 ## CIP report (`make cip`)
 `python3 -m cip.build` runs isolated and coordinated on one seed and writes `outputs/cip/`: `report.json`, `decision_list.csv`, `funding_table.csv`,

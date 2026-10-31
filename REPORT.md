@@ -2,6 +2,8 @@
 
 ALL ASSET DATA IS SIMULATED. Street geometry, names, lengths, classes and neighborhoods are real (Analyze Boston SAM, MassDOT Road Inventory; `data/SOURCES.md`). Every pipe, pavement, break and cost value is simulated. Results are model outputs under stated assumptions, not predictions about real Boston streets. Per-item status is in [AUDIT.md](AUDIT.md); every number shown in the demo or report is in [docs/claims_ledger.csv](docs/claims_ledger.csv).
 
+> **Update after calibration (read this first).** The break rate is now Calibrated to BWSC (35 failures a year over about 1,018 miles of pipe = 0.0344 per mile, versus the earlier ASSUMPTION of 0.30). That removes the shared-dig result: with the calibrated rate **no pipe work is funded at all** (the full-network plan is 1,404 repaves and 6 preservations, 0 replacements or relines), there are **0 shared digs and $0 dig savings in every one of the 30 seeds**, and the "coordination" advantage is entirely road work. Sections 3 to 5 below were rewritten with the new numbers; the older numbers (break rate 0.30, dig savings $0.22M) are kept only where marked "earlier".
+
 ## 1. What changed
 
 - **Return formula (`sim/costs.py`)** now implements `docs/return_formula.md`: wait-a-year option, preserve and reconstruct road options, bundle cost (one dig plus both works) with a marginal check on each add-on, choice by NPV, tier 1 first up to a cap, ranking by return only when the budget binds, `return_lo` and `return_hi`, and a "needs engineering review" flag. All dollar arithmetic is in this file. A test reproduces the section 8 example (2.88, 1.04, 2.74) using the document's benefit figures.
@@ -15,75 +17,74 @@ ALL ASSET DATA IS SIMULATED. Street geometry, names, lengths, classes and neighb
 
 ## 2. Which numbers are Sourced, Calibrated, or ASSUMPTION
 
-**Calibrated: none.** Nothing is fit to real data yet.
+**Calibrated (one number):** break rate 0.0344 per mile per year = 35 failures a year / 1,018 miles of pipe.
+- 1,018 miles: bwsc.org water system page, "approximately 1,018 linear miles of pipe" (4 to 48 inches), read 2026-10-31 by fetching the page. The page has no date in its body.
+- 35 failures a year: "just over 35" from the BWSC CIP, as quoted in `docs/budget_agent_reference.md`; I did not re-read the CIP.
+- Caveats: 35 is an average over past years; BWSC's miles of pipe are applied to our 839 miles of city-owned street (one mile of main per mile of street assumed); one count, not a fitted model. This is "calibrated" in the evidence-plan sense (divide the reported failures by miles of main), not a statistical fit.
 
-**Sourced** (as recorded in `docs/assumptions_register.md`; I did not re-read the BWSC or MassDOT originals):
-- Street network: Analyze Boston SAM and MassDOT Road Inventory (downloaded 2026-10-31, `data/build_info.json`).
-- Cost inflation 7% a year: MassDOT FY27-31 CIP p.58 (asphalt +40% over five years).
-- Funding mix 29.3 / 30.3 / 21.1 / 19.3 percent: BWSC 2024-2026 CIP Table 11 (p.19).
-- Interest-free loan, 10 years: BWSC CIP p.18.
-- Rate revenue pays for renewal and replacement: BWSC CIP p.17 (relining added by decision).
-- Net-cost factors 0.811, 0.800, 1.0: computed from the loan terms at a 4% discount rate; tested.
+**Sourced** (as recorded in `docs/assumptions_register.md`; originals not re-read): street network (Analyze Boston SAM, MassDOT Road Inventory); cost inflation 7% (MassDOT FY27-31 CIP p.58); funding mix 29.3 / 30.3 / 21.1 / 19.3 percent (BWSC CIP Table 11); interest-free loan 10 years (BWSC CIP p.18); rate revenue for renewal and replacement (BWSC CIP p.17, relining added by decision); net-cost factors 0.811 / 0.800 / 1.0 (computed, tested).
 
-**Simulated assumption, everything else**, including: trench cost $50,000 per opening, dig penalty parameter `lam` 0.3 (range 0.06 to 0.6 quoted by the team from the literature, not verified), cycle `L` 15 years, pipe and repave cost per foot, reline share, emergency multiplier 3, worst-case social cost $500,000, road user cost `u0` $0.30 per vehicle-mile, discount rate 4%, break rate 0.30 per mile per year, budget $48,000 per mile, return hurdle 1.0, urgency thresholds, treatment lives, the preserve and reconstruct parameters, pipe PoF bounds (x0.85, x1.15 + 5), road benefit band (±15%), state revolving loan rate (2%; the 20 to 30 year term is sourced) and bond terms (4%, 20 years), the reserve cap (0.25), and the pipe and road simulation itself (install years, materials, breaks, pavement age, traffic).
+**Checked but left ASSUMPTION (could not verify):**
+- Road user cost `u0` ($0.30 per vehicle-mile at worst condition): the National Academies report "Estimating the Effects of Pavement Condition on Vehicle Operating Costs" (2012) exists, but the chapter I could read had no per-mile figures and the other chapters were not fetched. A web search summary quoted per-driver annual costs from an advocacy group (TRIP); I did not use it. `u0` is the parameter the headline depends on most and remains the top item to source.
+- Trench cost, dig penalty `lam`: the City of Davis report (403 Forbidden) and the Nashville appendix (404) could not be fetched. Search summaries mention life reductions from utility cuts of about 6% to 64% in different studies, which would bracket the tested `lam` range of 0.06 to 0.6, but I did not read any of them, so `lam` stays ASSUMPTION with that tested range.
+- Discount rate: the USDOT benefit-cost guidance returned 403; no MassDOT or City of Boston rate was found. Stays 4% with 3 to 7% tested.
+- Emergency cost per failure, budget per mile: cross-check only. BWSC's 2026 repair and maintenance ($16.3M) plus overtime ($2.65M) lines divided by 35 give about $541,000 per failure as an upper bound (those lines cover far more than main breaks); the model's all-in failure cost is about $527,000 (documented in the register; not re-read). BWSC's water program ($99.3M over three years, from the docs) over 1,018 miles is about $32,500 per mile per year, against the model's $48,000 for pipes and roads together. BWSC's page states a minimum of 8 miles of pipe in each year's capital program (0.79% of the system); the calibrated model funds none (see section 5). Neither figure changed a model value.
 
-## 3. Results: 30 seeds with confidence intervals
+**Simulated assumption, everything else:** trench cost $50,000, `lam` 0.3, cycle 15 years, pipe and repave cost per foot, reline share, emergency multiplier 3, worst-case social cost $500,000, `u0`, discount rate 4%, budget $48,000 per mile, return hurdle 1.0, urgency thresholds, treatment lives, preserve and reconstruct parameters, PoF bounds, road benefit band, the state revolving loan rate (2%) and bond terms, the reserve cap (0.25), and the pipe and road simulation itself.
 
-`make compare`: 30 seeds, paired by seed (same city and failure luck across strategies), compact 800-segment area (42 miles), Student t 95% intervals. Total cost = capital + emergency repairs + road user cost over ten years, $M.
+## 3. Results: 30 seeds with confidence intervals (calibrated break rate)
+
+`make compare`: 30 seeds, paired by seed, compact 800-segment area (42 miles), Student t 95% intervals. Total cost = capital + emergency repairs + road user cost over ten years, $M.
 
 | Strategy | Total | Capital | Emergency | Road user |
 |---|---|---|---|---|
-| isolated | 154.89 ±2.86 | 2.74 ±0.03 | 67.79 ±2.27 | 84.36 ±1.93 |
-| pooled | 142.27 ±2.76 | 7.11 ±0.04 | 67.79 ±2.27 | 67.38 ±1.70 |
-| coordinated | 141.51 ±2.74 | 7.91 ±0.14 | 67.59 ±2.30 | 66.01 ±1.69 |
-| central (20% scan heuristic) | 135.59 ±2.69 | 7.52 ±0.05 | 67.71 ±2.28 | 60.36 ±1.68 |
+| isolated | 94.38 ±1.66 | 2.74 ±0.03 | 7.28 ±0.73 | 84.36 ±1.93 |
+| pooled | 81.76 ±1.49 | 7.11 ±0.04 | 7.28 ±0.73 | 67.38 ±1.70 |
+| coordinated | 81.44 ±1.50 | 7.58 ±0.10 | 7.28 ±0.73 | 66.58 ±1.71 |
+| central (20% scan heuristic) | 75.42 ±1.47 | 7.37 ±0.03 | 7.28 ±0.73 | 60.77 ±1.66 |
 
-Paired differences, coordinated minus comparator:
-- vs isolated: total −13.38 ±0.59, lower in 30 of 30 seeds; road user −18.35 ±0.63 (30 of 30); capital +5.16 ±0.14; emergency −0.20 ±0.11; failures −0.43 ±0.25 (lower in 10 of 30).
-- vs pooled (the board alone): total −0.76 ±0.27, lower in 27 of 30; dig savings +0.22 ±0.05 per run.
-- vs central heuristic: total +5.92 ±0.49, never lower.
-- Shares of total cost (coordinated): capital 5.6%, emergency repairs 47.8%, road user cost 46.6%.
+Paired, coordinated minus comparator:
+- vs isolated: total −12.95 ±0.47 (lower in 30 of 30); road user −17.78 ±0.51; capital +4.84 ±0.10; emergency and failures identical (0.00).
+- vs pooled (the board alone): total −0.32 ±0.17, lower in 21 of 30; road user −0.80 ±0.25 (28 of 30).
+- Dig savings: **$0.00M in all strategies and all 30 seeds.**
+- Shares of coordinated total cost: capital 9.3%, emergency repairs 8.9%, road user 81.8%.
 
-`make baselines` (same 30 seeds and area), total $M: age-first 171.3, risk-first 152.2, isolated 154.9, single agent 142.3, pooled 142.3, coordinated 141.5, central 20% heuristic 135.6, central full menu greedy 129.8, central full menu exact knapsack 121.7. Coordinated minus age-first −29.8 ±1.0, minus risk-first −10.7 ±0.7 (both 30 of 30); coordinated minus the exact central benchmark +19.9 ±0.8 (never lower).
+`make baselines` (same seeds and area), total $M: age-first 112.7, isolated 94.4, risk-first 94.5, pooled 81.8, single agent 81.8, coordinated 81.4, central heuristic 75.4, central full menu greedy 69.5, central full menu exact knapsack 61.1. Coordinated minus age-first −31.3 ±1.0 and minus risk-first −13.0 ±0.4 (30 of 30 each); minus the exact central benchmark +20.3 ±0.8 (never lower).
 
-Not run: 30 seeds on the full network (`make compare-full`, about an hour) and the full-menu central benchmark on the full network. One full-network seed (42) feeds `make cip` and the demo: coordinated total cost $2,786M against $3,025M isolated, and 1,570 funded projects, 1,453 street openings, 117 shared digs, $6.9M dig savings, $163.8M funded.
+Full network, seed 42 (`make cip`, one seed, no interval): coordinated total $1,612M against $1,844M isolated; 1,410 funded projects ($155.0M), 1,410 openings, 0 shared digs; 1,404 repaves, 6 preservations, no pipe work. Isolated funds 526 projects ($60.2M).
+
+Not run: 30 seeds on the full network (`make compare-full`) and the full-menu benchmark on the full network.
+
+**Earlier results (break rate 0.30, uncalibrated, kept for comparison only):** coordinated minus isolated −13.4M, board alone −0.76M, dig savings $0.22M per run, emergency repairs 48% of cost. They differ because that rate was about nine times BWSC's.
 
 ## 4. Where coordination wins and where it does not
 
-**Wins.**
-- Against isolated departments, age-first and risk-first: lower total cost in 30 of 30 seeds, and the mean difference is negative in all 26 sensitivity settings.
-- Dig savings are real but small: $0.22M of a $141M total at base. They vanish exactly when trench cost and penalty are set to zero.
+**Wins.** Against isolated departments, age-first and risk-first: lower total cost in 30 of 30 seeds. The advantage comes from funding more road work (road user cost −$17.8M against isolated): the isolated 60/40 split with no pooling leaves most of the budget unspent (capital $2.7M of about $15M available).
 
 **Does not win, or not for the claimed reason.**
-- **The board alone** (coordinated minus pooled) is $0.76M (about 0.5%). In the sensitivity sweep it is distinguishable from zero in 19 of 26 settings, and not when road user cost is 0.1, the break rate is 0.1 per mile, the social cost is $100,000, or in any corner with road user cost 0.1.
-- **Zero-benefit control fails.** With trench and penalty at zero, dig savings are exactly $0 but coordinated is still $1.43M ±0.53M cheaper than pooled, more than with the mechanism on. Cause: the board's join requests roughly double the proposals each year (about 860 against 480), and the capital budget does not bind, so more work clears the hurdle. This is a menu-size effect. A pooled run with a 3x larger menu costs less than coordinated at the normal menu. Treat the board's value as menu size plus shared digs, not shared digs alone.
-- **Central planners beat coordinated at every scale tried.** The exact full-menu benchmark is $19.9M (14%) cheaper; about $11.7M of that is menu size and about $8.1M is optimisation. The case for agents is private data and scalability across owners, not lower cost than a planner with all the data.
-- **A single agent equals pooled** (menus are small, so picks rarely overlap), so negotiation, not a single point of view, is what produces any shared digs.
-- **Most of the saving is road user cost, not fewer failures.** Failure counts differ by under 0.5 per run across strategies. The headline therefore depends on `u0`: the difference against isolated runs from −1.5M at `u0` 0.10 to −32.4M at 0.60.
+- **There are no shared digs.** With the calibrated break rate no pipe job clears the return hurdle, so there is nothing to bundle: 0 shared digs and $0 dig savings in all 30 seeds, on the full network as well. The project's premise (open a street once for pipe and road work) is not supported by this model at BWSC's failure rate. It re-appears only at much higher break rates (the earlier 0.10 to 0.60 sweep gave $0.01M to $2.97M).
+- **The board alone** is $0.32M ±0.17M (0.4%), lower in 21 of 30 seeds, and it comes from the board's join requests roughly doubling the proposals each year (about 880 against 480), not from digs. The zero-benefit control confirms it: with trench and penalty at zero the gap does not vanish (−1.07M ±0.50M, 10 seeds), because dig savings were already zero.
+- **Central planners beat coordinated at every scale tried:** the exact full-menu benchmark is $20.3M (25%) cheaper; about $11.9M of that is menu size and about $8.4M is optimisation. The case for agents is private data and scale, not lower cost.
+- **A single agent equals pooled.**
+- **The result is road work.** Failures and emergency cost are identical across strategies (same city and failure luck), so total cost differences are capital and road user cost only.
 
-**Sensitivity ranges** (10 paired seeds per setting): the difference against isolated swings most with `u0` (−1.5M to −32.4M) and menu size (−6.6M to −17.7M), then break rate (−13.3M to −15.6M), trench cost (−12.4M to −10.4M), emergency multiplier, social cost and reserve cap (each within about 1.5M of base), and not at all with discount rate (3% to 7%) or `lam`. `lam` has no visible effect because the repaving penalty averages $0.6k to $5.8k per pipe replacement against a $50k trench. Dig savings run from $0.01M to $2.97M, driven by the break rate, emergency multiplier and social cost, and move little with trench cost (0.17M to 0.28M over a 4x range). With low `u0`, a small menu and a low break rate together, coordinated is $0.16M cheaper than isolated with an interval that includes zero.
+**Sensitivity** (`make sensitivity`, 10 paired seeds per setting, calibrated base, break rate swept 0.017 to 0.069): the mean of coordinated minus isolated is negative in 25 of 26 settings. It is +$0.69M ±0.34M (coordination worse) with road user cost 0.1, the small menu and trench cost $100,000 together. The headline depends on `u0` (−1.4M at 0.10 to −31.3M at 0.60), menu size (−6.5M to −16.5M), trench cost (−12.2M to −9.5M) and the reserve cap (−12.4M to −13.2M). It does not move with break rate, social cost, emergency multiplier, `lam` or discount rate within the tested ranges. The board alone is distinguishable from zero in only 10 of 26 settings.
 
 ## 5. What could not be verified, and known weaknesses
 
-- **Nothing is calibrated.** The break rate of 0.30 per mile gives about 252 breaks a year over 839 street miles, against BWSC's "just over 35 failures a year" (about 7 times higher). I did not look up BWSC miles of main, and street miles are not main miles. The average failure costs about $527,000 in the model; no repair-cost, bid-tab, user-cost or discount-rate source has been found and checked.
-- **Sourced entries rest on the team's register.** I did not re-read the BWSC CIP, the BWSC 2026 budget or the MassDOT CIP.
-- **Section 8 benefits:** `return_example.py` is not in the repo, so the step from PoF trajectories to dollars is tested for structure, not against the example's trajectories.
-- **Reserve:** the 95th percentile of yearly emergency cost is 4.4 times the whole capital budget (full network), so the share is the cap I set (0.25), and the reserve covers about 9% of emergency repairs. This is a consequence of the uncalibrated break rate and failure cost, and it is why item 13 (is emergency share realistic) cannot be closed.
-- **Emergency repairs are about half of total cost** and rest on uncalibrated numbers. The conclusions above depend on them.
-- **Roads:** 90% of funded projects are tier 1 Urgent because simulated pavement deteriorates to "failed" quickly, so tier colours carry little information until roads are calibrated.
-- **Slack budget:** under the agents' menus, capital is hurdle-limited, not money-limited. The headline result holds in that regime; with full menus the budget binds.
-- **Backtest not done.** `data/processed_water_breaks.csv` has 114 break records (97 Springfield, 15 Ludlow, 2 others; 2025-01 to 2026-09) and no main inventory, so a lift curve against age-only ranking cannot be built from it. A dataset with an inventory and break dates is still needed; licenses and fields were not checked. The pipe model is therefore unvalidated against real failures.
-- **Wait a year** defers only replacement (pipe) and repaving (road), and its benefit horizon is capped at the proposal's arrays, so waiting loses its last year.
-- **Source order:** "cheapest" is by present value of repayments (state revolving loan before interest-free loan), which differs from the order listed in `interfaces.md`. Debt service is reported but not taken out of the capital budget.
-- **Sensitivity** uses 10 seeds, not 30, per setting; the pipe failure-model weights (the team's `scoring.py`) were not swept.
-- **Claude-driven agents** are committed and tested with a mock model only. No live run, no results, no cost figure.
-- **The PDF** is 74 pages on the full network because every funded project is listed; only its first page was inspected.
-- **Scope:** all 30-seed results are on an 800-segment area, not the whole city.
+- **Only the break rate is calibrated**, and only by one division of two figures, one of them quoted second-hand (see section 2). Everything else that drives results (`u0`, trench cost, penalty, failure cost, budget per mile, discount rate) is still ASSUMPTION; I tried to source them and could not read a primary document (list in section 2).
+- **The calibrated model conflicts with BWSC practice:** BWSC schedules at least 8 miles of pipe renewal a year; the model funds none, because pipe benefit (the removed loss from 29 breaks a year over the whole simulated city at about $500,000 each) never reaches the cost of work plus a $50,000 trench at the 1.0 hurdle. Either the model undervalues pipe renewal (BWSC also renews for water quality, capacity, regulatory and risk reasons the model ignores) or the cost assumptions are too high. This is the most important open modelling issue; it cannot be resolved without real unit costs.
+- **Reserve:** the 95th percentile of yearly emergency cost is now about 0.55 of the capital budget (full network; 1.17 on the 800-segment area), still above my 0.25 cap, so the share is the cap. The reserve covers the typical year but not the 95th percentile year (shortfalls in some years).
+- **Roads:** 97% of funded projects are tier 1 Urgent because simulated pavement deteriorates to failed quickly; tier colours carry little information. Road user cost is 82% of total cost and rests on the unverified `u0`.
+- **Backtest not done.** `data/processed_water_breaks.csv` has 114 break records (97 Springfield, 15 Ludlow, 2 others; 2025-01 to 2026-09) and no main inventory, so there is no break rate, lift curve or calibration plot. What it can show is on its own page, `outputs/results/break_cohorts.html` (real data, not Boston): 108 of 114 breaks are on cast iron; 85 of 113 with a usable install year occurred on mains aged 50 to 99; 75 of 114 occurred in January and February. A dataset with an inventory is still needed.
+- **Section 8 benefits:** `return_example.py` is not in the repo, so the PoF-to-dollar step is tested for structure only.
+- **Smaller points:** wait-a-year defers only replacement and repaving; "cheapest source" is by present value (state revolving loan before interest-free); debt service is reported but not deducted from the budget; sensitivity uses 10 seeds; the pipe rubric weights (team's `scoring.py`) were not swept; Claude-driven agents have only mock-model tests; the PDF is long (every funded project) and only page 1 was inspected; 30-seed results are on an 800-segment area.
 
 ## 6. How to reproduce
 
 ```
 make test            # 55 tests
+python3 -m experiments.break_cohorts   # real break records by age and material
 make cip             # outputs/cip/ (full network, seed 42)
 make demo            # demo/site/, serves http://localhost:8000
 make compare         # 30 seeds, 800-segment area

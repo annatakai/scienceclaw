@@ -24,7 +24,7 @@ STRATS = ["isolated", "pooled", "coordinated"]
 PARAMS = {
     "dig_fixed": (25_000, 100_000, "trench cost per opening, half and double the $50k assumption"),
     "lam": (0.06, 0.6, "pavement life lost per cut, the literature range quoted in docs/assumptions_register.md"),
-    "breaks_per_mile_year": (0.10, 0.60, "breaks per mile per year, one third and double the 0.30 assumption"),
+    "breaks_per_mile_year": (0.0172, 0.0688, "breaks per mile per year, half and double the calibrated 35 / 1,018 = 0.0344"),
     "c_social_max": (100_000, 1_000_000, "worst-case social cost of a failure, one fifth and double"),
     "emergency_multiplier": (1.5, 6.0, "emergency repair multiple, half and double"),
     "u0": (0.10, 0.60, "road user cost per vehicle-mile at worst condition, one third and double"),

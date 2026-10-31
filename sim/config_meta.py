@@ -10,8 +10,8 @@ REG = "docs/assumptions_register.md"
 NT = "not yet tested"
 
 META = {
-    "annual_budget_per_mile": (A, ASSUMPTION, D, NT, "Capital budget per mile of street per year."),
-    "breaks_per_mile_year": (A, ASSUMPTION, D, NT, "Expected water-main breaks per mile per year (N_target = this x miles). BWSC reports just over 35 failures a year (docs/budget_agent_reference.md); not yet divided by BWSC miles of main."),
+    "annual_budget_per_mile": (A, "ASSUMPTION. Check only: BWSC water program $99.3M over 3 years (docs/budget_agent_reference.md) over 1,018 miles is about $32.5k per mile per year for water alone; BWSC schedules a minimum of 8 miles of pipe a year (bwsc.org water system page, read 2026-10-31). No source for the road share", D, NT, "Capital budget per mile of street per year (pipe and road together)."),
+    "breaks_per_mile_year": (C, "35 failures a year / 1,018 miles of pipe. Failures: BWSC CIP, 'just over 35 per year', as quoted in docs/budget_agent_reference.md (original not re-read). Miles: https://www.bwsc.org/environment-education/water-sewer-and-stormwater/water-system, 'approximately 1,018 linear miles of pipe', read 2026-10-31", D, "0.017 to 0.069 (half and double)", "Breaks per mile per year (N_target = this x miles). Caveats: BWSC's 35 is an average over past years; BWSC miles of pipe are not our simulated street miles (839 city-owned miles), assumed here to be one mile of main per street mile."),
     "proposal_fraction": (A, ASSUMPTION, D, NT, "Share of segments each agent may propose on."),
     "central_proposal_fraction": (A, ASSUMPTION, D, NT, "Share of segments the central planner scans."),
     "reserve_max_fraction": (A, ASSUMPTION, D, "0.10 to 0.25 per docs/interfaces.md", "Cap on the simulated reserve as a share of the budget."),
