@@ -1,6 +1,8 @@
-"""Synthetic city (generated street grid over Boston coordinates) and everything that changes it.
+"""Synthetic city on real Boston main streets (OSM geometry) and everything that changes it.
 ALL ASSET DATA IS SIMULATED."""
+import json
 import math
+import pathlib
 import random
 
 from agents.pipe_agent import adapter
@@ -13,18 +15,10 @@ class City:
     def __init__(self, cfg):
         self.cfg = cfg
         rng = random.Random(f"city-{cfg['seed']}")
-        n = cfg["grid"]
+        # REAL street geometry (OpenStreetMap, cached by sim/fetch_streets.py); everything below is simulated
+        streets = json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "boston_streets.json").read_text())
         self.segs = []
-        mid = n // 2
-
-        def node(i, j):
-            return (cfg["origin_lat"] + i * cfg["dlat"], cfg["origin_lon"] + j * cfg["dlon"])
-
-        def add(i1, j1, i2, j2, street, line):
-            a, b = node(i1, j1), node(i2, j2)
-            dy = (b[0] - a[0]) * 111_320
-            dx = (b[1] - a[1]) * 111_320 * math.cos(math.radians(a[0]))
-            length_ft = math.hypot(dx, dy) * 3.28084 * rng.uniform(0.95, 1.05)
+        for st in streets["segments"]:
             yr = rng.randint(1895, 2008)
             if yr < 1950:
                 mat = "cast_iron"
@@ -35,25 +29,19 @@ class City:
             age = 2026 - yr
             lam = max(0, (age - 30) / 100) * (1.6 if mat == "cast_iron" else 0.6)
             breaks = sorted(rng.randint(2006, 2025) for _ in range(min(3, _poisson(rng, lam))))
-            cls = "arterial" if line == mid else ("collector" if line in (mid - 2, mid + 2) else "local")
+            cls, adt_band = cfg["road_class_map"][st["highway"]]
             adt = {"arterial": rng.randint(10_000, 16_000), "collector": rng.randint(4_000, 8_000),
-                   "local": rng.randint(300, 1_500)}[cls]
-            diam = rng.choice([6, 8, 8, 12, 12, 16]) if cls != "local" else rng.choice([6, 8, 8, 12])
+                   "local": rng.randint(300, 1_500)}[adt_band]
+            diam = rng.choice([6, 8, 8, 12, 12, 16]) if adt_band != "local" else rng.choice([6, 8, 8, 12])
             self.segs.append(dict(
-                segment_id=f"S{len(self.segs):03d}", street=street, length_ft=length_ft, coords=[a, b],
+                segment_id=st["id"], street=st["street"], length_ft=st["length_ft"], coords=st["coords"],
+                highway=st["highway"],
                 pipe=dict(install_year=yr, material=mat, diameter_in=diam, breaks=breaks, soil=round(rng.random(), 2)),
                 road=dict(last_paved=rng.randint(1998, 2025), road_class=cls, adt=adt),
                 critical=rng.random() < 0.06,
                 customers=int(diam * rng.uniform(15, 45)),
                 exposure=rng.choices(["low", "moderate", "high"], weights=[4, 3, 2])[0],
             ))
-
-        for i in range(n):
-            for j in range(n - 1):
-                add(i, j, i, j + 1, f"Row {i + 1} St", i)
-        for j in range(n):
-            for i in range(n - 1):
-                add(i, j, i + 1, j, f"Col {j + 1} Ave", j)
         self.by_id = {s["segment_id"]: s for s in self.segs}
         # calibration scale C so expected city-wide breaks at the start equal n_target (return_formula.md 2.1)
         tot = sum(adapter.pof(self._pipe_rec(s), cfg["start_year"], 0, None, cfg) / 100 for s in self.segs)

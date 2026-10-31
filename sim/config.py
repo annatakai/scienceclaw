@@ -1,7 +1,7 @@
 """All simulation numbers live here. Every value is sourced or tagged ASSUMPTION. ALL DATA IS SIMULATED."""
 
 CFG = dict(
-    seed=42, start_year=2026, horizon_years=10, grid=9,
+    seed=42, start_year=2026, horizon_years=10,
     annual_capital_budget=1_200_000,  # ASSUMPTION (demo value; 600k is too small to move failures)
     reserve_fraction=0.15,            # ASSUMPTION
     urgency_full_prob=0.30,           # ASSUMPTION
@@ -25,7 +25,9 @@ CFG = dict(
     lam=0.3, L=15,                    # ASSUMPTION: pavement life lost per cut, resurfacing cycle (years)
     H_replace=10, H_reline=7, rho=0.6,  # ASSUMPTION
     rate_revenue_share=0.5,           # ASSUMPTION (BWSC water program: about 30% rate revenue)
-    origin_lat=42.3390, origin_lon=-71.0780, dlat=0.0012, dlon=0.0016,  # South End-ish, Boston
+    # OSM highway tag -> (road_class, traffic band). Tertiary is a "local-ish collector": collector class, local traffic.
+    road_class_map={"trunk": ("arterial", "arterial"), "primary": ("arterial", "arterial"),
+                    "secondary": ("collector", "collector"), "tertiary": ("collector", "local")},  # ASSUMPTION
 )
 
 

@@ -24,7 +24,7 @@ Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file,
         agent.py                BudgetAgent: funds by return, bundles shared digs, explains every decision
     sim/
       config.py                 every number, each sourced or tagged ASSUMPTION
-      city.py                   synthetic city (generated grid over Boston coordinates), failures, applying work
+      city.py                   synthetic city on real OSM Boston main streets, failures, applying work
       costs.py                  the ONLY place dollars are computed (benefit, cost, urgency, return)
       runner.py                 yearly loop and the four strategies
       export_city.py            writes data/synthetic_pipes.csv and synthetic_roads.csv
@@ -51,7 +51,7 @@ Total cost = capital + emergency repairs + road user cost, over 10 years.
 - The simulated world uses the same rubric the pipe agent uses, so there is no model mismatch. Real data would add one.
 - condition_grade is a proxy from age and break count; observation_years is fixed at 20.
 - n_target (breaks per year), costs and the budget are ASSUMPTIONS, so absolute dollars mean nothing.
-- Street geometry is a generated grid. Next step: real Boston main streets from OpenStreetMap.
+- Street geometry is real (OSM main streets, data/boston_streets.json via sim/fetch_streets.py); all asset data is simulated.
 
 ## Merging into the team repo
 Everything except `agents/pipe_agent/adapter.py` and `agent.py` is new; `scoring.py` is identical to the team's, so

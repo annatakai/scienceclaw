@@ -43,9 +43,9 @@ def simulate(strategy, seed=42, record=False, cfg=None):
         for r in road.ratings.values():
             rc[r["condition_rating"]] = rc.get(r["condition_rating"], 0) + 1
         board.add(year, 1, "pipe", "rating", None,
-                  "Rated my 144 pipes with the team rubric: " + _counts_text(pc, ["Critical", "High", "Moderate", "Low"]) + ".")
+                  f"Rated my {len(city.segs)} pipes with the team rubric: " + _counts_text(pc, ["Critical", "High", "Moderate", "Low"]) + ".")
         board.add(year, 1, "road", "rating", None,
-                  "Rated my 144 roads by pavement condition: " + _counts_text(rc, ["Failed", "Poor", "Fair", "Good"]) + ".")
+                  f"Rated my {len(city.segs)} roads by pavement condition: " + _counts_text(rc, ["Failed", "Poor", "Fair", "Good"]) + ".")
         if strategy == "central":
             for seg in {p["segment_id"] for p in pipe.props} & {p["segment_id"] for p in road.props}:
                 pipe._tag(year, seg)
@@ -104,7 +104,7 @@ def simulate(strategy, seed=42, record=False, cfg=None):
         out["years"] = years
         fresh = City(cfg)
         out["segs"] = [dict(id=s["segment_id"], street=s["street"], coords=s["coords"], length_ft=round(s["length_ft"]),
-                            critical=s["critical"], customers=s["customers"]) for s in fresh.segs]
+                            critical=s["critical"], road_class=s["road"]["road_class"], customers=s["customers"]) for s in fresh.segs]
     return out
 
 
