@@ -1,4 +1,0 @@
-pipe_id,installation_year,material,break_count,length_m,observation_years,soil_corrosivity,condition_grade,customers_affected,critical_facility,diameter_mm,property_exposure,aadt,emergency_cost_usd
-BOS_001,1941,unlined cast iron,3,150,10,high,4,450,hospital,300,high,18000,150000
-BOS_002,2005,PVC,0,200,10,low,2,35,none,200,low,3000,15000
-BOS_003,,cast iron,,125,,moderate,,200,,250,moderate,,
