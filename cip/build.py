@@ -10,7 +10,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from cip import adapter, report  # noqa: E402
-from sim import reserve  # noqa: E402
+from sim import reserve, snapshot  # noqa: E402
 from sim.config import CFG  # noqa: E402
 from sim.runner import simulate  # noqa: E402
 
@@ -35,8 +35,7 @@ def build(seed=42, cfg=None, out="outputs/cip", pdf=True, strategy="coordinated"
     (out / "decision_list.csv").write_text(report.to_csv(rep))
     (out / "funding_table.csv").write_text(report.funding_csv(rep))
     (out / "capital_plan.html").write_text(report.to_page(rep))
-    (out / "config_snapshot.json").write_text(json.dumps(dict(seed=seed, config=run["cip"]["config"], methodology=rep["methodology"]),
-                                                          indent=1, default=str))
+    snapshot.write(out / "report", run["cip"]["config"], seed=seed, strategy=strategy, methodology=rep["methodology"])
     if pdf:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:

@@ -18,7 +18,7 @@ import webbrowser
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from cip import adapter, report  # noqa: E402
-from sim import reserve  # noqa: E402
+from sim import reserve, snapshot  # noqa: E402
 from sim.config import CFG  # noqa: E402
 from sim.runner import STRATEGIES, simulate  # noqa: E402
 
@@ -129,6 +129,7 @@ def write_site(runs, order, args, miles):
                 nbs=sorted({s["neighborhood"] for s in base["segs"] if s["neighborhood"]}),
                 llm_order=[s for s in order if s.endswith("_llm")])
     (SITE / "data" / "meta.json").write_text(json.dumps(meta, separators=(",", ":")))
+    snapshot.write(SITE / "data" / "run", runs["coordinated"]["cip"]["config"], seed=args.seed, scope=meta["scope"])
     size = sum(p.stat().st_size for p in (SITE / "data").iterdir())
     print(f"wrote {SITE} (data {size / 1e6:.1f} MB: {len(feats)} segments, {miles:.0f} miles)")
 

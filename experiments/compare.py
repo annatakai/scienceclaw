@@ -6,6 +6,10 @@ import multiprocessing as mp
 import statistics as st
 import time
 
+import json
+import pathlib
+
+from sim import reserve, snapshot
 from sim.config import CFG
 from sim.runner import STRATEGIES, simulate
 
@@ -67,11 +71,18 @@ def main():
         cfg["sim_years"] = a.years
     if a.budget:
         cfg["annual_capital_budget"] = a.budget
+    cfg = reserve.ensure(cfg)
     t = time.time()
     runs = run_all(a.n_seeds, cfg, a.workers)
     scope = a.neighborhood or ("first %d segments" % a.max_segments if a.max_segments else "full network")
     print(f"scope: {scope}; wall time {time.time() - t:.0f}s on {a.workers or mp.cpu_count()} workers")
     report(runs, a.n_seeds, cfg)
+    # raw per-seed results plus the config snapshot, so the printed table can be reproduced and audited
+    name = (a.neighborhood or ("max%d" % a.max_segments if a.max_segments else "full")).replace(" ", "_")
+    path = pathlib.Path("outputs/results") / f"compare_{name}_{a.n_seeds}seeds.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({s: [{k: v for k, v in r.items() if not isinstance(v, (list, dict))} for r in rs] for s, rs in runs.items()}))
+    print("results:", path, "| config snapshot:", snapshot.write(path, cfg, seeds=a.n_seeds, scope=scope))
 
 
 if __name__ == "__main__":
