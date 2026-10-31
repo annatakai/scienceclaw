@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dig Once: Boston infrastructure coordination (simulated)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232563eb'/%3E%3Cpath d='M3 11l4-6 3 4 3-5' stroke='white' stroke-width='1.6' fill='none'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="bar">
+    <button id="btn-layers" class="icon" title="Show or hide the layer panel (L)" aria-label="Toggle layer panel" aria-expanded="true">
+      <svg viewBox="0 0 16 16" width="16" height="16"><path d="M8 2l6 3-6 3-6-3 6-3zM2 8l6 3 6-3M2 11l6 3 6-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="brand"><b>Dig Once</b><span class="sub">Boston street repair coordination</span></div>
+    <span class="badge warn" title="Street geometry is real; every pipe, pavement, break and cost value is simulated">ALL ASSET DATA SIMULATED</span>
+    <div class="grow"></div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search street name" autocomplete="off" aria-label="Search street name" title="Zoom to a street">
+      <ul id="suggest" role="listbox" hidden></ul>
+    </div>
+    <select id="nb" aria-label="Neighborhood filter" title="Filter by neighborhood"><option value="">All neighborhoods</option></select>
+    <select id="strategy" aria-label="Strategy shown on the map" title="Strategy shown on the map"></select>
+    <button id="btn-png" class="text" title="Download the map as a PNG image">Map PNG</button>
+    <button id="btn-csv" class="text" title="Download the current table as CSV">Table CSV</button>
+    <button id="btn-theme" class="icon" title="Switch light and dark theme" aria-label="Toggle theme">
+      <svg viewBox="0 0 16 16" width="16" height="16"><path d="M13 9.5A5.5 5.5 0 016.5 3a5.5 5.5 0 106.5 6.5z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+    <button id="btn-side" class="icon only-narrow" title="Show or hide the side panel" aria-label="Toggle side panel">
+      <svg viewBox="0 0 16 16" width="16" height="16"><path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </header>
+
+  <main id="main">
+    <aside id="layers" aria-label="Layers">
+      <section>
+        <h3>Layers</h3>
+        <div id="layer-list"></div>
+      </section>
+      <section id="legend-wrap">
+        <h3>Legend <span class="muted" id="legend-year"></span></h3>
+        <div id="legend"></div>
+      </section>
+      <section>
+        <h3>Basemap</h3>
+        <div id="basemaps" class="seg-ctl" role="radiogroup" aria-label="Basemap"></div>
+        <label class="row opacity"><span>Opacity</span><input id="op-basemap" type="range" min="0" max="100" value="100" aria-label="Basemap opacity"></label>
+      </section>
+    </aside>
+
+    <section id="mapcol">
+      <div id="map" role="application" aria-label="Boston street map"></div>
+      <div id="nomap" hidden></div>
+      <div id="toast" role="status" hidden></div>
+      <div id="north" title="North up. Click to reset the bearing" role="button" tabindex="0" aria-label="Reset bearing to north">
+        <svg viewBox="0 0 32 32" width="32" height="32"><g id="north-rot"><path d="M16 3l5 13h-10z" fill="var(--accent)"/><path d="M16 29l-5-13h10z" fill="var(--muted)"/></g><text x="16" y="13" font-size="7" text-anchor="middle" fill="#fff" font-weight="700" transform="translate(0,0)">N</text></svg>
+      </div>
+      <div id="info" hidden aria-live="polite"></div>
+      <div id="tip" hidden></div>
+      <div id="status"><span id="ll">lat --, lon --</span><span id="zl">zoom --</span></div>
+    </section>
+
+    <aside id="side">
+      <div id="kpis"></div>
+      <nav id="tabs" role="tablist">
+        <button role="tab" data-tab="activity" aria-selected="true">Activity</button>
+        <button role="tab" data-tab="compare" aria-selected="false">Compare</button>
+        <button role="tab" data-tab="table" aria-selected="false">Table</button>
+        <button role="tab" data-tab="about" aria-selected="false">About</button>
+      </nav>
+      <div id="tab-activity" class="tabpane">
+        <div id="chips" class="chips"></div>
+        <div id="feed" tabindex="0"></div>
+      </div>
+      <div id="tab-compare" class="tabpane" hidden></div>
+      <div id="tab-table" class="tabpane" hidden>
+        <div class="row tbar"><input id="tq" type="search" placeholder="Filter table by street, id or class" aria-label="Filter table"><span id="tcount" class="muted"></span></div>
+        <div id="tscroll"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+      </div>
+      <div id="tab-about" class="tabpane" hidden></div>
+    </aside>
+  </main>
+
+  <footer id="timeline">
+    <div class="tl-buttons">
+      <button id="b-first" class="icon" title="Back to the start (Home)" aria-label="Back to start"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 3v10M13 3L6 8l7 5z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></button>
+      <button id="b-prev" class="icon" title="Previous year (Left arrow)" aria-label="Previous year"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M11 3L5 8l6 5z" fill="currentColor"/></svg></button>
+      <button id="b-play" class="icon primary" title="Play or pause the replay (Space)" aria-label="Play"><svg id="ico-play" viewBox="0 0 16 16" width="14" height="14"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></svg><svg id="ico-pause" viewBox="0 0 16 16" width="14" height="14" style="display:none"><path d="M4 3h3v10H4zM9 3h3v10H9z" fill="currentColor"/></svg></button>
+      <button id="b-next" class="icon" title="Next year (Right arrow)" aria-label="Next year"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M5 3l6 5-6 5z" fill="currentColor"/></svg></button>
+      <select id="speed" aria-label="Replay speed" title="Replay speed"><option value="0.5">0.5x</option><option value="1" selected>1x</option><option value="2">2x</option><option value="3">3x</option><option value="5">5x</option></select>
+    </div>
+    <div class="tl-main">
+      <div id="phases" aria-label="Phase of the year"></div>
+      <div class="slider"><input id="slider" type="range" min="0" max="10" value="0" step="1" aria-label="Year"><div id="ticks"></div></div>
+    </div>
+    <div id="yearlabel" class="yearlabel"></div>
+  </footer>
+  <div id="foot">Streets: Analyze Boston SAM + MassDOT Road Inventory (real). Pipes, pavement, breaks, costs: <b>ALL ASSET DATA SIMULATED</b>. <span id="foot-scope"></span></div>
+</div>
+<script src="vendor/maplibre-gl.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

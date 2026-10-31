@@ -6,3 +6,5 @@ outputs/
 demo/demo.html
 traces/
 data/raw/
+demo/site/
+demo/shots/*.png

@@ -6,7 +6,7 @@ data:      ## export the synthetic city as CSVs in the team's schema
 score:     ## run the team's pipe scoring CLI and the road rating CLI on the synthetic data
 	python3 agents/pipe_agent/scoring.py data/synthetic_pipes.csv outputs/scored_pipes.csv --year 2026
 	python3 -m agents.road_agent.scoring data/synthetic_roads.csv outputs/scored_roads.csv --year 2026
-demo:      ## build demo/demo.html and open it in your browser
+demo:      ## run the strategies, write demo/site/ and serve it at http://localhost:8000 (full network, about 30 s)
 	python3 -m demo.build_demo
 compare:   ## 8-seed comparison on the full network (parallel); for 30 seeds use a subset: python3 -m experiments.compare 30 --neighborhood "South End"
 	python3 -m experiments.compare 8

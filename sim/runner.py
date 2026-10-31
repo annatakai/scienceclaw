@@ -21,6 +21,23 @@ def _counts_text(counts, order):
     return ", ".join(f"{counts.get(k, 0)} {k}" for k in order)
 
 
+CLASS_CODE = {"Low": 0, "Moderate": 1, "High": 2, "Critical": 3}
+COND_CODE = {"Good": 0, "Fair": 1, "Poor": 2, "Failed": 3}
+MATERIALS = ["cast_iron", "ductile_iron", "pvc", "steel", "protected_ductile_iron"]
+
+
+def snapshot(city, year):
+    """Recording only (demo): the per-segment state a map needs. Reads the city; changes nothing."""
+    from agents.road_agent.scoring import rate_condition
+    rt = [city.pipe_rating(s, year) for s in city.segs]
+    p = [pcr(s["road"], year) for s in city.segs]
+    return dict(risk=[round(r["risk_index"]) for r in rt], cls=[CLASS_CODE[r["risk_class"]] for r in rt],
+                pcr=[round(x) for x in p], cond=[COND_CODE[rate_condition(x)[0]] for x in p],
+                inst=[s["pipe"]["install_year"] for s in city.segs],
+                mat=[MATERIALS.index(s["pipe"]["material"]) for s in city.segs],
+                brk=[len(s["pipe"]["breaks"]) for s in city.segs], paved=[s["road"]["last_paved"] for s in city.segs])
+
+
 def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None):
     """llm: an agents.llm.LLM (for coordinated_llm; built from the environment if omitted)."""
     cfg = dict(cfg or CFG, seed=seed)
@@ -44,6 +61,7 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
     cum = dict(exp_fail=0.0, fail=0, weighted_fail=0.0, openings=0, spend=0.0, emerg=0.0, dig_savings=0.0,
                double_digs=0, user_cost=0.0)
     years = []
+    state0 = snapshot(city, cfg["start_year"]) if record else None
     n_years = cfg.get("sim_years") or cfg["horizon_years"]  # sim_years < horizon_years: short run, same pricing
     for year in range(cfg["start_year"], cfg["start_year"] + n_years):
         fr = {"year": year}
@@ -115,6 +133,9 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
             fr["risk_after"] = [round(city.pipe_rating(s, year)["risk_index"]) for s in city.segs]
             fr["class_after"] = [city.pipe_rating(s, year)["risk_class"] for s in city.segs]
             fr["pcr_after"] = [round(pcr(s["road"], year)) for s in city.segs]
+            fr["rejected"] = [dict(seg=idx[d["segment_id"]], agent=d["agent"], work=d["work"], reason=d["reason"])
+                              for d in decisions if not d["funded"]]
+            fr["state"] = snapshot(city, year)
             fr["metrics"] = {k: (round(v, 2) if isinstance(v, float) else v) for k, v in cum.items()}
             years.append(fr)
     out = dict(strategy=strategy, seed=seed, **{k: (round(v, 2) if isinstance(v, float) else v) for k, v in cum.items()})
@@ -124,9 +145,10 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
         out["llm"] = dict(llm.usage, fallbacks=list(llm.fallbacks), violations=list(llm.violations))
     if record:
         out["years"] = years
+        out["state0"] = state0
         out["segs"] = [dict(id=s["segment_id"], street=s["street"], coords=s["coords"], length_ft=round(s["length_ft"]),
                             critical=s["critical"], road_class=s["road"]["road_class"], customers=s["customers"],
-                            neighborhood=s["neighborhood"]) for s in city.segs]
+                            neighborhood=s["neighborhood"], adt=s["road"]["adt"]) for s in city.segs]
         out["cfg"] = {k: cfg[k] for k in ("annual_capital_budget", "n_target", "max_proposals", "start_year", "horizon_years")}
         out["miles"] = round(city.total_miles, 1)
     return out
