@@ -92,7 +92,12 @@ class BudgetAgent:
                     passing = list(best.values())
                 self._fund(passing, spendable * share, chosen, reasons,
                            key=lambda c: c["members"][0]["exclusive_group"])
-        # build per-proposal decisions
+        return self._decisions(props, chosen, spendable)
+
+    def _decisions(self, props, chosen, spendable, notes=None):
+        """Per-proposal decisions for the chosen candidates. notes: optional {proposal_id: reason} that replaces the
+        rule-based reason (the Claude-driven budget agent passes its own written reasons)."""
+        cfg, notes = self.cfg, notes or {}
         funded_ids = {}
         for c in chosen:
             for m in c["members"]:
@@ -118,6 +123,7 @@ class BudgetAgent:
                     src, rr_used = "rate_revenue", rr_used + amount
                 else:
                     src = "bonds"
+                why = notes.get(p["proposal_id"], why)
                 decisions.append(dict(proposal_id=p["proposal_id"], segment_id=p["segment_id"], agent=p["agent"],
                                       work=p["work"], bundle_id=c["bundle"], funded=True, amount=amount,
                                       funding_source=src, return_per_dollar=c["ret"], reason=why,
@@ -128,6 +134,7 @@ class BudgetAgent:
                     why = f"Return {pr['return_alone']:.2f} is below the {cfg['min_return']:.1f} hurdle."
                 else:
                     why = "Alternative funded for this asset, or it did not fit this year's budget."
+                why = notes.get(p["proposal_id"], why)
                 decisions.append(dict(proposal_id=p["proposal_id"], segment_id=p["segment_id"], agent=p["agent"],
                                       work=p["work"], bundle_id=None, funded=False, amount=0.0, funding_source=None,
                                       return_per_dollar=pr["return_alone"], reason=why, saving_share=0.0,
