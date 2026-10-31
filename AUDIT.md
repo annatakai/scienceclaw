@@ -60,4 +60,4 @@ Order requested: 1-6, 9-12, 7-8, 13, then 14-16.
 5. **8:** break rates by age cohort and material from `processed_water_breaks.csv` (no inventory, so no lift curve), on its own page; look for a dataset with an inventory.
 6. **13:** re-check the emergency share after item 7.
 7. **15:** UI smoke test across the whole map UI. **16:** live capped Claude run and recorded demo run.
-8. **REPORT.md** (what changed, Sourced/Calibrated/ASSUMPTION list, results with CIs, where coordination wins or loses, what could not be verified) is not written yet.
+8. **REPORT.md** is written (what changed, status of every number, 30-seed results with CIs, where coordination wins and loses, what could not be verified); update it when items 7, 8 and 13 are done.
