@@ -25,11 +25,11 @@ def _run(job):
     return strategy, seed, r
 
 
-def run_all(n_seeds, cfg, workers=None):
-    jobs = [(s, i, cfg) for i in range(n_seeds) for s in STRATEGIES]
-    with mp.Pool(workers or mp.cpu_count()) as pool:
+def run_all(n_seeds, cfg, workers=None, strategies=STRATEGIES):
+    jobs = [(s, i, cfg) for i in range(n_seeds) for s in strategies]
+    with mp.get_context("spawn").Pool(workers or mp.cpu_count(), maxtasksperchild=4) as pool:   # spawn: forking after numpy has been used can hang on macOS
         res = pool.map(_run, jobs, chunksize=1)
-    runs = {s: [None] * n_seeds for s in STRATEGIES}
+    runs = {s: [None] * n_seeds for s in strategies}
     for s, i, r in res:
         runs[s][i] = r
     return runs

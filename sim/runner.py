@@ -11,10 +11,12 @@ from agents.pipe_agent.agent import PipeAgent
 from agents.road_agent.agent import RoadAgent
 from agents.road_agent.scoring import pcr
 from sim.city import City
-from sim import reserve
+from sim import benchmarks, reserve
 from sim.config import CFG
 
 STRATEGIES = ["isolated", "pooled", "coordinated", "central"]
+BASELINES = ["single_agent", "central_greedy", "central_ilp", "age_first", "risk_first"]   # sim/benchmarks.py; run by experiments/baselines.py
+RANKED = ("age_first", "risk_first")
 LLM_STRATEGIES = ["coordinated_llm"]  # same flow as coordinated, agents driven by Claude (agents/llm.py); needs an API key
 
 
@@ -45,6 +47,8 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
     the reserve balance by year and the config used (input of cip/adapter.py). cip_dir: also write it to
     <cip_dir>/run_<strategy>_seed<seed>.json (implies cip)."""
     cip = cip or bool(cip_dir)
+    from agents.pipe_agent import adapter
+    adapter._score.cache_clear()   # the rubric cache grows to over a gigabyte on full-menu runs; do not carry it between runs
     cfg = reserve.ensure(dict(cfg or CFG, seed=seed))   # reserve share from the pilot (cached); fixed fraction if reserve_mode == "fixed"
     city = City(cfg)
     cfg = city.cfg  # with the network-size totals (budget, break target, menu size) filled in
@@ -63,6 +67,10 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
         pipe, road, budget = LLMPipeAgent(cfg, llm), LLMRoadAgent(cfg, llm), LLMBudgetAgent(cfg, llm)
     else:
         pipe, road, budget = PipeAgent(cfg), RoadAgent(cfg), BudgetAgent(cfg)
+        if strategy == "central_ilp":
+            budget = benchmarks.OptimalPlanner(cfg)
+        elif strategy in RANKED:
+            budget = benchmarks.RankPlanner(cfg, strategy)
     cum = dict(exp_fail=0.0, fail=0, weighted_fail=0.0, openings=0, spend=0.0, emerg=0.0, dig_savings=0.0,
                double_digs=0, user_cost=0.0, interest=0.0, net_spend=0.0, shortfall=0.0, proposals=0, funded=0)
     years, cip_props, cip_decs, reserve_rows = [], [], [], []
@@ -77,7 +85,8 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
             fr["risk_before"] = [round(city.pipe_rating(s, year)["risk_index"]) for s in city.segs]
             fr["class_before"] = [city.pipe_rating(s, year)["risk_class"] for s in city.segs]
             fr["pcr_before"] = [round(pcr(s["road"], year)) for s in city.segs]
-        max_n = cfg["max_proposals_central"] if strategy == "central" else cfg["max_proposals"]
+        max_n = (cfg["max_proposals_central"] if strategy == "central" else 3 * len(city.segs) if strategy in ("central_ilp", "central_greedy")
+                 else cfg["max_proposals"])
         pipe.propose(year, city.view_for("pipe"), board, max_n)
         road.propose(year, city.view_for("road"), board, max_n)
         pc = {}
@@ -90,12 +99,15 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
                   f"Rated my {len(city.segs)} pipes with the team rubric: " + _counts_text(pc, ["Critical", "High", "Moderate", "Low"]) + ".")
         board.add(year, 1, "road", "rating", None,
                   f"Rated my {len(city.segs)} roads by pavement condition: " + _counts_text(rc, ["Failed", "Poor", "Fair", "Good"]) + ".")
-        if strategy == "central":
+        if strategy in ("central", "central_ilp", "central_greedy", "single_agent"):
             for seg in {p["segment_id"] for p in pipe.props} & {p["segment_id"] for p in road.props}:
                 pipe._tag(year, seg)
                 road._tag(year, seg)
             board.add(year, 1, "budget", "post_plan", None,
-                      "Central planner: solving all segments jointly with full data (heuristic benchmark).")
+                      {"central": "Central planner: scanning a fifth of the segments with full data (heuristic benchmark).",
+                       "central_ilp": "Central planner: every segment and option, solved exactly as a knapsack.",
+                       "central_greedy": "Central planner: every segment and option, funded greedily by return (isolates the menu from the optimiser).",
+                       "single_agent": "Single agent: both views, no board, same menu size as the three agents."}[strategy])
         elif strategy in ("coordinated", "coordinated_llm"):
             pipe.post_plans(year, board)
             road.post_plans(year, board)
@@ -103,10 +115,13 @@ def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None
             road.join(year, board)
             pipe.respond(year, board)
             road.accept(year, board)
-        props = pipe.props + road.props
-        for p in props:
-            p["priced"] = city.price(p, year)
-        decisions = budget.allocate(props, year, "isolated" if strategy == "isolated" else "pooled")
+        if strategy in RANKED:
+            props, decisions = budget.plan(year, pipe, road, city)
+        else:
+            props = pipe.props + road.props
+            for p in props:
+                p["priced"] = city.price(p, year)
+            decisions = budget.allocate(props, year, "isolated" if strategy == "isolated" else "pooled")
         for d in decisions:
             if d["funded"]:
                 board.add(year, 2, "budget", "funding_decision", d["segment_id"],

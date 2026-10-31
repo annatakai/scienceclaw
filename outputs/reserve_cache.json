@@ -25,5 +25,113 @@
   "capped": true,
   "pilot_seeds": 5,
   "yearly_values": 50
+ },
+ "97690f285b58526e": {
+  "p95_yearly_emergency": 4464911,
+  "annual_budget": 767437,
+  "uncapped_share": 5.818,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "1d937285d9bfb8e9": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "80cb29276e55d565": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "73df98320e63b7f5": {
+  "p95_yearly_emergency": 3949817,
+  "annual_budget": 2032155,
+  "uncapped_share": 1.9437,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "ed13627cde2f2549": {
+  "p95_yearly_emergency": 18967704,
+  "annual_budget": 2032155,
+  "uncapped_share": 9.3338,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "fd836fc3d572f1b2": {
+  "p95_yearly_emergency": 7885213,
+  "annual_budget": 2032155,
+  "uncapped_share": 3.8802,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "2dd539ab3c862253": {
+  "p95_yearly_emergency": 11925586,
+  "annual_budget": 2032155,
+  "uncapped_share": 5.8684,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "fc298ed482b9a4c8": {
+  "p95_yearly_emergency": 5962793,
+  "annual_budget": 2032155,
+  "uncapped_share": 2.9342,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "de4ed8f7a177b13b": {
+  "p95_yearly_emergency": 17066661,
+  "annual_budget": 2032155,
+  "uncapped_share": 8.3983,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "29cd8dca61c79e53": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.1,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "b17b69b6a1f9dab2": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
+ },
+ "13fdd74c938ff13b": {
+  "p95_yearly_emergency": 9614509,
+  "annual_budget": 2032155,
+  "uncapped_share": 4.7312,
+  "share": 0.25,
+  "capped": true,
+  "pilot_seeds": 5,
+  "yearly_values": 50
  }
 }

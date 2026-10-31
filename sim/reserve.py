@@ -42,7 +42,7 @@ def size(cfg, workers=None):
     n = cfg["reserve_pilot_seeds"]
     pilot = dict(cfg, reserve_mode="fixed", reserve_fraction=0.0, reserve_share=0.0)
     jobs = [(pilot, 1000 + i) for i in range(n)]
-    with mp.Pool(workers or min(n, mp.cpu_count())) as pool:
+    with mp.get_context("spawn").Pool(workers or min(n, mp.cpu_count())) as pool:
         res = pool.map(_pilot_run, jobs, chunksize=1)
     yearly = [x for r, _ in res for x in r]
     budget = res[0][1]

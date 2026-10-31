@@ -50,6 +50,9 @@ Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file,
   so the gain is road user cost (more work clears the hurdle), not fewer failures. The capital budget does not bind (isolated spends under a fifth of it).
 - The zero-benefit control (`experiments/control_no_benefit.py`) removes the dig savings but NOT the coordinated-pooled gap: the board's join requests
   roughly double the proposals each year, and with a slack budget more work clears the hurdle. Treat the board's value as menu size plus shared digs, not shared digs alone.
+- Baselines (`make baselines`, 30 seeds, same area), total $M: age-first 171.3, risk-first 152.2, isolated 154.9, single agent 142.3, coordinated 141.5, central 20%-scan heuristic 135.6, central full menu greedy 129.8, central full menu exact knapsack 121.7.
+  Coordinated beats age-first, risk-first and isolated in 30 of 30 seeds, and loses to every central variant: with all the data a planner does better, so the case for agents is private data and scale, not lower cost.
+- Sensitivity (`make sensitivity`, 10 seeds per setting, tornado in `outputs/results/tornado.png`): coordinated is cheaper than isolated in all 26 tested settings; the size depends mostly on road user cost (u0) and menu size. The board alone is not distinguishable from zero when u0 or the break rate is low.
 - The old 30-seed figures in earlier versions of this file described a 260-segment demo and the pre-formula model; they are gone.
 
 ## CIP report (`make cip`)
