@@ -8,8 +8,8 @@ score:     ## run the team's pipe scoring CLI and the road rating CLI on the syn
 	python3 -m agents.road_agent.scoring data/synthetic_roads.csv outputs/scored_roads.csv --year 2026
 demo:      ## build demo/demo.html and open it in your browser
 	python3 -m demo.build_demo
-compare:   ## 30-seed comparison table
-	python3 -m experiments.compare 30
+compare:   ## 8-seed comparison on the full network (parallel); for 30 seeds use a subset: python3 -m experiments.compare 30 --neighborhood "South End"
+	python3 -m experiments.compare 8
 test:
 	python3 -m unittest discover -s tests -v
 run:

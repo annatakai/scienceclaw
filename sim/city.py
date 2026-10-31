@@ -1,4 +1,4 @@
-"""Synthetic city on real Boston main streets (OSM geometry) and everything that changes it.
+"""Synthetic city on the real street network of the City of Boston (Analyze Boston SAM + MassDOT class) and everything that changes it.
 ALL ASSET DATA IS SIMULATED."""
 import json
 import math
@@ -8,18 +8,43 @@ import random
 from agents.pipe_agent import adapter
 from agents.road_agent.scoring import pcr
 from sim import costs
-from sim.config import CFG
+from sim.config import CFG, resolve
+
+STREETS = pathlib.Path(__file__).resolve().parent.parent / "data" / "boston_streets.geojson"
+
+
+def load_streets(cfg):
+    """REAL street network (data/boston_streets.geojson, built by sim/fetch_streets.py), optionally a subset."""
+    fc = json.loads(STREETS.read_text())
+    rows = [dict(f["properties"], coords=f["geometry"]["coordinates"]) for f in fc["features"]]
+    nb = cfg.get("neighborhood")
+    if nb:
+        names = {n.lower() for n in ([nb] if isinstance(nb, str) else nb)}
+        rows = [r for r in rows if (r["neighborhood"] or "").lower() in names]
+        if not rows:
+            raise SystemExit(f"no segments in neighborhood {nb!r}")
+    n = cfg.get("max_segments")
+    if n and n < len(rows):   # the n segments closest to the centre of the selection: a compact, repeatable area
+        cx = sum(r["coords"][0][0] for r in rows) / len(rows)
+        cy = sum(r["coords"][0][1] for r in rows) / len(rows)
+        rows.sort(key=lambda r: (r["coords"][0][0] - cx) ** 2 + (r["coords"][0][1] - cy) ** 2)
+        rows = rows[:n]
+    return rows
 
 
 class City:
     def __init__(self, cfg):
-        self.cfg = cfg
-        rng = random.Random(f"city-{cfg['seed']}")
-        # REAL street geometry (OpenStreetMap, cached by sim/fetch_streets.py); everything below is simulated
-        streets = json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "boston_streets.json").read_text())
+        rows = load_streets(cfg)
+        self.cfg = cfg = resolve(cfg, sum(r["length_ft"] for r in rows) / 5280, len(rows))
+        self.total_miles = sum(r["length_ft"] for r in rows) / 5280
+        # Everything below the street geometry is SIMULATED. One seeded generator per segment, so a segment looks the
+        # same whether the whole city or only one neighborhood is loaded.
         self.segs = []
-        for st in streets["segments"]:
-            yr = rng.randint(1895, 2008)
+        for st in rows:
+            rng = random.Random(f"city-{cfg['seed']}-{st['segment_id']}")
+            lo, hi, mode = cfg["era_old"] if st["neighborhood"] in cfg["neighborhoods_old"] else (
+                cfg["era_new"] if st["neighborhood"] in cfg["neighborhoods_new"] else cfg["era_mid"])
+            yr = int(rng.triangular(lo, hi, mode))
             if yr < 1950:
                 mat = "cast_iron"
             elif yr < 1985:
@@ -27,24 +52,27 @@ class City:
             else:
                 mat = rng.choice(["ductile_iron", "pvc"])
             age = 2026 - yr
-            lam = max(0, (age - 30) / 100) * (1.6 if mat == "cast_iron" else 0.6)
+            lam = max(0, (age - 30) / 100) * (1.6 if mat == "cast_iron" else 0.6) * min(1.0, st["length_ft"] / 400)
             breaks = sorted(rng.randint(2006, 2025) for _ in range(min(3, _poisson(rng, lam))))
-            cls, adt_band = cfg["road_class_map"][st["highway"]]
-            adt = {"arterial": rng.randint(10_000, 16_000), "collector": rng.randint(4_000, 8_000),
-                   "local": rng.randint(300, 1_500)}[adt_band]
-            diam = rng.choice([6, 8, 8, 12, 12, 16]) if adt_band != "local" else rng.choice([6, 8, 8, 12])
+            cls = st["class"]
+            adt = rng.randint(*cfg["adt_range"][cls])
+            diam = rng.choice([6, 8, 8, 12, 12, 16]) if cls != "local" else rng.choice([6, 8, 8, 12])
             self.segs.append(dict(
-                segment_id=st["id"], street=st["street"], length_ft=st["length_ft"], coords=st["coords"],
-                highway=st["highway"],
+                segment_id=st["segment_id"], street=st["street"], length_ft=st["length_ft"], coords=st["coords"],
+                neighborhood=st["neighborhood"], jurisdiction=st["jurisdiction"],
                 pipe=dict(install_year=yr, material=mat, diameter_in=diam, breaks=breaks, soil=round(rng.random(), 2)),
                 road=dict(last_paved=rng.randint(1998, 2025), road_class=cls, adt=adt),
                 critical=rng.random() < 0.06,
-                customers=int(diam * rng.uniform(15, 45)),
+                customers=int(diam * rng.uniform(15, 45) * max(0.3, st["length_ft"] / 400)),
                 exposure=rng.choices(["low", "moderate", "high"], weights=[4, 3, 2])[0],
             ))
         self.by_id = {s["segment_id"]: s for s in self.segs}
+        # records are views onto the live pipe/road dicts (apply() mutates those in place), so build them once
+        self._pipe_recs = [self._pipe_rec(s) for s in self.segs]
+        self._road_recs = [dict(segment_id=s["segment_id"], street=s["street"], length_ft=s["length_ft"], road=s["road"])
+                           for s in self.segs]
         # calibration scale C so expected city-wide breaks at the start equal n_target (return_formula.md 2.1)
-        tot = sum(adapter.pof(self._pipe_rec(s), cfg["start_year"], 0, None, cfg) / 100 for s in self.segs)
+        tot = sum(adapter.pof(r, cfg["start_year"], 0, None, cfg) / 100 for r in self._pipe_recs)
         self.C = cfg["n_target"] / tot
 
     @staticmethod
@@ -54,10 +82,7 @@ class City:
 
     # decentralisation: an agent only ever gets its own view (traffic counts are public, so pipe sees aadt)
     def view_for(self, owner):
-        if owner == "pipe":
-            return [self._pipe_rec(s) for s in self.segs]
-        return [dict(segment_id=s["segment_id"], street=s["street"], length_ft=s["length_ft"], road=s["road"])
-                for s in self.segs]
+        return self._pipe_recs if owner == "pipe" else self._road_recs
 
     def p_fail(self, s, year, t=0):
         return min(1.0, self.C * adapter.pof(self._pipe_rec(s), year, t, None, self.cfg) / 100)

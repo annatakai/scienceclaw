@@ -1,0 +1,30 @@
+{
+ "downloaded": {
+  "sam.geojson": "2026-10-31",
+  "nbhd.geojson": "2026-10-31",
+  "massdot_roads_boston.geojson": "2026-10-31"
+ },
+ "n0": 19440,
+ "drops": {
+  "zero or tiny length (< 10 ft)": 4,
+  "other municipality": 13,
+  "limited-access highway (CFCC A1x)": 245,
+  "ramp, service drive or special feature (CFCC A6x)": 842,
+  "alley, walkway, stairway or private road (CFCC A7x)": 621,
+  "no CFCC": 77,
+  "private way (SAM ownership)": 1290,
+  "not City of Boston Public Works (state, DCR, Massport, parks, housing)": 1397,
+  "ownership unknown": 19,
+  "interstate or freeway (MassDOT functional class 1-2)": 27,
+  "full access control (MassDOT)": 0,
+  "ramp or collector-distributor (MassDOT)": 0,
+  "bike/ped path or private way (MassDOT facility)": 2,
+  "not city jurisdiction (MassDOT)": 78,
+  "likely paper street (no address range, no MassDOT road)": 237,
+  "no usable road class": 0,
+  "outside Boston neighborhood boundaries": 1
+ },
+ "match_rate": 0.9680551834985267,
+ "kept_sam": 14587,
+ "conflict": 333
+}

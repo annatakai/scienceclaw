@@ -3,6 +3,7 @@
   pooled       ablation: one shared budget, but no board (no bundling, no negotiation)
   coordinated  pipe + road + budget agents talk on the board, pooled budget
   central      one planner sees every asset (heuristic benchmark; NOT yet a proven upper bound)
+  coordinated_llm  coordinated, but the three agents choose and explain with Claude; numbers still come from the tools
 """
 from agents.board import Board
 from agents.budget_agent.agent import BudgetAgent
@@ -13,27 +14,46 @@ from sim.city import City
 from sim.config import CFG
 
 STRATEGIES = ["isolated", "pooled", "coordinated", "central"]
+LLM_STRATEGIES = ["coordinated_llm"]  # same flow as coordinated, agents driven by Claude (agents/llm.py); needs an API key
 
 
 def _counts_text(counts, order):
     return ", ".join(f"{counts.get(k, 0)} {k}" for k in order)
 
 
-def simulate(strategy, seed=42, record=False, cfg=None):
+def simulate(strategy, seed=42, record=False, cfg=None, llm=None, trace_dir=None):
+    """llm: an agents.llm.LLM (for coordinated_llm; built from the environment if omitted)."""
     cfg = dict(cfg or CFG, seed=seed)
     city = City(cfg)
+    cfg = city.cfg  # with the network-size totals (budget, break target, menu size) filled in
     board = Board()
-    pipe, road, budget = PipeAgent(cfg), RoadAgent(cfg), BudgetAgent(cfg)
+    use_llm = strategy in LLM_STRATEGIES
+    if use_llm:
+        from agents.budget_agent.llm_agent import LLMBudgetAgent
+        from agents.llm import LLM
+        from agents.pipe_agent.llm_agent import LLMPipeAgent
+        from agents.road_agent.llm_agent import LLMRoadAgent
+        from agents.trace import Tracer
+        tracer = Tracer(strategy, seed, trace_dir)
+        board.tracer = tracer
+        llm = llm or LLM(cfg)
+        llm.tracer = tracer
+        pipe, road, budget = LLMPipeAgent(cfg, llm), LLMRoadAgent(cfg, llm), LLMBudgetAgent(cfg, llm)
+    else:
+        pipe, road, budget = PipeAgent(cfg), RoadAgent(cfg), BudgetAgent(cfg)
     cum = dict(exp_fail=0.0, fail=0, weighted_fail=0.0, openings=0, spend=0.0, emerg=0.0, dig_savings=0.0,
                double_digs=0, user_cost=0.0)
     years = []
-    for year in range(cfg["start_year"], cfg["start_year"] + cfg["horizon_years"]):
+    n_years = cfg.get("sim_years") or cfg["horizon_years"]  # sim_years < horizon_years: short run, same pricing
+    for year in range(cfg["start_year"], cfg["start_year"] + n_years):
         fr = {"year": year}
+        if use_llm:
+            tracer.year = year
         if record:
             fr["risk_before"] = [round(city.pipe_rating(s, year)["risk_index"]) for s in city.segs]
             fr["class_before"] = [city.pipe_rating(s, year)["risk_class"] for s in city.segs]
             fr["pcr_before"] = [round(pcr(s["road"], year)) for s in city.segs]
-        max_n = 10_000 if strategy == "central" else cfg["max_proposals"]
+        max_n = cfg["max_proposals_central"] if strategy == "central" else cfg["max_proposals"]
         pipe.propose(year, city.view_for("pipe"), board, max_n)
         road.propose(year, city.view_for("road"), board, max_n)
         pc = {}
@@ -52,7 +72,7 @@ def simulate(strategy, seed=42, record=False, cfg=None):
                 road._tag(year, seg)
             board.add(year, 1, "budget", "post_plan", None,
                       "Central planner: solving all segments jointly with full data (heuristic benchmark).")
-        elif strategy == "coordinated":
+        elif strategy in ("coordinated", "coordinated_llm"):
             pipe.post_plans(year, board)
             road.post_plans(year, board)
             board.add(year, 1, "board", "hurdle", None, f"Going return threshold this year: {cfg['min_return']:.2f}.")
@@ -99,12 +119,16 @@ def simulate(strategy, seed=42, record=False, cfg=None):
             years.append(fr)
     out = dict(strategy=strategy, seed=seed, **{k: (round(v, 2) if isinstance(v, float) else v) for k, v in cum.items()})
     out["total_cost"] = round(cum["spend"] + cum["emerg"] + cum["user_cost"])
-    out["avg_pcr_end"] = round(city.avg_pcr(cfg["start_year"] + cfg["horizon_years"] - 1), 1)
+    out["avg_pcr_end"] = round(city.avg_pcr(cfg["start_year"] + n_years - 1), 1)
+    if use_llm:
+        out["llm"] = dict(llm.usage, fallbacks=list(llm.fallbacks), violations=list(llm.violations))
     if record:
         out["years"] = years
-        fresh = City(cfg)
         out["segs"] = [dict(id=s["segment_id"], street=s["street"], coords=s["coords"], length_ft=round(s["length_ft"]),
-                            critical=s["critical"], road_class=s["road"]["road_class"], customers=s["customers"]) for s in fresh.segs]
+                            critical=s["critical"], road_class=s["road"]["road_class"], customers=s["customers"],
+                            neighborhood=s["neighborhood"]) for s in city.segs]
+        out["cfg"] = {k: cfg[k] for k in ("annual_capital_budget", "n_target", "max_proposals", "start_year", "horizon_years")}
+        out["miles"] = round(city.total_miles, 1)
     return out
 
 
