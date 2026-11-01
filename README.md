@@ -1,14 +1,6 @@
-# Dig Once: multi-agent infrastructure repair coordination (prototype, ALL DATA SIMULATED)
-
-Pipe, road and budget agents coordinate repairs on a shared board so a street is opened once, not several times.
-Layout mirrors the team repo (`agents/pipe_agent/scoring.py` is the team's file, unchanged).
-
-    pip install -r requirements.txt   # pandas; geopandas, pyproj, shapely, pyogrio only to rebuild the street data
-    make demo                         # runs 4 strategies on all of Boston (about 30 s), writes demo/site/, serves http://localhost:8000
-    make compare                      # 30 seeds, paired, on a compact 800-segment area (about 20 s); make compare-full: full network (about an hour)
-    make cip                          # capital plan report and PDF in outputs/cip/
-    make score                        # team pipe rubric + road ratings on data/synthetic_*.csv
-    make test
+# Zhora: Agentic CIP (Capital Improvement Plan)
+Problem: Lack of holistic data analysis to help cities determine infrastructure repair prioritization (including high cost, high labor, and slow process). 
+Solution: Create an agentic CIP using a decentralized AI agent system. 3 AI agents: Road Agent, Pipe Agent, and Budget Agent.  
 
 ## Layout
     agents/
