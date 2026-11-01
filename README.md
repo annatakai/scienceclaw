@@ -72,7 +72,7 @@ Zhora coordinates infrastructure maintenance through three specialized agents:
 
 ### Step 1. Explore Boston's Infrastructure
 
-Open **http://localhost:8000**.
+Open **https://hckhf27497ca-zhora-dashboard.mdwje5.svls.customers.gcp.chalk.ai/**.
 
 The interactive MapLibre dashboard displays Boston's street network and simulated infrastructure data.
 
