@@ -23,7 +23,9 @@ button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focu
 
 #app { display: grid; grid-template-rows: 48px minmax(0, 1fr) 64px 24px; height: 100vh; height: 100dvh; min-width: 0; }
 #bar { display: flex; align-items: center; gap: 8px; padding: 0 16px; background: var(--panel); border-bottom: 1px solid var(--line); z-index: 5; min-width: 0; }
-.logo { height: 26px; width: auto; flex: none; }
+.logo { height: 24px; width: auto; flex: none; border-radius: 4px; }
+:root[data-theme="dark"] .logo { background: #f4f4f2; padding: 3px 8px; height: 30px; }
+.tagline { font-size: 11px; color: var(--muted); white-space: nowrap; padding-left: 8px; border-left: 1px solid var(--line); line-height: 18px; }
 .brand { display: flex; flex-direction: column; line-height: 16px; white-space: nowrap; }
 .brand b { font-size: 15px; line-height: 18px; }
 .brand .sub { font-size: 11px; color: var(--muted); }
@@ -169,7 +171,7 @@ svg.chart .grid { stroke: var(--line); stroke-width: 1; }
   #main { grid-template-columns: 240px minmax(0, 1fr) 328px; }
   #app.no-layers #main { grid-template-columns: 0 minmax(0, 1fr) 328px; }
   .search input { width: 140px; }
-  .brand .sub { display: none; }
+  .brand .sub, .tagline { display: none; }
 }
 @media (max-width: 860px) {
   #app { display: flex; flex-direction: column; height: auto; min-height: 100dvh; }

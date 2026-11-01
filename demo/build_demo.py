@@ -106,6 +106,8 @@ def write_site(runs, order, args, miles):
     (SITE / "data").mkdir(parents=True)
     for f in ("index.html", "app.js", "style.css"):
         shutil.copy(SRC / f, SITE / f)
+    for f in ("zhora-logo.png", "thumbnail.png", "favicon.png"):
+        shutil.copy(SRC / f, SITE / f)
     shutil.copytree(SRC / "vendor", SITE / "vendor")
     base = runs["coordinated"]
     feats = []
