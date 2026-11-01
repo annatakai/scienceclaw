@@ -42,7 +42,7 @@ make demo
 
 This command runs four infrastructure planning strategies across Boston's street network, generates the interactive dashboard, and starts a local web server.
 
-Open **http://localhost:8000** in your browser.
+Open **https://hckhf27497ca-zhora-dashboard.mdwje5.svls.customers.gcp.chalk.ai/** in your browser.
 
 ### 4. Generate a Capital Improvement Plan
 
