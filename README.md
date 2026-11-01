@@ -3,7 +3,8 @@ Problem: Lack of holistic data analysis to help cities determine infrastructure 
 Solution: Create an agentic CIP using a decentralized AI agent system. 3 AI agents: Road Agent, Pipe Agent, and Budget Agent.  
 
 ## Visual Overview
-    ```mermaid
+
+```mermaid
 flowchart LR
     A["Pipe Agent"] --> D["Shared Board"]
     B["Road Agent"] --> D
