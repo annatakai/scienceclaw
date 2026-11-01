@@ -2,30 +2,15 @@
 Problem: Lack of holistic data analysis to help cities determine infrastructure repair prioritization (including high cost, high labor, and slow process). 
 Solution: Create an agentic CIP using a decentralized AI agent system. 3 AI agents: Road Agent, Pipe Agent, and Budget Agent.  
 
-## Layout
-    agents/
-      board.py                  shared board (the only channel between agents)
-      pipe_agent/
-        scoring.py              TEAM FILE: heuristic pipe risk rubric v2.0 (PoF x CoF -> Critical/High/Moderate/Low)
-        adapter.py              simulated pipe -> team CSV schema -> score_pipe(); future-year and after-repair scores
-        agent.py                PipeAgent: menu of replace/reline proposals, round-2 negotiation
-      road_agent/
-        scoring.py              road condition rating: Good/Fair/Poor/Failed, urgency, recommended action
-        agent.py                RoadAgent: repave proposals, offers to share digs
-      budget_agent/
-        scoring.py              return rating (Strong/Acceptable/Below hurdle) and urgency tiers (1 Urgent .. 4 Monitor)
-        agent.py                BudgetAgent: funds by return, bundles shared digs, explains every decision
-    sim/
-      fetch_streets.py          builds data/boston_streets.geojson from Analyze Boston SAM + MassDOT (see data/SOURCES.md)
-      config.py                 every number, each sourced or tagged ASSUMPTION (per-mile scaling)
-      city.py                   simulated assets on the real street network, failures, applying work
-      costs.py                  the ONLY place dollars are computed (benefit, cost, urgency, return)
-      runner.py                 yearly loop and the four strategies
-      export_city.py            writes data/synthetic_pipes.csv and synthetic_roads.csv
-    experiments/compare.py      multi-seed comparison
-    demo/                       build_demo.py + src/ (MapLibre GL JS GIS-style UI) -> demo/site/ (index.html + typed-array data); screenshots.py checks it
-    data/                       synthetic CSVs in the team's schema
-    tests/
+## Visual Overview
+    ```mermaid
+flowchart LR
+    A["Pipe Agent"] --> D["Shared Board"]
+    B["Road Agent"] --> D
+    D --> C["Budget Agent"]
+    C --> E["Coordinated Repair Plan"]
+    E --> F["MapLibre Dashboard"]
+```
 
 ## Strategies
 - isolated: separate departments, fixed 60/40 budget split, no board
