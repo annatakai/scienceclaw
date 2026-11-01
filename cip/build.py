@@ -46,7 +46,7 @@ def build(seed=42, cfg=None, out="outputs/cip", pdf=True, strategy="coordinated"
                    margin=dict(top="14mm", bottom="14mm", left="12mm", right="12mm"),
                    display_header_footer=True, header_template="<span></span>",
                    footer_template='<div style="font-size:8px;width:100%;text-align:center;color:#666">'
-                                   'SIMULATED DATA &middot; Dig Once capital plan &middot; page <span class="pageNumber"></span> of '
+                                   'SIMULATED DATA &middot; Zhora capital plan &middot; page <span class="pageNumber"></span> of '
                                    '<span class="totalPages"></span></div>')
             b.close()
     return rep

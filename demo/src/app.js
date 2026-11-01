@@ -1,4 +1,4 @@
-/* Dig Once map replay. ALL ASSET DATA SIMULATED. Presentation only: every value comes from data/*.json|bin written by
+/* Zhora map replay. ALL ASSET DATA SIMULATED. Presentation only: every value comes from data/*.json|bin written by
    demo/build_demo.py from the simulation record. MapLibre GL JS is vendored in vendor/ (no CDN needed). */
 (function () {
 'use strict';
@@ -29,7 +29,7 @@ let meta, geo, N = 0, bbox = [], names = [], nbIdx;
 const bins = {}, jsons = {}, yidx = {}, cips = {};
 const S = { strategy: 'coordinated', frame: 0, phase: 4, playing: false, speed: 1, sel: -1, hover: -1, nb: '', basemap: 'light', theme: 'light',
   layers: { risk: true, cond: false, plan: false, shared: true, funded: true, breaks: true }, op: { risk: 100, cond: 70, plan: 100, shared: 70, funded: 70, breaks: 100, basemap: 100 },
-  cipYear: false, cipCmp: false,
+  cipYear: false, cipCmp: false, cipTier: { 1: true, 2: true, 3: true, 4: true }, cipShared: false,
   chips: { pipe: true, road: true, budget: true, board: true, fail: true }, sort: { col: 'risk', dir: -1 }, tq: '' };
 let map = null, timer = null, styleReady = false, toastT = null;
 const applied = {};
@@ -179,7 +179,7 @@ function onStyle() {
   L('dg-funded', { 'line-color': ['match', st('ft', 0), 1, TIERC[1], 2, TIERC[2], 3, TIERC[3], 4, TIERC[4], '#0e7490'], 'line-width': W(v => v ? v + 5 : 0), 'line-opacity': ['case', ['==', st('fu', 0), 1], 0.7, 0] });
   L('dg-casing', { 'line-color': '#ffffff', 'line-width': W(v => v ? v * 1.35 + 1.4 : 0), 'line-opacity': 1 });
   L('dg-risk', { 'line-color': riskColor, 'line-width': W(v => v) });
-  L('dg-plan', { 'line-color': ['match', st('pl', 0), 1, '#1d4ed8', 2, '#92400e', 3, '#111827', '#1d4ed8'], 'line-width': W(v => v ? Math.max(1, v * 0.4) : 0), 'line-dasharray': [2, 1.5], 'line-opacity': ['case', ['>', st('pl', 0), 0], 1, 0] });
+  L('dg-plan', { 'line-color': ['match', st('pl', 0), 1, '#1d4ed8', 2, '#92400e', 3, '#111827', '#1d4ed8'], 'line-width': W(v => v ? v + 6 : 0), 'line-dasharray': [3, 1.5], 'line-opacity': ['case', ['>', st('pl', 0), 0], 1, 0] });
   L('dg-hover', { 'line-color': '#111827', 'line-width': W(v => v ? v + 4 : 0), 'line-opacity': ['case', ['==', st('hv', 0), 1], 0.35, 0] });
   L('dg-sel-under', { 'line-color': '#0b2a6b', 'line-width': W(v => v ? v + 10 : 0) }, { filter: ['==', ['get', 'id'], ''] });
   L('dg-sel', { 'line-color': '#00e0ff', 'line-width': W(v => v ? v + 6 : 0) }, { filter: ['==', ['get', 'id'], ''] });
@@ -319,11 +319,9 @@ function renderInfo() {
 
 /* ---------- UI scaffolding ---------- */
 function buildStaticUI() {
-  const ss = $('#strategy'); meta.order.forEach(s => ss.appendChild(el('option', { value: s, textContent: STRAT[s][0] }))); ss.value = S.strategy;
-  ss.onchange = async () => { S.strategy = ss.value; stop(); await loadStrategy(S.strategy); renderState(); };
   const nb = $('#nb'); meta.nbs.forEach(n => nb.appendChild(el('option', { value: n, textContent: n })));
   nb.onchange = () => { S.nb = nb.value; applyNbFilter(); renderState(); fitAll(); };
-  const LL = [['risk', 'Pipe risk', 'Risk class by the team rubric'], ['cond', 'Road condition', 'Pavement condition rating'], ['plan', 'Repair plans', 'Segments an agent plans to dig (dashed)'], ['shared', 'Shared digs', 'Pipe and road work in one opening'], ['funded', 'Funded work', 'Work the budget agent funded this year'], ['breaks', 'Pipe breaks', 'Simulated breaks this year']];
+  const LL = [['risk', 'Pipe risk', 'Risk class by the team rubric'], ['cond', 'Road condition', 'Pavement condition rating'], ['plan', 'Repair plans', 'Segments an agent plans to dig (dashed)'], ['funded', 'Funded work', 'Work the budget agent funded this year'], ['breaks', 'Pipe breaks', 'Simulated breaks this year']];
   const ll = $('#layer-list');
   for (const [k, label, tip] of LL) {
     const d = el('div', { className: 'layer' }, `<label class="main" title="${esc(tip)}"><input type="checkbox" data-k="${k}" ${S.layers[k] ? 'checked' : ''}> <span>${label}</span></label>
@@ -332,11 +330,12 @@ function buildStaticUI() {
   }
   ll.addEventListener('change', e => { const k = e.target.dataset.k; if (k) { S.layers[k] = e.target.checked; applyLayerPrefs(); renderLegend(); } });
   ll.addEventListener('input', e => { const k = e.target.dataset.op; if (k) { S.op[k] = +e.target.value; applyLayerPrefs(); } });
-  $('#op-basemap').oninput = e => { S.op.basemap = +e.target.value; applyBaseOpacity(); };
   const bm = $('#basemaps');
-  for (const k in BASE) bm.appendChild(el('button', { type: 'button', role: 'radio', textContent: BASE[k].label, onclick: () => setBasemap(k) }));
+  for (const k of ['light', 'dark']) bm.appendChild(el('button', { type: 'button', role: 'radio', textContent: BASE[k].label, onclick: () => setBasemap(k) }));
   $('#btn-layers').onclick = () => { const c = $('#app').classList.toggle('no-layers'); $('#btn-layers').setAttribute('aria-expanded', !c); setTimeout(() => map && map.resize(), 30); };
-  $('#btn-side').onclick = () => $('#app').classList.toggle('hide-side');
+  $('#btn-about').onclick = () => $('#about-modal').hidden = false;
+  $('#about-x').onclick = () => $('#about-modal').hidden = true;
+  $('#about-modal').addEventListener('click', e => { if (e.target.id === 'about-modal') $('#about-modal').hidden = true; });
   if (innerWidth < 860) { $('#app').classList.add('no-layers'); $('#btn-layers').setAttribute('aria-expanded', 'false'); }
   $('#btn-theme').onclick = () => { setTheme(S.theme === 'dark' ? 'light' : 'dark'); if (S.basemap === 'light' || S.basemap === 'dark') setBasemap(S.theme === 'dark' ? 'dark' : 'light'); else if (S.basemap === 'none' && map) { const l = map.getStyle().layers.find(x => x.id === 'bg'); if (l) map.setPaintProperty('bg', 'background-color', bgColor()); } };
   $('#btn-png').onclick = exportPng; $('#btn-csv').onclick = exportCsv;
@@ -381,9 +380,10 @@ function renderLegend() {
   $('#legend-year').textContent = fr === 0 ? '(baseline)' : '(' + (meta.start_year + fr - 1) + ')';
   const blk = (t, rows) => `<div class="legend-block"><div class="t">${t}</div>${rows.join('')}</div>`;
   const row = (sw, name, n) => `<div class="legend-row"><span class="swatch" style="${sw}"></span><span>${name}</span><span class="n">${n == null ? '' : n.toLocaleString()}</span></div>`;
+  const gradientKey = (colors, lo, hi) => `<div class="gradient-key"><div class="bar" style="background:linear-gradient(to right, ${colors.join(',')})"></div><div class="gradient-labels"><span>${lo}</span><span>${hi}</span></div></div>`;
   let h = '';
   if (S.layers.risk && target.cls) { const c = counts(target.cls, 4); h += blk('Pipe risk class (simulated)', [3, 2, 1, 0].map(i => row('background:' + RISK[i][1], RISK[i][0], c[i]))); }
-  if (S.layers.cond && target.cond) { const c = counts(target.cond, 4); h += blk('Road condition (simulated)', [3, 2, 1, 0].map(i => row('background:' + COND[i][1], COND[i][0], c[i]))); }
+  if (S.layers.cond && target.cond) { const c = counts(target.cond, 4); h += blk('Road condition (simulated)', [gradientKey([COND[0][1], COND[1][1], COND[2][1], COND[3][1]], COND[0][0], COND[3][0])].concat([3, 2, 1, 0].map(i => row('background:' + COND[i][1], COND[i][0], c[i])))); }
   const ov = [];
   if (S.layers.plan && target.pl) { let a = 0; for (let i = 0; i < N; i++) if (target.pl[i] && (!S.nb || nbIdx[i] === meta.nbs.indexOf(S.nb) + 1)) a++; ov.push(row('background:transparent;border:0;width:12px;height:0;border-top:3px dashed #1d4ed8;border-radius:0', 'Planned dig', a)); }
   if (S.layers.shared && target.sh) { let a = 0; for (let i = 0; i < N; i++) if (target.sh[i]) a++; ov.push(row('background:#7c3aed', 'Shared dig', a)); }
@@ -498,6 +498,27 @@ function drawRows() {
   tb.innerHTML = h;
 }
 $('#tbl').addEventListener('click', e => { const r = e.target.closest('tr.trow'); if (r) select(+r.dataset.i, true); });
+function openFullTable() {
+  const head = COLS.map(c => `<th>${esc(c[1])}</th>`).join('');
+  const rows = trows.map(i => `<tr>${COLS.map(c => `<td>${esc(c[2](i))}</td>`).join('')}</tr>`).join('');
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>Zhora | full table (${trows.length.toLocaleString()} segments)</title>
+<style>
+  body { font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #111; }
+  header { position: sticky; top: 0; background: #fff; padding: 12px 16px; border-bottom: 1px solid #ddd; display: flex; align-items: baseline; gap: 10px; z-index: 1; }
+  header b { font-size: 15px; } header span { color: #666; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 6px 12px; border-bottom: 1px solid #eee; white-space: nowrap; }
+  th { position: sticky; top: 45px; background: #fafafa; }
+  tr:hover td { background: #f5f8ff; }
+</style></head><body>
+<header><b>Zhora</b><span>Full table &mdash; ${trows.length.toLocaleString()} of ${N.toLocaleString()} segments${S.tq ? `, filtered by "${esc(S.tq)}"` : ''}${S.nb ? `, ${esc(S.nb)}` : ''}</span></header>
+<table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>
+</body></html>`;
+  const url = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+  window.open(url, '_blank');
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+$('#btn-table-open').onclick = openFullTable;
 
 /* ---------- compare ---------- */
 const cum = s => [0].concat(jsons[s].years.map(y => y.metrics.spend + y.metrics.emerg + y.metrics.user_cost));
@@ -544,7 +565,7 @@ function drawChart(host) {
 
 /* ---------- about ---------- */
 function buildAbout() {
-  $('#tab-about').innerHTML = `<div class="about"><div class="warnbox">ALL ASSET DATA SIMULATED. Only the street network is real.</div>
+  $('#about-body').innerHTML = `<div class="about"><div class="warnbox">ALL ASSET DATA SIMULATED. Only the street network is real.</div>
   <h5>What this is</h5><p>A prototype of three software agents (pipe, road, budget) that coordinate repairs on a shared board so a street is opened once, not several times. The replay shows each year: Rate, Plan, Negotiate, Fund, Apply.</p>
   <h5>Real versus simulated</h5><ul><li><b>Real:</b> street geometry, names, length, road class, neighborhood (Analyze Boston Street Segments, MassDOT Road Inventory).</li>
   <li><b>Simulated:</b> pipe material, install year, breaks, pavement condition, last paved, traffic, customers, costs, budget, every outcome.</li></ul>
@@ -573,8 +594,8 @@ function exportPng() {
     const c = map.getCanvas(), out = el('canvas'), pad = 28; out.width = c.width; out.height = c.height + pad;
     const x = out.getContext('2d'); x.drawImage(c, 0, 0); x.fillStyle = '#fff'; x.fillRect(0, c.height, out.width, pad); x.fillStyle = '#333'; x.font = '12px sans-serif';
     const fr = S.frame === 0 ? 'baseline' : String(meta.start_year + S.frame - 1);
-    x.fillText(`Dig Once | ${STRAT[S.strategy][0]} | ${fr} | ALL ASSET DATA SIMULATED | streets: Analyze Boston, MassDOT`, 8, c.height + 18);
-    out.toBlob(b => download(`dig-once-map-${S.strategy}-${fr}.png`, b));
+    x.fillText(`Zhora | ${STRAT[S.strategy][0]} | ${fr} | ALL ASSET DATA SIMULATED | streets: Analyze Boston, MassDOT`, 8, c.height + 18);
+    out.toBlob(b => download(`zhora-map-${S.strategy}-${fr}.png`, b));
   });
   map.triggerRepaint();
 }
@@ -582,7 +603,7 @@ function exportCsv() {
   if (!trows.length || tableDirty) renderTable(true);
   const q = v => '"' + String(v).replace(/"/g, '""') + '"';
   const lines = [COLS.map(c => q(c[1])).join(',')].concat(trows.map(i => COLS.map(c => q(c[2](i))).join(',')));
-  download(`dig-once-table-${S.strategy}-${S.frame === 0 ? 'baseline' : meta.start_year + S.frame - 1}.csv`, new Blob(['﻿' + lines.join('\n')], { type: 'text/csv' }));
+  download(`zhora-table-${S.strategy}-${S.frame === 0 ? 'baseline' : meta.start_year + S.frame - 1}.csv`, new Blob(['﻿' + lines.join('\n')], { type: 'text/csv' }));
 }
 
 /* ---------- keyboard ---------- */
@@ -597,7 +618,7 @@ function onKey(e) {
   else if ((e.key === '-' || e.key === '_') && map) map.zoomOut();
   else if (e.key === 'f' || e.key === 'F') fitAll();
   else if (e.key === 'l' || e.key === 'L') $('#btn-layers').click();
-  else if (e.key === 'Escape') { if (S.sel >= 0) select(-1); e.target.blur && e.target.blur(); }
+  else if (e.key === 'Escape') { if (!$('#about-modal').hidden) $('#about-modal').hidden = true; else if (S.sel >= 0) select(-1); e.target.blur && e.target.blur(); }
 }
 
 /* ---------- decision list (the capital plan beside the map) ---------- */
@@ -608,12 +629,24 @@ function cipYear() { return S.frame === 0 ? null : meta.start_year + S.frame - 1
 function cipVisible(c) {
   const y = cipYear();
   if (y == null) return [];
-  return c.rows.filter(r => S.cipYear ? r[1] === y : r[1] <= y);   // fills in as decisions are made; the last year shows the final plan
+  return c.rows.filter(r => (S.cipYear ? r[1] === y : r[1] <= y) && S.cipTier[r[5]] && (!S.cipShared || r[9]));   // fills in as decisions are made; the last year shows the final plan
+}
+function cipAllForYear(c) {   // same year/shared scope as cipVisible, but ignoring the tier filter -- for the key's counts
+  const y = cipYear();
+  if (y == null) return [];
+  return c.rows.filter(r => (S.cipYear ? r[1] === y : r[1] <= y) && (!S.cipShared || r[9]));
+}
+function renderCipKey(c) {
+  const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  for (const r of cipAllForYear(c)) counts[r[5]]++;
+  $('#cip-key').innerHTML = `<div class="t">Priority tier</div>` +
+    [1, 2, 3, 4].map(t => `<div class="legend-row"><span class="swatch" style="background:${TIERC[t]}"></span><span>${t} ${TIERN[t]}</span><span class="n">${counts[t].toLocaleString()}</span></div>`).join('');
 }
 function renderCip() {
   if (curTab() !== 'cip') return;
   const body = $('#cip-body'), c = cips[S.strategy];
   if (!c) { body.innerHTML = '<div class="empty-state">No decision list for this strategy (recorded run).</div>'; return; }
+  renderCipKey(c);
   const rows = cipVisible(c), total = rows.reduce((a, r) => a + r[6], 0), shared = new Set(rows.filter(r => r[9]).map(r => r[2] + '-' + r[1])).size;
   let h = '';
   if (S.cipCmp) {
@@ -634,8 +667,8 @@ function renderCip() {
   for (const r of rows.slice(0, 600)) {
     h += `<div class="cip-row ${r[12] === cipSel ? 'sel' : ''}" data-seg="${r[2]}" data-id="${esc(r[12])}" data-year="${r[1]}">
       <span class="rk">${r[0]}</span><span><span class="st">${esc(r[3])}</span> <span class="muted">${r[1]}</span></span><span class="money">${fmtD(r[6])}</span>
-      <span class="meta"><span>${esc(r[4])}</span><span class="tier t${r[5]}">${r[5]} ${TIERN[r[5]] || ''}</span><span class="muted">${esc(r[7])}</span>
-      <span>return ${r[8].toFixed(2)}</span>${r[9] ? '<span class="cip-tag">shared dig</span>' : ''}${r[11] ? '<span class="cip-tag rev">engineering review</span>' : ''}</span>
+      <span class="meta"><span>${esc(r[4])}</span><span class="tier t${r[5]}">${r[5]} ${TIERN[r[5]] || ''}</span>${r[9] ? '<span class="cip-tag shared">shared dig</span>' : ''}<span class="muted">${esc(r[7])}</span>
+      <span>return ${r[8].toFixed(2)}</span>${r[11] ? '<span class="cip-tag rev">engineering review</span>' : ''}</span>
       <span class="why">${esc(r[10])}</span></div>`;
   }
   if (rows.length > 600) h += `<div class="empty-state">Showing the first 600 of ${rows.length}. Download the CSV for all of them.</div>`;
@@ -646,11 +679,23 @@ function cipCsv() {
   const q = v => '"' + String(v).replace(/"/g, '""') + '"';
   const head = ['rank', 'year', 'segment_id', 'street', 'work', 'priority_tier', 'amount', 'funding_source', 'return_per_dollar', 'shared_dig', 'engineering_review', 'rationale'];
   const lines = [head.join(',')].concat(c.rows.map(r => [r[0], r[1], r[12], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[11], r[10]].map(q).join(',')));
-  download(`dig-once-decision-list-${S.strategy}.csv`, new Blob(['\ufeff' + lines.join('\n') + '\n# SIMULATED DATA'], { type: 'text/csv' }));
+  download(`zhora-decision-list-${S.strategy}.csv`, new Blob(['\ufeff' + lines.join('\n') + '\n# SIMULATED DATA'], { type: 'text/csv' }));
 }
 function buildCip() {
   $('#cip-year').onchange = e => { S.cipYear = e.target.checked; renderCip(); };
   $('#cip-cmp').onchange = e => { S.cipCmp = e.target.checked; renderCip(); };
+  const tc = $('#cip-tier-chips');
+  for (const t of [1, 2, 3, 4]) tc.appendChild(el('button', { className: 'chip', type: 'button', textContent: `${t} ${TIERN[t]}`, ariaPressed: 'true', title: `Show or hide ${TIERN[t]} tier` })).dataset.a = 't' + t;
+  tc.appendChild(el('button', { className: 'chip', type: 'button', textContent: 'Shared dig', ariaPressed: 'false', title: 'Show only shared-dig projects' })).dataset.a = 'shared';
+  tc.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    if (b.dataset.a === 'shared') { S.cipShared = !S.cipShared; b.setAttribute('aria-pressed', S.cipShared); renderCip(); return; }
+    const t = +b.dataset.a.slice(1);
+    if (e.shiftKey || e.metaKey || e.ctrlKey) { S.cipTier[t] = !S.cipTier[t]; }
+    else { const only = Object.values(S.cipTier).filter(Boolean).length === 1 && S.cipTier[t]; for (const k of [1, 2, 3, 4]) S.cipTier[k] = only || k === t; }
+    for (const btn of tc.querySelectorAll('.chip')) if (btn.dataset.a !== 'shared') btn.setAttribute('aria-pressed', S.cipTier[+btn.dataset.a.slice(1)]);
+    renderCip();
+  });
   $('#cip-csv').onclick = cipCsv;
   $('#cip-pdf').onclick = () => window.open(meta.cip_pdf ? 'data/capital_plan.pdf' : 'data/capital_plan.html', '_blank');
   $('#cip-body').addEventListener('click', e => {

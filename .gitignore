@@ -11,3 +11,4 @@ data/raw/
 demo/site/
 demo/shots/*.png
 outputs/cip/run_*.json
+.claude/

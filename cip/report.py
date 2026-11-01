@@ -317,7 +317,7 @@ SCRIPT = """<script>
 </script>"""
 
 
-def to_html(report, title="Dig Once: Capital Plan Recommendation") -> str:
+def to_html(report, title="Zhora: Capital Plan Recommendation") -> str:
     """Side-panel fragment (embed next to the map): summary, funding, pace, decision list, review, not funded."""
     s = report["summary"]
     e = html.escape
@@ -325,7 +325,7 @@ def to_html(report, title="Dig Once: Capital Plan Recommendation") -> str:
             f'<span class="sim">{s["label"]} &middot; {s["years"][0]}&ndash;{s["years"][1]}</span>{_section(report, e)}{SCRIPT}</div>')
 
 
-def to_page(report, title="Dig Once: Capital Plan Recommendation") -> str:
+def to_page(report, title="Zhora: Capital Plan Recommendation") -> str:
     """Self-contained, printable page: the panel plus the methodology."""
     s = report["summary"]
     e = html.escape
